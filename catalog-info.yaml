@@ -5,6 +5,10 @@ metadata:
   annotations:
     github.com/project-slug: DEFRA/adp-documentation
     backstage.io/techdocs-ref: dir:.
+  links:
+    - url: https://defra.github.io/adp-documentation
+      title: ADP Public Github Page
+      icon: dashboard
 spec:
   type: documentation
   lifecycle: experimental
