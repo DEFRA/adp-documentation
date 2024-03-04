@@ -85,6 +85,7 @@ nav:
     - Migrate production data: Migrate-to-ADP/migrate-production-data.md
   - Platform Strategy:
     - Documentation Approach: Platform-Strategy/documentation-approach.md
+    - Quality Assurance Approach: Platform-Strategy/quality-assurance-approach.md
   - Platform Architecture:
     - Architecture Overview: Platform-Architecture/architecture-overview.md
     - Environments: Platform-Architecture/environments.md
