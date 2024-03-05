@@ -11,11 +11,9 @@ weight: 1
 ---
 # Quality Assurance & Testing Approach
 
-## Platform Quality Assurance & Testing Approach
-
 ## Service Quality Assurance & Testing Approach
 
-## Test Tooling
+### Test Tooling
 
 | Test Type                   | NodeJs                    | .NET                      | Considerations | Local Tool | Pipeline Tool | License required |
 | --------------------------- | ------------------------- | ------------------------- | -------------- | ---------- | ------------- | ---------------- |
@@ -30,4 +28,32 @@ weight: 1
 | Contract Tests              | Pact Broker               | Pact Broker               |                | Y          | Y             | N/OS             |
 | Accessibility               | Axe, Light house          | Axe, Light house          |                | Y          | Y             | Y                |
 
-## When are tests ran?
+### Environments testing approach
+Details of where your tests can be ran in and in which environment.
+
+=== "Local"
+    * Unit Test
+
+=== "Build"
+    * Unit Test
+
+=== "SND"
+    * Unit Test
+
+=== "DEV1"
+    * Unit Test
+
+=== "TST1"
+    * Unit Test
+
+=== "TST2"
+    * Unit Test
+
+=== "PRE1"
+    * Unit Test
+
+=== "PRD1"
+    * Unit Test
+
+## Platform Quality Assurance & Testing Approach
+
