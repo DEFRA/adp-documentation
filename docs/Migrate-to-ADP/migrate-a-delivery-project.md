@@ -1,6 +1,7 @@
 ---
 title: Migrate to ADP
 summary: Details on migrating your existing project and its services to ADP.
+uri: https://defra.github.io/adp-documentation/Migrate-to-ADP/migrate-a-delivery-project/
 authors:
     - Logan Talbot
 date: 2024-02-20

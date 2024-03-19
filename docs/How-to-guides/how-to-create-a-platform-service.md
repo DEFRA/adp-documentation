@@ -1,8 +1,10 @@
 ---
 title: How to create a platform service
 summary: How to create a platform service on to ADP.
+uri: https://defra.github.io/adp-documentation/How-to-guides/how-to-create-a-platform-service/
 authors:
-    - Logan Talbot
+  - Logan Talbot
+  - Lorenzo Squillante
 date: 2024-02-16
 weight: 1
 ---

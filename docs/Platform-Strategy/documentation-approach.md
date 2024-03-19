@@ -1,6 +1,7 @@
 ---
 title: Documentation Approach
 summary: Details of how we are going to document ADP at a high level.
+uri: https://defra.github.io/adp-documentation/Platform-Strategy/documentation-approach/
 authors:
     - Logan Talbot
 date: 2024-02-16

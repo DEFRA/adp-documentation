@@ -5,11 +5,8 @@ theme:
     primary: black
     accent: light blue
   features:
-    #- navigation.tabs
     - navigation.sections
-    - toc.integrate
     - navigation.top
-    - navigation.indexes
     - search.suggest
     - search.highlight
     - search.share
@@ -78,7 +75,6 @@ nav:
     - Onboarding a delivery project: Getting-Started/onboarding-a-delivery-project.md
     - Onboarding a delivery programme: Getting-Started/onboarding-a-delivery-programme.md
   - How to guides:
-    - How to Guides: How-to-guides/How to guides.md
     - How to create a platform service: How-to-guides/how-to-create-a-platform-service.md
   - Migrate to ADP:
     - Migrate a delivery project: Migrate-to-ADP/migrate-a-delivery-project.md
@@ -104,6 +100,15 @@ nav:
         - Automated Monitoring Implementation: Platform-Architecture/architectural-components/monitoring/automated-monitoring-implementation.md
         - Network Watcher: Platform-Architecture/architectural-components/monitoring/network-watcher.md
         - Alerts: Platform-Architecture/architectural-components/monitoring/alerts.md
+      - CI, CD, & Automation:
+        - GitOps for AKS:
+          - Overview: Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/overview.md
+        - Azure Service Operator for AKS: Platform-Architecture/architectural-components/ci-cd-and-automation/azure-service-operator-for-aks.md
+
   - Developer Reference:
     - ASO Helm Library Chart: Developer-Reference/Infrastructure/ASO Helm Library Chart.md
     - ADP Portal: Developer-Reference/Infrastructure/ADP Portal.md
+    - Helm Library Memory & CPU Tiers: Developer-Reference/Infrastructure/helm-library-memory-and-cpu-tiers.md
+    - Reference Applications:
+      - FCP Demo Services:
+        - Overview: Developer-Reference/reference-applications/fcp-demo-services/overview.md

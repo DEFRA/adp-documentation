@@ -1,6 +1,7 @@
 ---
 title: Migrate a service to ADP
 summary: Migrate your existing service to ADP
+uri: https://defra.github.io/adp-documentation/Migrate-to-ADP/migrate-a-platform-service/
 authors:
     - Logan Talbot
 date: 2024-02-14

@@ -1,6 +1,7 @@
 ---
 title: Why ADP
 summary: Explainations of what ADP is and the pros and cons of using it.
+uri: https://defra.github.io/adp-documentation/
 authors:
     - Logan Talbot
 date: 2024-01-22
