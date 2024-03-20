@@ -120,15 +120,14 @@ nav:
   # ------------------- Developer Reference -------------------
   - Developer Reference:
     - ASO Helm Library Chart: Developer-Reference/Infrastructure/ASO Helm Library Chart.md
-    - ADP Portal: 
-      - Overview: Developer-Reference/adp-portal/overview.md
+    - ADP Portal:
       - Ongoing Development: 
-        - Portal Development: Developer-Reference\Infrastructure\ADP Portal.md
-        - Backstage Plugin Index: Developer-Reference\adp-portal\ongoing-development\backstage-plugin-index.md
-        - Backstage Setup: Developer-Reference\adp-portal\ongoing-development\backstage-setup.md
-        - Catalog Data Sources: Developer-Reference\adp-portal\ongoing-development\catalog-data-sources.md
-        - GitHub App Permissions: Developer-Reference\adp-portal\ongoing-development\github-app-permissions.md
-        - Gov.uk Branding: Developer-Reference\adp-portal\ongoing-development\govuk-branding.md
+        - Portal Development: Developer-Reference/Infrastructure/ADP Portal.md
+        - Backstage Plugin Index: Developer-Reference/adp-portal/ongoing-development/backstage-plugin-index.md
+        - Backstage Setup: Developer-Reference/adp-portal/ongoing-development/backstage-setup.md
+        - Catalog Data Sources: Developer-Reference/adp-portal/ongoing-development/catalog-data-sources.md
+        - GitHub App Permissions: Developer-Reference/adp-portal/ongoing-development/github-app-permissions.md
+        - Gov.uk Branding: Developer-Reference/adp-portal/ongoing-development/govuk-branding.md
     - Helm Library Memory & CPU Tiers: Developer-Reference/Infrastructure/helm-library-memory-and-cpu-tiers.md
     - Reference Applications:
       - FCP Demo Services:

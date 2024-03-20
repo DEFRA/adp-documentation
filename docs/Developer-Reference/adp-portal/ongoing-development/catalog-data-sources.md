@@ -1,12 +1,12 @@
 ---
 title: Catalog Data Sources
 summary: Catalog Data Sources for the ADP Portal
+uri: https://defra.github.io/adp-documentation/Developer-Reference/adp-portal/ongoing-development//
 authors:
     - James Coxhead
 date: 2024-01-22
 weight: -11
 ---
-
 # Catalog Data Sources
 
 ## Overview
@@ -14,7 +14,9 @@ weight: -11
 Catalog data is pulled in from multiple sources which are configured in the `app-config.yaml` file. Individual entities are defined by a YAML file.
 
 ## Catalog Sources
+
 ### Components
+
 Backstage regularly scans the [DEFRA GitHub organisation](https://github.com/defra) for repos containing a `catalog-info.yaml` file in the root of the master branch. The FFC demo services contain examples of this file (see [ffc-demo-web](https://github.com/DEFRA/ffc-demo-web/blob/master/catalog-info.yaml)). New components scaffolded through Backstage will be contain this file (but it may need further customisation), existing components will need to have the file added in manually.
 
 A `catalog-info.yaml` for a component file might look like this:
@@ -48,6 +50,7 @@ spec:
     - "resource:default/fcp-demo-claim-queue"
     - "resource:default/ADPINFSB01"
 ```
+
 The [Backstage documentation](https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component) describes the format of this file - it is similar to a Kubernetes object config file. The key properties we need to set are:
 
 * **metadata\.name** - The name of the component. Must be unique, and should match the repository name.
@@ -65,5 +68,6 @@ If a component consumes infrastructure such as a database or service bus queue t
 ### Users
 
 ## Related Links
+
 * [Backstage System Model](https://backstage.io/docs/features/software-catalog/system-model)
 * [Backstage YAML format](https://backstage.io/docs/features/software-catalog/descriptor-format)

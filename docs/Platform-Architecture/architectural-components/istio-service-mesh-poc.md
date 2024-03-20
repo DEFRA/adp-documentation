@@ -1,8 +1,9 @@
 ---
 title: Istio Architecture POC
 summary: This document details the findings of Istio Service Mesh, including some features and integration with Flux.   
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/architectural-components/istio-service-mesh-poc/
 authors:
-    - xxx
+    - Asad Arif
 date: 2024-03-14
 weight: 1
 ---

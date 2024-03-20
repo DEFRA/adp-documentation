@@ -1,6 +1,7 @@
 ---
 title: Secrets & Configuration
 summary: Overview of the secrets and configuration in the Platform
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/architectural-components/microservices-and-aks/
 authors:
     - Logan Talbot
     - Rajesh Venkatraman

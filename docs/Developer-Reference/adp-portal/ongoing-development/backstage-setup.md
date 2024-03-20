@@ -1,6 +1,7 @@
 ---
 title: Backstage Setup
 summary: Backstage setup for the ADP Portal
+uri: https://defra.github.io/adp-documentation/Developer-Reference/adp-portal/ongoing-development//
 authors:
     - James Coxhead
 date: 2024-01-22
@@ -100,7 +101,7 @@ yarn install
 yarn dev
 ```
 
-To stop the application, press `<kbd>`Ctrl`</kbd>`+`<kbd>`C`</kbd>` twice.
+To stop the application, press `<kbd>`Ctrl `</kbd>`+`<kbd>`C `</kbd>` twice.
 
 # 🆘 Troubleshooting
 

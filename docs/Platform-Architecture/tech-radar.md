@@ -1,8 +1,9 @@
 ---
 title: Tech Radar
 summary: Overview of the environments in the Platform
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/tech-radar/
 authors:
-    - xxx
+    - Logan Talbot
 date: 2024-03-14
 weight: -11
 ---

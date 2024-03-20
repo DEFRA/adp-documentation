@@ -1,8 +1,9 @@
 ---
 title: Environments in ADP
 summary: Overview of the environments in the Platform
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/environments/
 authors:
-    - xxx
+    - Dan Roszkowski
 date: 2024-03-14
 weight: -11
 ---

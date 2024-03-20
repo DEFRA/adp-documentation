@@ -1,8 +1,9 @@
 ---
-title: Istio Architecture POC
+title: Application Hosting
 summary: How we scale the platform
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/architectural-components/application-hosting/
 authors:
-    - xxx
+    - Asad Arif
 date: 2024-03-14
 weight: 1
 ---

@@ -1,8 +1,9 @@
 ---
 title: Scaling of the Platform
 summary: How we scale the platform
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/scaling/
 authors:
-    - xxx
+    - Logan Talbot
 date: 2024-03-14
 weight: 1
 ---

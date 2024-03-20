@@ -1,6 +1,7 @@
 ---
 title: ADP Platform Strategy
 summary: Overall platform strategy
+uri: https://defra.github.io/adp-documentation/Platform-Strategy/adp-platform-strategy/
 authors:
     - xxx
 date: 2024-01-22

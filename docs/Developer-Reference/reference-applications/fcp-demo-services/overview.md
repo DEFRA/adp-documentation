@@ -1,6 +1,7 @@
 ---
 title: FCP Demo Services
 summary: Overview of the FCP Demo Services
+uri: https://defra.github.io/adp-documentation/Developer-Reference/reference-applications/fcp-demo-services/overview/
 authors:
     - xxx
 date: 2024-03-14
@@ -112,7 +113,6 @@ Azure Policy for Kubernetes supports the following cluster environments:
 
 https://learn.microsoft.com/en-us/azure/governance/policy/concepts/policy-for-kubernetes
 https://learn.microsoft.com/en-us/azure/container-apps/dapr-overview?tabs=bicep1%2Cyaml
-
 
 ## Service Details
 

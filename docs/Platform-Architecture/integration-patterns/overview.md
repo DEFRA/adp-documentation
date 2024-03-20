@@ -1,12 +1,12 @@
 ---
 title: Integration Patterns Overview
 summary: Overview of Integration Patterns
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/integration-patterns/overview/
 authors:
-    - xxx
+    - Logan Talbot
 date: 2024-03-14
 weight: -11
 ---
-
 The integration patterns that can be utilized in ADP will be defined here. This may be internal and external patterns, including with Azure services, SaaS products, and third-party services.
 
 A number of services are in scope and/or have defined patterns, including:

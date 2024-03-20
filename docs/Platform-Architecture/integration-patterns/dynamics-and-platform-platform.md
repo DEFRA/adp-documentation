@@ -1,6 +1,7 @@
 ---
 title: Dynamics 365 & Power Platform Integration Patterns
 summary: Overview of Integration Patterns for Dynamics 365 and Power Platform
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/integration-patterns/dynamics-and-platform-platform/
 authors:
     - xxx
 date: 2024-03-14

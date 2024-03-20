@@ -8,6 +8,7 @@ authors:
 date: 2024-02-15
 weight: 2
 ---
+
 # Onboarding a delivery project
 
 This getting started guide summarises the steps for onboarding a delivery project onto ADP via the Portal. It also provides an overview of the automated processes involved.

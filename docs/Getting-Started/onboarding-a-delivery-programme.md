@@ -1,12 +1,13 @@
 ---
 title: Onboarding a delivery programme
-summary: A brief description of my document.
-uri: https://defra.github.io/adp-documentation/Getting-Started/onboarding-a-delivery-programme/authors:
+summary: A brief description of my document
+uri: https://defra.github.io/adp-documentation/Getting-Started/onboarding-a-delivery-programme/
+authors:
     - Lorenzo Squillante
     - Logan Talbot
 date: 2018-07-10
-weight: 10
 ---
+
 # Onboarding a delivery programme
 
 This getting started guide summarises the steps for onboarding a delivery programme onto ADP via the Portal. It also provides an overview of the automated processes involved.

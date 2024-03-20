@@ -8,6 +8,7 @@ authors:
 date: 2024-02-16
 weight: 1
 ---
+
 # How to create a platform service
 
 In this how to guide you will learn how to create a new service on to ADP within your delivery project. You will also learn what automated actions that will take place.
