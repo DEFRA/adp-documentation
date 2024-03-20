@@ -2,11 +2,10 @@
 title: Azure Service Operator for AKS
 summary: Overview of Azure Service Operator for AKS
 authors:
-    - xxx
+    - Asad Arif
 date: 2024-03-14
 weight: 1
 ---
-
 # Azure Service Operator for AKS
 
 ## **What is Azure Service Operator?**
@@ -58,11 +57,13 @@ With the dual track approach, we can scale and support a wide variety of teams, 
 | Azure Front Door                   | Y            | N    | Y             | N                      | **TBD**: allow self-creation of DNS entries, domains and routes to designated Cluster. |
 
 #### **What about other, unlisted resources?**
+
  It is safe to assume, if it's not listed, it's not ASO supported and will be directly managed via Bicep templates, modules and PWSH Scripts.
 
 Further to this, you will not be able to fully manage the lifecycle of some resources, i.e. Service Bus or the PostgreSQL Flexible Server. This is by design as it's a Platform responsibility.
 
 #### **How far will you roll ASO out?**
+
 We simply don't know at this stage. It is in trial mode and our approach may differ as we expand, learn more and grow as a Platform.
 
 ## Azure Service Operator Setup
@@ -75,6 +76,7 @@ Azure Service Operator supports four different styles of [authentication](https:
 [Azure-Workload-Identity](https://azure.github.io/azure-service-operator/guide/authentication/credential-format/#azure-workload-identity) authentication (OIDC + Managed Identity) is being used by ASO in ADP.
 
 ### Credential scope
+
 Each supported credential type can be specified at one of three supported scopes:
 
 **Global** - The credential applies to all resources managed by ASO.
@@ -90,23 +92,25 @@ The Platform Team will have their own ASO credential scoped at the Subscription 
 
 The Platform Team will create the following resources using ASO to onboard a Project Team:
 
-  - userassigned-identity
-  - federated-credential
-  - resource-group
-  - role-assignments-rg
-  - role-assignments-sb
-  - role-assignments-pgdb
+- userassigned-identity
+- federated-credential
+- resource-group
+- role-assignments-rg
+- role-assignments-sb
+- role-assignments-pgdb
 
 ### TODO
 
 We still need to work out how to inject certain values automatically into the ASO Kubernetes secrets managed by Flux.  These are currently being added manually as post deployment step.
 
 The values we need to pass in for the [Platform Team secret](https://github.com/DEFRA/adp-flux-core/blob/main/infra/snd/01/platform-team-aso-secret.yaml) are:
+
 - TenantID
 - SubscrictionId
-- ClientID 
+- ClientID
 
 The values we need to pass in for the Project [Team secret](https://github.com/DEFRA/adp-flux-services/blob/main/services/base/aso/team-secret.yaml) and [Managed Identity Federated credential](https://github.com/DEFRA/adp-flux-services/blob/main/services/base/aso/federated-credential.yaml) are:
+
 - TEAM_MI_CLIENT_ID
 - CLUSTER_OIDC
 
