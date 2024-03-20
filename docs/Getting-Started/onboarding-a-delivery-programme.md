@@ -6,7 +6,6 @@ uri: https://defra.github.io/adp-documentation/Getting-Started/onboarding-a-deli
     - Logan Talbot
 date: 2018-07-10
 weight: 10
-some_url: https://example.com
 ---
 # Onboarding a delivery programme
 

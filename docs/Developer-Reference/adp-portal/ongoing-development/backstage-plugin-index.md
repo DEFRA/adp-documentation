@@ -1,0 +1,58 @@
+---
+title: Backstage Plugin Index
+summary: backstage plugin index for the ADP Portal
+authors:
+    - Rozerin Baran
+date: 2024-01-22
+weight: -11
+---
+
+# Backstage Plugin Index
+
+We can extend Backstage's functionality by creating and installing plugins. Plugins can either be created by us (1st party) or we can install 3rd party plugins. The majority of 3rd party plugins are free and open source, however there are some exceptions.
+
+This page tracks the plugins we have installed and the plugins we would like to evaluate.
+
+## Considerations for 3rd party plugins
+
+* **Does it bring value to the portal?** Will it help the user complete a task more easily than if the plugin had not been installed? Will it offer the user more context about a software component?
+* **Is it actively maintained?** Are bugs regularly addressed? Are the maintainers responsive to new issues, pull requests, etc.
+* **Is it compatible with the version of Backstage we're using?** Backstage is updated regularly and plugins need to keep up. As we maintain and update Backstage we will need to keep any plugins we're using up to date - and the more plugins we have installed the more of a headache this will be!
+* **What are the licencing requirements?** Most 3rd party plugins are licensed under a FOSS licence, however there are a few commercial plugins out there for which we need a business case.
+* **How does it integrate with other systems?** If the plugin needs to integrate with an external service through OAUTH, a service principal, etc what needs to be configured and what permissions does the plugin need?
+
+## Plugins index
+
+| Plugin | Category | Status | Author | Description |
+|--------|----------|--------|--------|-------------|
+| [azure-devops](https://github.com/backstage/backstage/tree/master/plugins/azure-devops) | Catalog |  Implemented | Backstage | Displays Pipeline runs on component entity pages. We're not using the repos or README features. Requires components to have two annotations - `dev.azure.com/project` contains the ADO project name and `dev.azure.com/build-definition` contains the pipeline name.
+| [GitHub pull requests](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-github-pull-requests) | Catalog | Implemented | Roadie | Adds a dashboard displaying GitHub pull requests on component entity pages. Requires components to have the `github.com/project-slug` in their catalog-info file. |
+| [Grafana dashboard](https://github.com/K-Phoen/backstage-plugin-grafana) | Catalog | Implemented | K-Phoen | Displays Grafana alerts and dashboards for a component. Note that we cannot use the Dashboard embed - Managed Grafana does not allow us to configure embedding.
+| [Azure DevOps scaffolder actions](https://github.com/DEFRA/adp-portal/tree/main/app/plugins/scaffolder-backend-module-adp-scaffolder-actions/src/actions/azure-devops) | Scaffolder | Implemented | ADP | Custom scaffolder actions to get service connections, create and run pipelines, and permit access to ADO resources. Loosely based on the [3rd party package by Parfumerie Douglas](https://github.com/Parfuemerie-Douglas/scaffolder-backend-module-azure-pipelines). |
+| [GitHub scaffolder actions](https://github.com/DEFRA/adp-portal/tree/main/app/plugins/scaffolder-backend-module-adp-scaffolder-actions/src/actions/github) | Scaffolder | Implemented | ADP | Custom scaffolder actions to create GitHub teams and assign to repositories.
+| [Lighthouse](https://github.com/backstage/backstage/tree/master/plugins/lighthouse) | Catalog | Agreed | Spotify | Generates on-demand Lighthouse audits and tracks trends directly in Backstage. Helps to improve accessibility, performance and adhere to best practices. Requires PostgreSQL database and a running Lighthouse instance of the [light-house-audit-service](https://github.com/spotify/lighthouse-audit-service) API which executes the tests before sending results back to the plugin. 
+| [SonarQube](https://github.com/backstage/backstage/tree/master/plugins/sonarqube) | Catalog | Agreed | SDA-SE | Adds frontend visualisation of code statistics from SonarCloud or SonarQube. Requires SonarCloud subscription
+| [Prometheus](https://www.npmjs.com/package/@roadiehq/backstage-plugin-prometheus?activeTab=readme) | Catalog | Agreed | Roadie | Adds Embedded Prometheus Graphs and Alerts into backstage. Requires setting up a new proxy endpoint for the Prometheus API in the `app-config.yaml` 
+|[Flux](https://github.com/weaveworks/weaveworks-backstage/tree/main/plugins/backstage-plugin-flux#readme) | Catalog | Agreed | Weaveworks | The Flux plugin for Backstage provides views of Flux resources available in Kubernetes clusters.
+|[Kubernetes](https://backstage.io/docs/features/kubernetes/) | Catalog | Agreed | Spotify | Kubernetes in Backstage is a tool that's designed around the needs of service owners, not cluster admins. Now developers can easily check the health of their services no matter how or where those services are deployed — whether it's on a local host for testing or in production on dozens of clusters around the world.
+| [Snyk](https://github.com/snyk-tech-services/backstage-plugin-snyk/blob/main/README.md) | Catalog | Assess | Synk | Snyk Backstage plugin leverages the Snyk API to enable Snyk data to be visualized directly in Backstage. 
+| [KubeCost](https://github.com/suxess-it/backstage-plugin-kubecost/blob/main/README.md) | Catalog | Assess | SuXess-IT | Kubecost is a plugin to help engineers get information about cost usage/prediction of their deployment. Some development work needed around namespaces​. It doesn’t look regularly maintained or updated regularly
+
+
+ 
+
+
+### Key
+
+| Status      | Description                                                                                       |
+|-------------|---------------------------------------------------------------------------------------------------|
+| Assess      | Suggestions that we need to evaluate before accepting them into the backlog.   
+| Agreed      | Discussed and agreed to accept it, but more work needed to flesh out details.                   |
+| Accepted    | The plugin is suitable for our portal and a story for installing it as been added to the backlog. |
+| Implemented | The plugin has been implemented.                                                                  |
+| Rejected    | The plugin is unsuitable for the portal and we won't be installing it.                            |
+
+| Category   | Description                                                                           |
+|------------|---------------------------------------------------------------------------------------|
+| Catalog    | The plugin extends the software catalog, e.g. through a card, or full page dashboard. |
+| Scaffolder | The plugin adds custom actions to the component scaffolder.                           |

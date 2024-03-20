@@ -69,19 +69,26 @@ docs_dir: docs
 
 #page tree e.g. https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml
 nav:
+  # ------------------- Root level -------------------
   - Why ADP: index.md
+  # ------------------- Getting Started -------------------
   - Getting Started:
     - Onboarding a user: Getting-Started/onboarding-a-user.md
     - Onboarding a delivery project: Getting-Started/onboarding-a-delivery-project.md
     - Onboarding a delivery programme: Getting-Started/onboarding-a-delivery-programme.md
+  # ------------------- How to guides -------------------
   - How to guides:
     - How to create a platform service: How-to-guides/how-to-create-a-platform-service.md
+  # ------------------- Migrate to ADP -------------------
   - Migrate to ADP:
     - Migrate a delivery project: Migrate-to-ADP/migrate-a-delivery-project.md
     - Migrate platform service: Migrate-to-ADP/migrate-a-platform-service.md
     - Migrate production data: Migrate-to-ADP/migrate-production-data.md
+  # ------------------- Platform Strategy -------------------
   - Platform Strategy:
+    - ADP Platform Strategy: Platform-Strategy/adp-platform-strategy.md
     - Documentation Approach: Platform-Strategy/documentation-approach.md
+  # ------------------- Platform Architecture -------------------
   - Platform Architecture:
     - Architecture Overview: Platform-Architecture/architecture-overview.md
     - Environments: Platform-Architecture/environments.md
@@ -110,10 +117,21 @@ nav:
         - Common Pipelines: Platform-Architecture/architectural-components/ci-cd-and-automation/common-pipelines.md
         - Infrastructure Pipelines: Platform-Architecture/architectural-components/ci-cd-and-automation/infrastructure-pipelines.md
         - Naming Conventions: Platform-Architecture/architectural-components/ci-cd-and-automation/naming-conventions-and-structures.md
+  # ------------------- Developer Reference -------------------
   - Developer Reference:
     - ASO Helm Library Chart: Developer-Reference/Infrastructure/ASO Helm Library Chart.md
-    - ADP Portal: Developer-Reference/Infrastructure/ADP Portal.md
+    - ADP Portal: 
+      - Overview: Developer-Reference/adp-portal/overview.md
+      - Ongoing Development: 
+        - Portal Development: Developer-Reference\Infrastructure\ADP Portal.md
+        - Backstage Plugin Index: Developer-Reference\adp-portal\ongoing-development\backstage-plugin-index.md
+        - Backstage Setup: Developer-Reference\adp-portal\ongoing-development\backstage-setup.md
+        - Catalog Data Sources: Developer-Reference\adp-portal\ongoing-development\catalog-data-sources.md
+        - GitHub App Permissions: Developer-Reference\adp-portal\ongoing-development\github-app-permissions.md
+        - Gov.uk Branding: Developer-Reference\adp-portal\ongoing-development\govuk-branding.md
     - Helm Library Memory & CPU Tiers: Developer-Reference/Infrastructure/helm-library-memory-and-cpu-tiers.md
     - Reference Applications:
       - FCP Demo Services:
         - Overview: Developer-Reference/reference-applications/fcp-demo-services/overview.md
+    - GitHub:
+      - Verify GitHub Comment Signature: Developer-Reference\github\verify-gitHub-commit-signatures.md 
