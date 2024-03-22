@@ -88,6 +88,7 @@ nav:
   - Platform Strategy:
     - ADP Platform Strategy: Platform-Strategy/adp-platform-strategy.md
     - Documentation Approach: Platform-Strategy/documentation-approach.md
+    - Service Versioning Strategy: Platform-Strategy/service-versioning-strategy.md
   # ------------------- Platform Architecture -------------------
   - Platform Architecture:
     - Architecture Overview: Platform-Architecture/architecture-overview.md
@@ -112,7 +113,7 @@ nav:
           - Overview: Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/overview.md
           - Flux Configuration: Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/flux-configuration.md
           - Repository Setup: Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/repository-setup.md
-          - Application Deployments: Platform-Architecture\architectural-components\ci-cd-and-automation\gitops-for-aks\application-deployments.md
+          - Application Deployments: Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/application-deployments.md
         - Azure Service Operator for AKS: Platform-Architecture/architectural-components/ci-cd-and-automation/azure-service-operator-for-aks.md
         - Common Pipelines: Platform-Architecture/architectural-components/ci-cd-and-automation/common-pipelines.md
         - Infrastructure Pipelines: Platform-Architecture/architectural-components/ci-cd-and-automation/infrastructure-pipelines.md
@@ -133,4 +134,4 @@ nav:
       - FCP Demo Services:
         - Overview: Developer-Reference/reference-applications/fcp-demo-services/overview.md
     - GitHub:
-      - Verify GitHub Comment Signature: Developer-Reference\github\verify-gitHub-commit-signatures.md 
+      - Verify GitHub Comment Signature: Developer-Reference/github/verify-gitHub-commit-signatures.md 
