@@ -59,7 +59,9 @@ b.	The [Reloader](https://github.com/stakater/Reloader) service will perform a r
     All releases / deployments are promoted via the Common CI and CD Pipelines using Azure DevOps as the orchestrator. We promote continuous delivery with automated checks and tests above/in preference to manual intervention and approvals. Approval gates can be added optionally to Azure Pipelines to gate the promotion of code. 
 
 ## Deployment and App Configuration Guidance / Context
-All services will have the following settings defaulted (changeable if required):
+
+**All services will have the following settings defaulted (changeable if required):**
+
 - maxSurage – maximum additional Pods created at one time (50%).
 - maxUnavailable – max Pods not available (25%)
 - podDisruptionBudget – allowed disruptions for a Pod (application) (25% or at least 1)
@@ -68,7 +70,8 @@ All services will have the following settings defaulted (changeable if required)
 - Autoscaling via HPA is enabled.
 - All services will have their own dedicated AKS Namespaces for their own team.
 
-Constraints
+**Constraints**
+
 - Infrastructure is always deployed first if changed; database Schema migrations are second and App code is last (associated Config & Secrets consumed at that point)
 - Database updates, if using PostgreSQL, will require development teams to deploy non-breaking changes and/or manage their schema updates appropriately with their app deployment to prevent downtime.
   - Shutter pages will be included in phase 2 / Post MVP if required.

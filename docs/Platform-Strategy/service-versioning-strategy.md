@@ -79,9 +79,3 @@ No change for Phase 1, including tagging and naming. Developers merge (feature b
 - SemVer and Trunk based development are mandated and designed into the Platform.
 - All merges into ‘main’ are classed as releases and are tagged in GitHub as such with the application version supplied. 
 - Long-lived feature branches are not allowed and are discouraged. To deploy into a higher environment above Sandpit, you must merge into Main. 
-
-# Platform service Deployment Strategy
-
-## Guidance and Context
-
-This article outlines the Platform deployment strategy. Development teams should read the Platform Versioning and Git strategy document before reading this. ADP’s primary deployment strategy is **Rolling Deployments** with [HELM](https://atlassian.github.io/data-center-helm-charts/userguide/upgrades/HELM_CHART_UPGRADE/#3-define-the-upgrade-method), [AKS](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) and [FluxCD](https://fluxcd.io/flagger/usage/deployment-strategies/). This provides Platform services with a zero-downtime deployment strategy. This allows applications to achieve high availability with low/no business impact. This is important for services that need 24/7 availability and allows the capability to deploy to production multiple times a day. In the future, we will support other deployment strategies, including Blue-Green and Canary deployments for custom scenarios, including service ‘shutter pages’.
