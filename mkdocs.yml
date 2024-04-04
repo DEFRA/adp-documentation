@@ -89,6 +89,7 @@ nav:
     - ADP Platform Strategy: Platform-Strategy/adp-platform-strategy.md
     - Documentation Approach: Platform-Strategy/documentation-approach.md
     - Service Versioning Strategy: Platform-Strategy/service-versioning-strategy.md
+    - Service Deployment Strategy: Platform-Strategy/service-deployment-strategy.md
   # ------------------- Platform Architecture -------------------
   - Platform Architecture:
     - Architecture Overview: Platform-Architecture/architecture-overview.md
