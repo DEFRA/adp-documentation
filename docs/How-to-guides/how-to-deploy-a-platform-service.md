@@ -66,7 +66,9 @@ You can:
   - You can select any feature and main branches and customise any flags for deployment.
   - You can run from Commit ID and from GitHub Release Tag.
   - You can override variables if required.
-Are there any requirements for my CI pipeline to run?
+
+### Are there any requirements for my CI pipeline to run?
+
 - You must update your App Version using sematic versioning, at least once.
   - This is an update in your ‘package.json’ or your .’csproj’ file to the Major, Minor or Patch.
 - You must be building a NodeJs or C# app that is containerised with a HELM Chart.
