@@ -61,8 +61,8 @@ The following areas require the support of the ADP Platform Team for your servic
 1.	On the ADP portal click ‘Create...’ on the left-hand side menu.
 2.	Select the ‘CHOOSE’ button of the template of the service you would like to create.
 
-!!! info
-    Hint: You can choose a Node.js for Frontends, or for Backends and APIs in Node.Js or C#.
+!!! tip
+    You can choose a Node.js for Frontends, or for Backends and APIs in Node.Js or C#.
 
 ### Entering Component Information
 
