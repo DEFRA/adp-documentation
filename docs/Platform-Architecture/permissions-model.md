@@ -14,7 +14,7 @@ This page contains an overview of the roles and permissions within ADP (Azure De
 
 ## ADP Roles
 
-The table below details the roles in the Platform and their description:
+The table below details the roles in the Platform, their scope and description:
 
 
 | Role | Scope | Description |
