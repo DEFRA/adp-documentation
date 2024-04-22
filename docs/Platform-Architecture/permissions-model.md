@@ -102,8 +102,8 @@ ADP-ALB-ProgrammeName-DeliveryProjectName-Contributors - For Technical Team Memb
 
 GitHub Permissions use GitHub teams to manage permissions. The key teams are as follows:
 
-- Technical Team Member are assigned to `ADP-{programme}-[delivery project]-Contributors` GitHub team.
-- Users with Technical Team Member and Delivery Team Admin roles are assigned to `ADP-{programme}-[delivery project]-Admins` GitHub team.
+- Technical Team Member are assigned to `ADP-{programme}-{delivery project}-Contributors` GitHub team.
+- Users with Technical Team Member and Delivery Team Admin roles are assigned to `ADP-{programme}-{delivery project}-Admins` GitHub team.
 - ADP Admins are assigned to `ADP-Platform-Admins` GitHub team.
 
 
