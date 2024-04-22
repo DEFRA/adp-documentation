@@ -28,7 +28,7 @@ The table below details the roles in the Platform and their description:
 | CCoE Engineer | Organization | Cloud Center of Excellence engineer. |
 
 !!! info
-    *Please note:* if a user holds multiple roles, they will be granted the permissions associated with their highest role. This ensures that they have all the access rights and privileges of the most significant role they possess.
+    **Please note:** if a user holds multiple roles, they will be granted the permissions associated with their highest role. This ensures that they have all the access rights and privileges of the most significant role they possess.
 
 ## Portal Permissions
 
