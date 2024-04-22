@@ -1,0 +1,91 @@
+---
+title: ADP Copilot
+summary: Overview Architecture of ADP Copilot
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/adp-portal/adp-copilot/
+authors:
+    - Logan Talbot
+date: 2024-04-22
+---
+
+# ADP Copilot
+
+Overview of the ADP Copilot, a tool that provides a conversational interface to the Azure Development Platform (ADP). It outlines the features and capabilities of the ADP Copilot, such as the ability to interact with the ADP Portal, Azure DevOps, and GitHub using natural language. It describes how the ADP Copilot can be used to create, manage, and monitor resources in Azure, Azure DevOps, and GitHub, as well as how it can be used to automate tasks and workflows. The ADP Copilot is designed to streamline the development process and improve collaboration between team members by providing a unified interface for interacting with the ADP Platform.
+
+## Key Features
+
+The ADP Copilot provides the following key features:
+
+- [X] Conversational Interface: Allows users to interact with the ADP Platform using natural language.
+- [X] Integration with ADP Documentation: Provides access to the ADP Documentation to view and search for information.
+- [X] Integration with ADP Portal: Provides access to the ADP Portal to view and manage resources.
+
+
+## Architecture
+
+![ADP Copilot Architecture](../../images/diagrams/adp-copilot.png)
+
+The ADP Copilot is built using the following components/
+
+### ADP Documentation - Azure Pipeline
+
+- Azure Pipeline for building and deploying the ADP Documentation.
+  - On commit to `main` branch to ADP External & Internal Documentation.
+  - Build and deploy the documentation to Azure Blob Storage.
+  - Run a python script to update the ADP Documentation search index storing each document into indexed/ vectorized chunks with the documentation formatter as metadata.
+
+Example of the metadata stored in formatter of the documentation:
+
+```yaml
+
+---
+title: ADP Copilot
+summary: Overview Architecture of ADP Copilot
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/adp-portal/adp-copilot/
+authors:
+    - Logan Talbot
+date: 2024-04-22
+---
+
+```
+
+!!! info
+
+    All of these formatter fields are required for the documentation to be indexed correctly.
+
+### ADP Portal API - AI Orchestrator
+
+- ADP Portal API - used to the main AI orchestrator called as API endpoints by the ADP Portal.
+  - .NET Core Web API that uses Semantic Kernel to process the natural language queries made by the user and orchestrates the responses from the various services interacted.
+  - Semantic Kernel will use OpenAI GPT-4 to process the natural language queries made by the user.
+
+
+### ADP Portal - Copilot
+
+- ADP Portal will integrate a Chat Copilot into the UI allowing a user to interact with the ADP Platform using natural language.
+  - The Chat Copilot will called the ADP Portal API to process the natural language queries made by the user.
+
+
+### Azure OpenAI - Models
+
+Uk South Azure OpenAI API used to process the natural language queries made by the user. This restricts which models can be used and the amount of data that can be processed.
+
+- OpenAI `GPT-4-turbo`: Used to process the natural language queries made by the user. ADP will also experiment with other models like `GPT 3.5 turbo`.
+- OpenAI `text-embedding-ada-002`: Used vectorized and index the ADP Documentation to provide search capabilities. The preferred model would be `text-embedding-3-large` due to its capabilities but it is not available in any UK region.
+
+### Azure AI Search - Search Index
+
+Azure AI Search Index used to store the vectorized and indexed ADP Documentation.
+
+Index fields:
+
+| Field Name        | Type             | Retrievable | Filterable | Sortable | Facetable | Searchable |
+|-------------------|------------------|-------------|------------|----------|-----------|------------|
+| id                | String           | Yes         | Yes        | No       | No        | No         |
+| content           | String           | Yes         | No         | No       | No        | Yes        |
+| content_vector    | SingleCollection | Yes         | No         | No       | No        | Yes        |
+| title             | String           | Yes         | No         | No       | No        | Yes        |
+| source            | String           | Yes         | Yes        | No       | No        | No         |
+| uri               | String           | Yes         | Yes        | No       | No        | No         |
+| source            | String           | Yes         | Yes        | No       | No        | No         |
+| last_update       | DateTimeOffset   | Yes         | Yes        | No       | No        | No         |
+| summary           | String           | Yes         | No         | No       | No        | No         |

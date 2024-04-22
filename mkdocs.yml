@@ -97,6 +97,8 @@ nav:
     - Environments: Platform-Architecture/environments.md
     - Tech Radar: Platform-Architecture/tech-radar.md
     - Scaling: Platform-Architecture/scaling.md
+    - ADP Portal:
+      - ADP Copilot: Platform-Architecture/adp-portal/adp-copilot.md
     - Integration Patterns:
       - Overview: Platform-Architecture/integration-patterns/overview.md
       - Dynamics & Plower Platform: Platform-Architecture/integration-patterns/dynamics-and-platform-platform.md
