@@ -17,15 +17,15 @@ Overview of the roles and permissions within the ADP (Azure Development Platform
 The table below details the roles in the Platform and their purpose they have:
 
 
-| Scope | Role | Description |
-|-------|------|-------------|
-| Platform | Platform User | A user of the ADP Platform, who has access to the ADP Portal and can be a member of a Delivery Project or Programme. To do this, they must have a Cloud or DefraGovUK Account. |
-| Delivery Project | Technical Team Member | Tech Lead, Tester, Developer, or Architect on the Delivery Team Member. |
-| Delivery Project | Delivery Team Member | Member of the delivery project. |
-| Delivery Project | Delivery Team Admin | Is a or Tech lead and/or Delivery Manager for the Project. |
-| Delivery Programme | Delivery Programme Admin | Is a or Tech lead and/or Delivery Manager for the Programme. |
-| Platform | ADP Admin | ADP Platform Engineering delivery team member. |
-| Organization | CCoE Engineer | Central Cloud of Excellence Engineering engineer. |
+| Role | Scope | Description |
+|------|-------|-------------|
+| Platform User | Platform | A user of the ADP Platform, who has access to the ADP Portal and can be a member of a Delivery Project or Programme. To do this, they must have a Cloud or DefraGovUK Account. |
+| Technical Team Member | Delivery Project | Tech Lead, Tester, Developer, or Architect on the Delivery Team Member. |
+| Delivery Team Member | Delivery Project | Member of the delivery project. |
+| Delivery Team Admin | Delivery Project | Is a or Tech lead and/or Delivery Manager for the Project. |
+| Delivery Programme Admin | Delivery Programme | Is a or Tech lead and/or Delivery Manager for the Programme. |
+| ADP Admin | Platform | ADP Platform Engineering delivery team member. |
+| CCoE Engineer | Organization | Central Cloud of Excellence Engineering engineer. |
 
 !!! info
     Users with multiple roles will have the permissions of the highest role they have.
