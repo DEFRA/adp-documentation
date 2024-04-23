@@ -24,7 +24,7 @@ The ADP Copilot provides the following key features:
 
 ![ADP Copilot Architecture](../../images/diagrams/adp-copilot.png)
 
-The ADP Copilot is built using the following components/
+The ADP Copilot is built using the following components:
 
 ### ADP Documentation - Azure Pipeline
 
@@ -74,18 +74,29 @@ Uk South Azure OpenAI API used to process the natural language queries made by t
 
 ### Azure AI Search - Search Index
 
-Azure AI Search Index used to store the vectorized and indexed ADP Documentation.
+Azure AI Search Index used to store the vectorized and indexed ADP Documentation. There is current only one index used and requires no indexer to populate the index dye to a script that updates the index in the Azure Pipeline:
 
 Index fields:
 
-| Field Name        | Type             | Retrievable | Filterable | Sortable | Facetable | Searchable |
-|-------------------|------------------|-------------|------------|----------|-----------|------------|
-| id                | String           | Yes         | Yes        | No       | No        | No         |
-| content           | String           | Yes         | No         | No       | No        | Yes        |
-| content_vector    | SingleCollection | Yes         | No         | No       | No        | Yes        |
-| title             | String           | Yes         | No         | No       | No        | Yes        |
-| source            | String           | Yes         | Yes        | No       | No        | No         |
-| uri               | String           | Yes         | Yes        | No       | No        | No         |
-| source            | String           | Yes         | Yes        | No       | No        | No         |
-| last_update       | DateTimeOffset   | Yes         | Yes        | No       | No        | No         |
-| summary           | String           | Yes         | No         | No       | No        | No         |
+| Field Name        | Type             | Retrievable | Filterable | Sortable | Facetable | Searchable | Description |
+|-------------------|------------------|-------------|------------|----------|-----------|------------|-------------|
+| id                | String           | Yes         | Yes        | No       | No        | No         | Unique identifier of the document |
+| content           | String           | Yes         | No         | No       | No        | Yes        | Content of the document |
+| content_vector    | SingleCollection | Yes         | No         | No       | No        | Yes        | Vector representation of the document content |
+| title             | String           | Yes         | No         | No       | No        | Yes        | Title of the document |
+| source            | String           | Yes         | Yes        | No       | No        | No         | Source of the document |
+| uri               | String           | Yes         | Yes        | No       | No        | No         | URI of the document |
+| last_update       | DateTimeOffset   | Yes         | Yes        | No       | No        | No         | Last update timestamp of the document |
+| summary           | String           | Yes         | No         | No       | No        | No         | Summary of the document |
+| repository        | String           | Yes         | Yes        | No       | No        | No         | GitHub repository of the document |
+| metadata          | String           | Yes         | No         | No       | No        | Yes        | full metadata of a document |
+
+### Azure Cosmos DB - Chat History
+
+Azure Cosmos DB used to store the chat history of the user interactions with the ADP Copilot. This is used to provide a history of the interactions for an ADP user and to improve the AI orchestration used and auditing requirements ADP Copilot.
+
+**Example:**
+
+```json
+
+```
