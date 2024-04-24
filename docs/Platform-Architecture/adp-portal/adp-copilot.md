@@ -100,3 +100,37 @@ Azure Cosmos DB used to store the chat history of the user interactions with the
 ```json
 
 ```
+
+
+## Development Stages
+
+The ADP Copilot is currently in the development stage and is being built in the following stages:
+
+!!! note
+
+    We are using the [Intelligent Application Lifecycle](https://intelligentappfactory.com/intelligent-app-lifecycle/) to develop the ADP Copilot.
+
+**Explore: Proof of Concept**
+
+- [ ] Integrate with the ADP Documentation (external only) with Manual local indexing to popular the Azure AI Search Index.
+  - [ ] Add front matter to all markdown files in the ADP Documentation (internal).
+  - [X] Create a script to index the ADP Documentation including adding of metadata & chucking of the markdown files by headers.
+- [ ] Basic conversational interface integrated with the ADP Portal.
+- [ ] Basic Q&A AI Orchestrator using OpenAI GPT-4 & Azure AI Search in the ADP Portal API.
+- [ ] Saving of chat history to Azure Cosmos DB.
+- [ ] Increasing context of user interactions with the ability to include chat history in the AI Orchestrator.
+
+**Build & Augment**
+
+- [ ] Adding to ADP Documentation Pipeline to update the search index with metadata on commit.
+- [ ] Creation of infrastructure for the ADP Copilot. Including:
+  - [ ] Azure AI Search
+  - [ ] Azure Cosmos DB with Database & Containers
+  - [ ] Azure OpenAI API with models deployments (GPT-4-turbo & text-embedding-ada-002)
+- [ ] Integrate external ADP Documentation with Azure AI Search Index.
+- [ ] TBC
+
+
+**Improve & Optimise**
+
+TBC
