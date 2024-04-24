@@ -28,11 +28,11 @@ The table below details the roles in the Platform, their scope and description:
 | CCoE Engineer | Organization | Cloud Center of Excellence engineer. |
 
 !!! info
-    **Please note:** if a user holds multiple roles, they will be granted the permissions associated with their all roles. This ensures that they have all the access rights and privileges of the most significant role they possess.
+    **Please note:** if a user holds multiple roles, they will receive the combined permissions associated with all their roles. This ensures that they have access to all the rights and privileges granted by the most significant role they possess. Essentially, the role with the highest level of permissions takes precedence.
 
 ## Portal Permissions
 
-The permissions for the portal are stored both in a database and in Azure AD with the use of AAD groups. The groups are named as follows:
+The permissions for the portal are stored both in a database and in Azure AD with the use of AAD groups. The group assignments and naming convention are as follows:
 
 - Delivery Team Member are assigned to `Delivery AAG-Users-ADP-{programme}-{devlivey project}_TeamMember` AAD group.
 - Technical Team Member are assigned to `AAG-Users-ADP-{programme}-{devlivey project}_TechUser` AAD group.
