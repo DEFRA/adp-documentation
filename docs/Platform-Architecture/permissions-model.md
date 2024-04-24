@@ -28,7 +28,7 @@ The table below details the roles in the Platform, their scope and description:
 | CCoE Engineer | Organization | Cloud Center of Excellence engineer. |
 
 !!! info
-    **Please note:** if a user holds multiple roles, they will be granted the permissions associated with their highest role. This ensures that they have all the access rights and privileges of the most significant role they possess.
+    **Please note:** if a user holds multiple roles, they will be granted the permissions associated with their all roles. This ensures that they have all the access rights and privileges of the most significant role they possess.
 
 ## Portal Permissions
 
@@ -71,7 +71,7 @@ ADP Portal Permissions for the Technical Team Member role:
 ADP Portal Permissions for the Delivery Team Admin role:
 
 - Includes all Delivery Team Member permissions.
-- Has the ability to invite/add users to their Delivery Project team as: Team members, Technical Team Members, Team Admins, and Technical Team Admins via the ADP Portal. This will also add them to the required GitHub team, Azure DevOps project, and Azure AAD groups required for Azure resource access.
+- Has the ability to invite/add users to their Delivery Project team as: Team members, Technical Team Members, Team Admins, and Technical Team Admins via the ADP Portal. The function adding an team member will add them to required GitHub team, Azure DevOps project, and Azure AAD groups required for Azure resource access, depending on new team members roles in the Delivery Project.
 - Edit delivery project details in the ADP Portal.
 
 ### Delivery Programme Admin
@@ -80,7 +80,7 @@ ADP Portal Permissions for the Delivery Programme Admin role:
 
 - Includes all Delivery Team Admin permissions for all Delivery Projects in the programme.
 - Can create new Delivery Projects in the programme.
-- Can edit programme details in the ADP Portal.
+- Can edit programme details for programmes they administrator in the ADP Portal.
 - Can invite/add other admins to the programmes they administer.
 
 
@@ -88,14 +88,6 @@ ADP Portal Permissions for the Delivery Programme Admin role:
 
 ADP Portal Permissions for the ADP Admin role:
 - Full access to the ADP Portal and is admin for all ALBs, delivery projects, programmes, etc.
-
-## Azure DevOps Permissions
-
-!!! note "TODO"
-    What permissions are needed in Azure DevOps for each role?
-
-
-ADP-ALB-ProgrammeName-DeliveryProjectName-Contributors - For Technical Team Members (write access level to the repo)
 
 
 ## GitHub Permissions
@@ -135,6 +127,10 @@ ADP Admins are given the following permissions in GitHub:
 
 ## Azure Permissions
 
+!!! note "TODO"
+    
+    TBC
+
 For Azure permissions we use AAD group to given users the correct level of permissions. There are the key groups are for Azure permissions are as follows:
 
 - Technical Team Member are assigned to `AAG-Users-ADP-{programme}-{delivery project}_TechUser` AAD group.
@@ -157,3 +153,12 @@ Database
 
 - AAG-Azure-ADP-{programme}-{delivery project}-{environment}-PostgressDB_Reader
 - AAG-Azure-ADP-{programme}-{delivery project}-{environment}-PostgressDB_Writer
+
+## Azure DevOps Permissions
+
+!!! note "TODO"
+    
+    TBC    
+
+
+ADP-ALB-ProgrammeName-DeliveryProjectName-Contributors - For Technical Team Members (write access level to the repo)
