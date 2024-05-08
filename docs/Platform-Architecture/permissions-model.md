@@ -26,6 +26,7 @@ The table below details the roles in the Platform, their scope and description:
 | Delivery Programme Admin | Delivery Programme | Administers Delivery Programmes within the ADP Portal. |
 | ADP Admin | Platform | ADP Platform Engineering delivery team member. |
 | CCoE Engineer | Organization | Cloud Center of Excellence engineer. |
+| ADP Service Account | Platform | Service account used by automation within ADP. |
 
 !!! info
     **Please note:** if a user holds multiple roles, they will receive the combined permissions associated with all their roles. This ensures that they have access to all the rights and privileges granted by the most significant role they possess. Essentially, the role with the highest level of permissions takes precedence.
@@ -178,14 +179,14 @@ ADP portal creates a SonarCloud user group and permissions template per Delivery
     SonarCloud projects that do not include the delivery projects ADP namespace or alias in the name of the project in Sonar Cloud will not be included in the group permissions. An Sonar Cloud Organisation Admin will need to add the service to the group permissions manually.
 
 
-## Technical Team Member
+### Technical Team Member
 
 Each Technical Team Member will be added to the SonarCloud user group for the Delivery Project they are a member of in Sonar Cloud. The permissions for the group are as follows for each service in Sonar Cloud:
 
 - Administer Issues: Change the type and severity of issues, resolve issues as being "fixed", "accepted" or "false-positive" (users also need "Browse" permission).
 - Administer Security Hotspots: Resolve a Security Hotspot as reviewed (fixed or safe), reset it as to review (users also need Browse permission).
 
-## ADP Admin
+### ADP Admin
 
 ADP Admins will be able to see all services (SonarCloud projects) created by ADP's automation in Sonar Cloud. These are the permissions for the `ADP` user group in Sonar Cloud as the Sonar Cloud project level:
 
@@ -194,7 +195,7 @@ ADP Admins will be able to see all services (SonarCloud projects) created by ADP
 - Administer: Access project settings and perform administration tasks. (Users will also need "Browse" permission)
 - Execute Analysis: Ability to get all settings required to perform an analysis (including the secured settings like passwords) and to push analysis results to the SonarCloud server.
 
-## ADP Service Account & ADP SonarCloud Automation
+### ADP Service Account & ADP SonarCloud Automation
 
 ADP requires these permissions in order to run perform API administration tasks in Sonar Cloud at the organisation level. These permissions are required to create the user groups, permissions templates, and add users to the permissions templates in Sonar Cloud. The permissions are as follows:
 
