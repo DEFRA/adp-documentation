@@ -162,3 +162,58 @@ Database
 
 
 ADP-ALB-ProgrammeName-DeliveryProjectName-Contributors - For Technical Team Members (write access level to the repo)
+
+## Sonar Cloud Permissions
+
+ADP will use Technical Team members GitHub account to assign permissions in SonarCloud. Assuming that this GitHub account has been added to the DEFRA's SonarCloud organisation, ADP will assign their GitHub account to the their Delivery Project's SonarCloud group when they are added to a Delivery Project in the ADP Portal. Giving them access to do the required actions for their Delivery Project within SonarCloud.
+ 
+!!! info
+
+    By default all Sonar Cloud projects are public and can be accessed by anyone in read only mode.
+
+ADP portal creates a SonarCloud user group and permissions template per Delivery Project on creation using the `{Delivery Project Team name}` as the groups name. This group will filter on SonarCloud projects by the Delivery Project's ADP namespace or alias fields. For example if project FCP ACD has a ADP namespace of `fcp-acd` and a alias of `ffc-acd` group will have permissions on Sonar Cloud project starting with `fcp-acd*` or `ffc-acd*` (ffc-acd-frontend, fcp-acd-backend, etc).
+
+!!! warning
+
+    SonarCloud projects that do not include the delivery projects ADP namespace or alias in the name of the project in Sonar Cloud will not be included in the group permissions. An Sonar Cloud Organisation Admin will need to add the service to the group permissions manually.
+
+
+## Technical Team Member
+
+Each Technical Team Member will be added to the SonarCloud user group for the Delivery Project they are a member of in Sonar Cloud. The permissions for the group are as follows for each service in Sonar Cloud:
+
+- Administer Issues: Change the type and severity of issues, resolve issues as being "fixed", "accepted" or "false-positive" (users also need "Browse" permission).
+- Administer Security Hotspots: Resolve a Security Hotspot as reviewed (fixed or safe), reset it as to review (users also need Browse permission).
+
+## ADP Admin
+
+ADP Admins will be able to see all services (SonarCloud projects) created by ADP's automation in Sonar Cloud. These are the permissions for the `ADP` user group in Sonar Cloud as the Sonar Cloud project level:
+
+- Administer Issues: Change the type and severity of issues, resolve issues as being "fixed", "accepted" or "false-positive" (users also need "Browse" permission).
+- Administer Security Hotspots: Resolve a Security Hotspot as reviewed (fixed or safe), reset it as to review (users also need Browse permission).
+- Administer: Access project settings and perform administration tasks. (Users will also need "Browse" permission)
+- Execute Analysis: Ability to get all settings required to perform an analysis (including the secured settings like passwords) and to push analysis results to the SonarCloud server.
+
+## ADP Service Account & ADP SonarCloud Automation
+
+ADP requires these permissions in order to run perform API administration tasks in Sonar Cloud at the organisation level. These permissions are required to create the user groups, permissions templates, and add users to the permissions templates in Sonar Cloud. The permissions are as follows:
+
+- Administer: Allows you to perform any action on both Quality Profiles and Quality Gates.
+- Execute Analysis: Allows you to trigger an analysis and to push analysis results to the SonarCloud server.
+- Create Project: Allows you to initialize a project and configure its settings before the initial first analysis is performed.
+- Administer Organization: Allows you to perform all administrative functions for an organization.
+
+Details of [SonarCloud permissions](https://docs.sonarsource.com/sonarcloud/organizations/managing-permissions/).
+
+Current known Sonar Cloud Web API Actions:
+
+- [Create User Group](https://sonarcloud.io/web_api/api/user_groups/create?deprecated=false) - Create a group. Requires the following permission: 'Administer System'.
+- [Search for User](https://sonarcloud.io/web_api/api/users/search?deprecated=false) - Search for users. Requires the following permission: 'Administer System'.
+- [Add user to User Group](https://sonarcloud.io/web_api/api/user_groups/add_user?deprecated=false) - Add a user to a group. 'id' or 'name' must be provided. Requires the following permission: 'Administer System'.
+- [Create Permissions Template](https://sonarcloud.io/web_api/api/permissions/create_template?deprecated=false) -Create a permission template.Requires the permission 'Administer' on the organization.
+- [Update Permissions Template](https://sonarcloud.io/web_api/api/permissions/update_template?deprecated=false) - Update a permission template. Requires the permission 'Administer' on the organization.
+- [Add User Group to Permission Template](https://sonarcloud.io/web_api/api/permissions/add_group?deprecated=false) - Add a group to a permission template. Requires the permission 'Administer' on the organization. Giving a group the permission of `codeviewer`, `issueadmin`, `securityhotspotadmin`, `scan`, and `user` to the group added to permissions template.
+
+!!! info
+
+    Not possible to [add new users directly to github organisation](https://community.sonarsource.com/t/add-user-to-organization-via-web-api/19735). User will need to be added to the Sonar Cloud organisation manually by a Sonar Cloud Organisation Admin or allow for [member synchronization on DEFRA GitHub organisation](https://docs.sonarsource.com/sonarcloud/organizations/managing-members/#member-synchronization-on-github).

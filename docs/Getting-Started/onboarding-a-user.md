@@ -21,6 +21,7 @@ Before onboarding a user on to your delivery project you will first need to ensu
 - You have an active user account within the ADP Portal with admin permissions to onboard users to your selected delivery project.
 - The user you are onboarding has a valid cloud account (with the domain as: @defra.onmicrosoft.com or @defra.gov.uk). [Need to link to guidence on how to get a cloud account].
 - If the user you are onboarding is a tech user, they must have a valid GitHub handle.
+- GitHub account added to DEFRA's SonarCloud organisation.
 
 ## Overview
 
