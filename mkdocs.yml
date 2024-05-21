@@ -98,6 +98,9 @@ nav:
     - Tech Radar: Platform-Architecture/tech-radar.md
     - Permissions Model: Platform-Architecture/permissions-model.md
     - Scaling: Platform-Architecture/scaling.md
+    - Platform Azure Services:
+      - AI Services: platform-azure-services/ai-services.md
+      - Data Services: platform-azure-services/data-services.md
     - ADP Portal:
       - ADP Copilot: Platform-Architecture/adp-portal/adp-copilot.md
     - Integration Patterns:
