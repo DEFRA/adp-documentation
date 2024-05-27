@@ -18,14 +18,14 @@ This article details the AI Services Architecture for the solution at a high lev
 
 AI Services supported by ADP:
 
-- Azure Open AI Service
-- Azure AI Search
+- [Azure Open AI Service](#azure-open-ai)
+- [Azure AI Search](#azure-ai-search)
 
 !!! warning
 
     Please ensure you fellow DEFRA's guidelines and policies when using AI services. This includes the use of data and the use of AI services in general in order to ensure your delivery project is using AI responsibly.
 
-## Azure Open AI Services
+## Azure Open AI
 ![Azure Open AI](../../images/logos/openai.png){ align=left width="150" }Azure OpenAI Service provides REST API access to OpenAI's powerful language models including the GPT-4, GPT-4 Turbo with Vision, GPT-3.5-Turbo, and Embeddings model series. In addition, the new GPT-4 and GPT-3.5-Turbo model series have now reached general availability. These models can be easily adapted to your specific task including but not limited to content generation, summarization, image understanding, semantic search, and natural language to code translation.
 
 ### Deployed & Supported Models
