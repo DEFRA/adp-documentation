@@ -55,7 +55,7 @@ Any other Azure services that need to access the AI services will need to use th
 
 ![ai-services-0.1-architecture](../../images/diagrams/ai-services-0.1.png)
 
-In order to meet the time lines and requirements of the delivery projects, we will first only deploy the Azure Open Service and give the AKS cluster and Azure AI Search direct access to the service over a private endpoint with the role of `Cognitive Services OpenAI User`.
+In order to meet the time lines and requirements of the delivery projects, we will first only deploy the Azure OpenAI Service and give the AKS cluster and Azure AI Search direct access to the service over a private endpoint with the role of `Cognitive Services OpenAI User`.
 
 This will allow the delivery projects to start using the AI services and provide feedback on the service. Once the APIM is deployed, we will migrate the AI services to APIM to provide a secure and scalable API endpoint for the AI services. 
 
@@ -67,7 +67,7 @@ This will allow the delivery projects to start using the AI services and provide
 
 For local development, developers will be able to access SND only via the DEFRA VPN or DEFRA laptop with the assigned role of `Cognitive Services OpenAI User`. Giving the developers the ability to test Azure Open AI services locally via APIM and view model deployments of the deployment Azure Open AI service.
 
-For Dev plus environments, developers will be able to access SND only via the DEFRA VPN or DEFRA laptop with the assigned role of `Cognitive Services OpenAI User`. This currently allow them to:
+For Dev plus environments, developers will be able to access SND only via the DEFRA VPN or DEFRA laptop with the assigned role of `Cognitive Services OpenAI User`. This will currently allow them to:
 
 - View the resource in Azure Portal
 - View the resource endpoint under “Keys and Endpoint” but not the keys.
@@ -77,7 +77,7 @@ For Dev plus environments, developers will be able to access SND only via the DE
 
 !!! note
 
-    Dev plus environments, APIM endpoints will not be exposed to local developer access and will only remind accessible to ADP Azure services or authenticated Delivery project's services only.
+    Dev plus environments, APIM endpoints will not be exposed to local developer access and will only remain accessible to ADP Azure services or authenticated Delivery project's services only.
 
 #### Monitoring
 
@@ -93,12 +93,12 @@ For monitoring Azure Open AI directly we enable the [Azure OpenAI Service Diagno
 
 The Azure Open AI services are shared between delivery projects and have a quota limit per subscription/ region. The quota limit is shared between the delivery projects and can be increased if required. The quota limit is monitored by the ADP team and will be increased if required with the approval from Microsoft.
 
-For the ADPs platforms current needs and requirements, we opting for the pay-as-you-go pricing model for the Azure Open AI services. This will allow the delivery projects to only pay for what they use and not have to worry about overage charges. This does mean that there is a Tokens-per-Minute limit per model for the Azure Open AI services and the delivery projects will need to be aware of this limit when using the AI services.
+For the ADPs platforms current needs and requirements, we opting for the pay-as-you-go pricing model for the Azure Open AI services. This will allow the delivery projects to only pay for what they use and not have to worry about being over charged. This does mean that there is a Tokens-per-Minute limit per model for the Azure Open AI services and the delivery projects will need to be aware of this limit when using the AI services.
 
 In order to manage this an ensure efficient use of the Azure Open AI, APIM will provide policy enforcement to manage the quota limit and present an better experience to the delivery projects when the quota limit is reached:
 
-- [Retry policy](https://learn.microsoft.com/en-us/azure/api-management/retry-policy): When the quota limit is reached, the APIM will return a 429 status code to the delivery project's service. The delivery project's service will need to implement a retry policy to handle the 429 status code and wait for the quota to be reset.
-- [Token limit policy](https://learn.microsoft.com/en-us/azure/api-management/azure-openai-token-limit-policy) - By relying on token usage metrics returned from the OpenAI endpoint, the policy can accurately monitor and enforce limits in real time. The policy also enables precalculation of prompt tokens by API Management, minimizing unnecessary requests to the OpenAI backend if the limit is already exceeded.
+- [Retry policy](https://learn.microsoft.com/en-us/azure/api-management/retry-policy): When the quota limit is reached, the Azure OpenAI will return a 429 status code to the delivery project's service. APIM will implement a retry policy to wait for a certain amount of time before retrying the request to the Azure Open AI service. This will allow the delivery project's service to wait for the quota limit to be reset and then retry the request to the Azure Open AI service.
+- [Token limit policy](https://learn.microsoft.com/en-us/azure/api-management/azure-openai-token-limit-policy): By relying on token usage metrics returned from the OpenAI endpoint, the policy can accurately monitor and enforce limits in real time. The policy also enables precalculation of prompt tokens by API Management, minimizing unnecessary requests to the OpenAI backend if the limit is already exceeded.
 
 ### Possible Future Enhancements
 
@@ -112,11 +112,11 @@ With our current restrictions on the models that can be deployed in the UK South
 
 #### Reserved Capacity for Azure OpenAI Service
 
-Reserved capacity, or Provisioned Throughput Units (PTU), for AOAI. The newer offering is PTU-M (Managed), where the backend compute is abstracted away, pooling of resources. Beyond the default TPMs described above, this Azure OpenAI service feature, PTUs, defines the model processing capacity, using reserved resources, for processing prompts and generating completions.
+Reserved capacity, or Provisioned Throughput Units (PTU), for Azure OpenAI. The newer offering is PTU-M (Managed), where the backend compute is abstracted away, pooling of resources. Beyond the default TPMs described above, this Azure OpenAI service feature, PTUs, defines the model processing capacity, using reserved resources, for processing prompts and generating completions.
 
-PTUs are purchased as a monthly commitment with an auto-renewal option, which will reserve AOAI capacity within an Azure subscription, using a specific model, in a specific Azure region. TPM and PTU can be used together to provide scaling within a single region.
+PTUs are purchased as a monthly commitment with an auto-renewal option, which will reserve Azure OpenAI capacity within an Azure subscription, using a specific model, in a specific Azure region. TPM and PTU can be used together to provide scaling within a single region.
 
-PTU minimums are VERY expense thus requiring ADP to be at a certain scale to justify the cost between its Delivery Projects.
+PTU minimums are VERY expensive thus requiring ADP to be at a certain scale to justify the cost between its Delivery Projects.
 
 ### Key Resources
 
@@ -153,21 +153,21 @@ ADP has selected a [Standard SKU](https://learn.microsoft.com/en-us/azure/search
 
 !!! note
 
-    ADP can increase the tier, number of search units (replicas and partitions), if required as the need raises. Under the current scope of the currently delivery projects, the standard SKU with two search units is sufficient allowing for 99.9% availability for read operations. If a project requires 99.9% availability for read/write operations can additional search units can be added.
+    ADP Team can increase the tier, number of search units (replicas and partitions), if required as the need raises. Under the current scope of the current delivery projects, the standard SKU with two search units is sufficient allowing for 99.9% availability for read operations. If a project requires 99.9% availability for read/write operations can additional search units can be added.
 
 Azure AI Search will not be reachable from the public internet and will only be accessible via a private link to DEFRA VPN, DEFRA laptops, or consuming Azure/ Delivery Project services via a private endpoint.
 
-Delivery Project services will be given the role of `Search Index Data Contributor` scoped to the [indexes that the service requires](https://learn.microsoft.com/en-us/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal-admin%2Croles-portal%2Croles-portal-query%2Ctest-portal%2Ccustom-role-portal%2Cdisable-keys-portal#grant-access-to-a-single-index). This will allow the Read-write access to content of these indexes.
+Delivery Project services will be given the role of `Search Index Data Contributor` scoped to the [indexes that the service requires](https://learn.microsoft.com/en-us/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal-admin%2Croles-portal%2Croles-portal-query%2Ctest-portal%2Ccustom-role-portal%2Cdisable-keys-portal#grant-access-to-a-single-index). This will allow the Read-write access to the content of these indexes.
 
 Azure AI Search will need access to Azure Open AI embedding models to allow for semantic search in the search indexes and for use in its skill sets. No direct access to the Azure open AI services will be allowed and will only be accessible via the Azure API Management endpoint. To ensure that Azure AI Search has efficient access, the role of `Cognitive Services OpenAI User` will be assigned to the Azure AI Search service system assigned managed identity. This will allow the Azure AI Search service to access the Azure Open AI services via the APIM endpoint over a private link securely and efficiently.
 
 #### Developer Access
 
-For SND environments, developers will be able to access the Azure AI Search service via the Azure Portal with the assigned role of `Reader` cross the whole of the AI Search service, as well ass the role of `Search Index Data Contributor` scoped to the [indexes that created for that developers Project Deliveries](https://learn.microsoft.com/en-us/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal-admin%2Croles-portal%2Croles-portal-query%2Ctest-portal%2Ccustom-role-portal%2Cdisable-keys-portal#grant-access-to-a-single-index). This will allow the Read-write access to content of these indexes and also import, refresh, or query the documents collection of an index. Allow for local development and testing of the Azure AI Search service.
+For SND environments, developers will be able to access the Azure AI Search service via the Azure Portal with the assigned role of `Reader` cross the whole of the AI Search service, as well ass the role of `Search Index Data Contributor` scoped to the [indexes that is created for that developers Project Deliveries](https://learn.microsoft.com/en-us/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal-admin%2Croles-portal%2Croles-portal-query%2Ctest-portal%2Ccustom-role-portal%2Cdisable-keys-portal#grant-access-to-a-single-index). This will allow the Read-write access to content of these indexes and also import, refresh, or query the documents collection of an index. Allow for local development and testing of the Azure AI Search service.
 
-For Dev plus environments, developers will be able to access the Azure AI Search service via the Azure Portal with the assigned role of `Reader`. This currently allow them to read across the entire service, including search metrics, content metrics (storage consumed, number of objects), and the object definitions of data plane resources (indexes, indexers, and so on). However, they can't read API keys or read content within indexes ensuring the data control plane is secure.
+For Dev plus environments, developers will be able to access the Azure AI Search service via the Azure Portal with the assigned role of `Reader`. This will currently allow them to read across the entire service, including search metrics, content metrics (storage consumed, number of objects), and the object definitions of data plane resources (indexes, indexers, and so on). However, they can't read API keys or read content within indexes ensuring the data control plane is secure.
 
-All environments will be able to access only via DEFRA VPN or DEFRA laptop.
+Developers in all environments will be able to access Azure AI Search only via DEFRA VPN or DEFRA laptop with restrictions that are detailed above.
 
 #### Monitoring
 
@@ -179,7 +179,7 @@ The [diagnostic logs for Azure AI Search](https://learn.microsoft.com/en-us/azur
 
 ### Deployment of Azure AI Search
 
-Azure AI Search service will only be deployed as a common service for use by any of Delivery Projects. For self service creation and updating of the Azure AI Search Components developers will be able to use ADP powershell scripts and JSON definition file to create these components with X repository which will ensure that the components are created in a consistent manner across all projects and environments using Azure Pipelines.
+Azure AI Search service will only be deployed as a common service for use by any of Delivery Projects. For self service creation and updating of the Azure AI Search Components, developers will be able to use ADP powershell scripts and JSON definition file to create these components with X repository which will ensure that the components are created in a consistent manner across all projects and environments using Azure Pipelines.
 
 #### Token replacement
 
