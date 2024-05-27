@@ -218,3 +218,5 @@ Azure AI Search service will only be deployed as a common service for use by any
 ### Outstanding Questions
 
 - Where is the best place for the deployment scripts for Azure AI Search components? Very unsure of how is best to make this self-service for the delivery projects.
+- What data source to support?
+- What skillsets to support? Custom skillsets?
