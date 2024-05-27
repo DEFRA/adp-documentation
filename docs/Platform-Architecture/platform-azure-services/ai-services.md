@@ -16,12 +16,17 @@ weight: 1
 
 This article details the AI Services Architecture for the solution at a high level.
 
+AI Services supported by ADP:
+
+- Azure Open AI Service
+- Azure AI Search
+
 !!! warning
 
     Please ensure you fellow DEFRA's guidelines and policies when using AI services. This includes the use of data and the use of AI services in general in order to ensure your delivery project is using AI responsibly.
 
 ## Azure Open AI Services
-Azure OpenAI Service provides REST API access to OpenAI's powerful language models including the GPT-4, GPT-4 Turbo with Vision, GPT-3.5-Turbo, and Embeddings model series. In addition, the new GPT-4 and GPT-3.5-Turbo model series have now reached general availability. These models can be easily adapted to your specific task including but not limited to content generation, summarization, image understanding, semantic search, and natural language to code translation.
+![Azure Open AI](../../images/logos/openai.png){ align=left width="150" }Azure OpenAI Service provides REST API access to OpenAI's powerful language models including the GPT-4, GPT-4 Turbo with Vision, GPT-3.5-Turbo, and Embeddings model series. In addition, the new GPT-4 and GPT-3.5-Turbo model series have now reached general availability. These models can be easily adapted to your specific task including but not limited to content generation, summarization, image understanding, semantic search, and natural language to code translation.
 
 ### Deployed & Supported Models
 
@@ -32,7 +37,7 @@ For supported models within Azure Open AI, ADP is restricted to the models suppo
 | gpt-4 | gpt-4 | 80k | Improvement on GPT-3.5 and can understand and generate natural language and code. |
 | gpt-35-turbo | gpt-35-turbo | 350k | Improvement on GPT-3 and can understand and generate natural language and code. |
 | text-embedding-ada-002 | text-embedding-ada-002 | 350k | Can convert text into numerical vector form to facilitate text similarity. |
-! text-embedding-3-large | text-embedding-3-large | 350k | Can convert text into numerical vector form to facilitate text similarity. the This is the latest and most capable embedding model. Upgrading between embeddings models is not possible  |
+|text-embedding-3-large | text-embedding-3-large | 350k | Can convert text into numerical vector form to facilitate text similarity. the This is the latest and most capable embedding model. Upgrading between embeddings models is not possible  |
 
 !!! warning
 
@@ -40,11 +45,15 @@ For supported models within Azure Open AI, ADP is restricted to the models suppo
 
 ### Architecture
 
+![ai-services-architecture](../../images/diagrams/ai-services.png)
+
 With in the ADP Platform, Azure Open AI Services are deployed with an Azure API Management (APIM) to provide a secure and scalable API endpoint for the AI services. The APIM is used to manage the API lifecycle, provide security, and monitor the API usage. The APIM is deployed in a Subnet (/29) and uses a private link to connect to the Azure OpenAI service. The APIM is deployed with a developer portal to provide a self-service API documentation for the AI services. Between the delivery projects service and the APIM, private link will be implemented and the APIM will use the services' [managed identity](https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-azure-openai#authenticate-with-managed-identity) with the role of `Cognitive Services OpenAI User` assigned. This will allow the APIM to access the AI services on behalf of the delivery project's service privately and securely.
 
 Any other Azure services that need to access the AI services will need to use the APIM endpoint and managed identity as well.
 
 #### Iterative Deployment
+
+![ai-services-0.1-architecture](../../images/diagrams/ai-services-0.1.png)
 
 In order to meet the time lines and requirements of the delivery projects, we will first only deploy the Azure Open Service and give the AKS cluster and Azure AI Search direct access to the service over a private endpoint with the role of `Cognitive Services OpenAI User`.
 
@@ -117,7 +126,7 @@ PTU minimums are VERY expense thus requiring ADP to be at a certain scale to jus
 - [Medium: Azure OpenAI Best Practice](https://medium.com/@manoranjan.rajguru/azure-openai-best-practices-for-production-b733eca4bde5)
 - [Managed Identity with APIM](https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-use-managed-service-identity)
 - [Role-based access control for Azure OpenAI Service](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/role-based-access-control)
-- [MS Learn: Import Azure Open Open AI Service into APIM](https://learn.microsoft.com/en-us/azure/api-management/azure-openai-api-from-specification) 
+- [MS Learn: Import Azure Open Open AI Service into APIM](https://learn.microsoft.com/en-us/azure/api-management/azure-openai-api-from-specification)
 
 ### Outstanding Questions
 
@@ -125,7 +134,7 @@ PTU minimums are VERY expense thus requiring ADP to be at a certain scale to jus
 
 ## Azure AI Search
 
-Azure AI Search (formerly known as "Azure Cognitive Search") provides secure information retrieval at scale over user-owned content in traditional and generative AI search applications.
+![Azure AI Search](../../images/logos/aisearch.png){ align=left } Azure AI Search (formerly known as "Azure Cognitive Search") provides secure information retrieval at scale over user-owned content in traditional and generative AI search applications.
 
 Information retrieval is foundational to any app that surfaces text and vectors. Common scenarios include catalog or document search, data exploration, and increasingly chat-style apps over proprietary grounding data. When you create a search service, you work with the following capabilities:
 
@@ -138,7 +147,7 @@ Information retrieval is foundational to any app that surfaces text and vectors.
 ADP provides a managed Azure AI Search service for delivery projects to use which is scalable and secure using best practice. The core components (indexes, datastores, etc) of the Azure AI Search will be dependently deployable and can be created by delivery projects as required on a self-service basis.
 
 ### Architecture
-
+![ai-services-architecture](../../images/diagrams/ai-services.png)
 
 ADP has selected a [Standard SKU](https://learn.microsoft.com/en-us/azure/search/search-sku) for the Azure AI Search service as it provides a balance of storage and query capacity for the delivery projects which is more cost effective. Azure AI Search is a shared service between the ADP Delivery Projects. Allowing up to 50 indexes and 50 indexers in total and 35 GB of storage per partition and 160 GB of storage with two replicas, requiring two search unit per environment. This will allow 99.9% availability for read operations.
 
