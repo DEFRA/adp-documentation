@@ -146,6 +146,21 @@ Information retrieval is foundational to any app that surfaces text and vectors.
 
 ADP provides a managed Azure AI Search service for delivery projects to use which is scalable and secure using best practice. The core components (indexes, datastores, etc) of the Azure AI Search will be dependently deployable and can be created by delivery projects as required on a self-service basis.
 
+#### Supported Features
+
+!!! warning
+
+    Features that require external services will be limited to what has already been previously request by Delivery Projects. This normally effects supported data sources and skillsets. If a Delivery Project requires a new data source or skillset, they will need to request this from ADP and it will be reviewed and approved if it is required and does not affect the current delivery projects
+
+Supported features of Azure AI Search:
+
+- [X] [Indexes](https://learn.microsoft.com/en-us/azure/search/indexes-overview): An index is a persistent store of documents that are searchable using Azure AI Search. An index is similar to a database table, but it contains a schema that describes the structure of the documents within the index. An index can contain one or more fields, each of which has a name and a data type. An index can also contain a scoring profile, which is used to rank search results based on relevance. An index can be created, updated, and deleted using the Azure AI Search REST API or the Azure Portal.
+- [X] [Indexers](https://learn.microsoft.com/en-us/azure/search/indexers-overview): Indexers are used to extract content from an external data source and populate an index with it. Indexers can be scheduled to run at regular intervals to keep the index up-to-date.
+- [X] [Data Sources](https://learn.microsoft.com/en-us/azure/search/data-sources-overview): A data source is a connection to an external data store that contains the content you want to index. Data sources can be used to connect to a variety of data stores, including Azure Blob Storage, Azure Cosmos DB, Azure SQL Database, and more.
+  - [X] Azure Blob Storage: Azure Blob Storage is a cloud-based storage service that allows you to store large amounts of unstructured data, such as text files, images, and videos. Azure Blob Storage can be used as a data source for Azure AI Search to index content from text files, images, and videos.
+- [X] [Skillsets](https://learn.microsoft.com/en-us/azure/search/skillsets-concept): A skillset is a collection of cognitive skills that can be used to enrich content during indexing. A skillset can contain one or more skills, each of which performs a specific task, such as extracting text from images or translating text to another language. A skillset can be used to extract information from unstructured data, such as images, videos, and documents, and make it searchable using Azure AI Search. Supported Skillsets include:
+  - [X] Azure Open AI Embedding Skillset: This skillset uses the Azure Open AI Embedding model to convert text into numerical vector form to facilitate text similarity. This skillset can be used to enhance the search experience by providing more relevant search results based on the semantic meaning of the text.
+
 ### Architecture
 ![ai-services-architecture](../../images/diagrams/ai-services.png)
 

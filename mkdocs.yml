@@ -99,8 +99,9 @@ nav:
     - Permissions Model: Platform-Architecture/permissions-model.md
     - Scaling: Platform-Architecture/scaling.md
     - Platform Azure Services:
-      - AI Services: platform-azure-services/ai-services.md
-      - Data Services: platform-azure-services/data-services.md
+      - AI Services: Platform-Architecture/platform-azure-services/ai-services.md
+      - Data Services: Platform-Architecture/platform-azure-services/data-services.md
+      - Integration Services: Platform-Architecture/platform-azure-services/integration-services.md
     - ADP Portal:
       - ADP Copilot: Platform-Architecture/adp-portal/adp-copilot.md
     - Integration Patterns:
