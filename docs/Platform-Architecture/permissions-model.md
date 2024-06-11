@@ -35,9 +35,9 @@ The table below details the roles in the Platform, their scope and description:
 
 The permissions for the portal are stored both in a database and in Azure AD with the use of AAD groups. The group assignments and naming convention are as follows:
 
-- Delivery Team Member are assigned to `Delivery AAG-Users-ADP-{programme}-{devlivey project}_TeamMember` AAD group.
-- Technical Team Member are assigned to `AAG-Users-ADP-{programme}-{devlivey project}_TechUser` AAD group.
-- Delivery Team Admin are assigned to `AAG-Users-ADP-{programme}-{devlivey project}_Admin` AAD group.
+- Delivery Non Technical Team Member are assigned to `Delivery AAG-Users-ADP-{programme}-{delivery project}_NonTechUser` AAD group.
+- Technical Team Member are assigned to `AAG-Users-ADP-{programme}-{delivery project}_TechUser` AAD group.
+- Delivery Team Admin are assigned to `AAG-Users-ADP-{programme}-{delivery project}_Admin` AAD group.
 - Delivery Programme Admin are assigned to `AAG-Users-ADP-{programme}_Admin` AAD group.
 - ADP Admins are assigned to `AAG-User-ADP-PlatformEngineers` AAD group.
 
