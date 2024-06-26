@@ -14,8 +14,8 @@ The table below details the roles and permissions that can be used for manual te
 
 |  Name       	| Role                   	| Permissions                                                        	|
 |-------------	|------------------------	|--------------------------------------------------------------------	|
-| Test User 1 	| Portal User            	| No permissions but has portal access (Added to portal users group) 	|
-| Test User 2 	| Team Member            	| Non-tech team member of the Delivery Project team                  	|
-| Test User 3 	| Admin Tech Team Member 	| Admin tech team member of the Delivery Project team                	|
-| Test User 4 	| Programme Admin        	| Delivery Programme Admin of a programme                            	|
-| Test User 5 	| Admin and Tech Member  	| Admin for project A and also tech member for Project B             	|
+| adptestuser1 	| Portal User            	| No permissions but has portal access (Added to portal users group) 	|
+| adptestuser2  | Team Member            	| Non-tech team member of the Delivery Project team                  	|
+| adptestuser3  | Admin Tech Team Member 	| Admin tech team member of the Delivery Project team                	|
+| adptestuser4  | Programme Admin        	| Delivery Programme Admin of a programme                            	|
+| adptestuser5 	| Admin and Tech Member  	| Admin for project A and also tech member for Project B             	|

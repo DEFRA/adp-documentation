@@ -16,7 +16,7 @@ theme:
   favicon: images/favicon.png
   logo: images/favicon.png
   language: en
-extra: 
+extra:
   version: 0.0.1
   last_updated: 2024-02-19
   repo_url: https://github.com/defra/adp-documentation
@@ -93,6 +93,7 @@ nav:
     - Service Deployment Strategy: Platform-Strategy/service-deployment-strategy.md
   # ------------------- Platform Architecture -------------------
   - Platform Architecture:
+    - ADP Portal Testing: Platform-Architecture/adp-portal-testing.md
     - Architecture Overview: Platform-Architecture/architecture-overview.md
     - Environments: Platform-Architecture/environments.md
     - Tech Radar: Platform-Architecture/tech-radar.md
@@ -131,7 +132,7 @@ nav:
   - Developer Reference:
     - ASO Helm Library Chart: Developer-Reference/Infrastructure/ASO Helm Library Chart.md
     - ADP Portal:
-      - Ongoing Development: 
+      - Ongoing Development:
         - Portal Development: Developer-Reference/Infrastructure/ADP Portal.md
         - Backstage Plugin Index: Developer-Reference/adp-portal/ongoing-development/backstage-plugin-index.md
         - Backstage Setup: Developer-Reference/adp-portal/ongoing-development/backstage-setup.md
@@ -144,4 +145,4 @@ nav:
       - FCP Demo Services:
         - Overview: Developer-Reference/reference-applications/fcp-demo-services/overview.md
     - GitHub:
-      - Verify GitHub Comment Signature: Developer-Reference/github/verify-gitHub-commit-signatures.md 
+      - Verify GitHub Comment Signature: Developer-Reference/github/verify-gitHub-commit-signatures.md
