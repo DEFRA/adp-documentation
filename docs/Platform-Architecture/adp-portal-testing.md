@@ -1,13 +1,13 @@
 ---
-title: ADP Test Accounts Overview
-summary: Overview of ADP Test Accounts
-uri: https://defra.github.io/adp-documentation/Platform-Architecture/adp-test-accounts/
+title: ADP Portal Testing Overview
+summary: Overview of ADP Portal Testing
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/adp-portal-testing/
 authors:
     - Aimee Horwood
 date: 2024-06-24
 ---
 
-# ADP Test Accounts
+# ADP Portal Testing
 
 The table below details the roles and permissions that can be used for manual testing of the ADP portal and specific actions
 
