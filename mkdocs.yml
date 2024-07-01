@@ -93,7 +93,6 @@ nav:
     - Service Deployment Strategy: Platform-Strategy/service-deployment-strategy.md
   # ------------------- Platform Architecture -------------------
   - Platform Architecture:
-    - ADP Portal Testing: Platform-Architecture/adp-portal-testing.md
     - Architecture Overview: Platform-Architecture/architecture-overview.md
     - Environments: Platform-Architecture/environments.md
     - Tech Radar: Platform-Architecture/tech-radar.md
@@ -104,6 +103,7 @@ nav:
       - Data Services: Platform-Architecture/platform-azure-services/data-services.md
       - Integration Services: Platform-Architecture/platform-azure-services/integration-services.md
     - ADP Portal:
+      - ADP Portal Testing: Platform-Architecture/adp-portal-testing.md
       - ADP Copilot: Platform-Architecture/adp-portal/adp-copilot.md
     - Integration Patterns:
       - Overview: Platform-Architecture/integration-patterns/overview.md

@@ -1,7 +1,7 @@
 ---
 title: ADP Portal Testing Overview
 summary: Overview of ADP Portal Testing
-uri: https://defra.github.io/adp-documentation/Platform-Architecture/adp-portal-testing/
+uri: https://defra.github.io/adp-documentation/Platform-Architecture/adp-portal/adp-portal-testing/
 authors:
     - Aimee Horwood
 date: 2024-06-24
