@@ -33,7 +33,7 @@ By completing this guide, you will have completed these actions:
 
 Peformance tests for the service can be added similar tothe existing demo service [ffc-demo-web](https://github.com/DEFRA/ffc-demo-web/tree/main/test/performance).
 
-The framework is based upon (jmeter)[https://jmeter.apache.org/], and utilises an jmeter image from [https://github.com/justb4/docker-jmeter].
+The framework is based upon [jmeter](https://jmeter.apache.org/), and utilises an jmeter image from [docker-jmeter](https://github.com/justb4/docker-jmeter).
 
 ### How to run performance test locally?
 
