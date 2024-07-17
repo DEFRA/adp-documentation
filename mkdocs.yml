@@ -81,6 +81,7 @@ nav:
     - How to create a platform service: How-to-guides/how-to-create-a-platform-service.md
     - How to deploy a platform service: How-to-guides/how-to-deploy-a-platform-service.md
     - How to acceptance test: How-to-guides/how-to-acceptance-test.md
+    - How to run performance test: How-to-guides/how-to-performance-test.md
   # ------------------- Migrate to ADP -------------------
   - Migrate to ADP:
     - Migrate a delivery project: Migrate-to-ADP/migrate-a-delivery-project.md
