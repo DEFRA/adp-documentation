@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="UO5MXDJEVVdQfow5b9XV" name="Page-1">
-        <mxGraphModel dx="942" dy="674" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+        <mxGraphModel dx="618" dy="674" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -100,7 +100,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="34" value="Will give basic ADO License" style="shape=note;strokeWidth=2;fontSize=14;size=20;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#666600;rounded=1;" vertex="1" parent="1">
-                    <mxGeometry x="360" y="312" width="120" height="65" as="geometry"/>
+                    <mxGeometry x="360" y="312" width="110" height="65" as="geometry"/>
                 </mxCell>
                 <mxCell id="35" value="" style="endArrow=classic;html=1;fontSize=18;fontColor=none;labelBackgroundColor=#141118;strokeColor=#18141D;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;dashed=1;dashPattern=12 12;" edge="1" parent="1" source="34" target="5">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
