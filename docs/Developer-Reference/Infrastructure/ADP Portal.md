@@ -142,7 +142,7 @@ If you have an idea for a new feature or an improvement to an existing feature, 
 
 ## Pull Requests
 
-If you're ready to submit your code changes, please follow these steps specified in the [pull_request_template](../.github/pull_request_template.md)
+If you're ready to submit your code changes, please follow these steps specified in the [pull_request_template](../github/pull_request_template.md)
 
 ## Code Style Guidelines
 

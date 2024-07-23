@@ -83,7 +83,7 @@ nav:
       - How to deploy a platform service: How-to-guides/how-to-deploy-a-platform-service.md
     - Testing:
       - How to create an acceptance test: How-to-guides/Testing/how-to-create-acceptance-test.md
-      - How to create a performance test: How-to-guides/Testing/how-to-create-peformance-test.md
+      - How to create a performance test: How-to-guides/Testing/how-to-create-performance-test.md
   # ------------------- Migrate to ADP -------------------
   - Migrate to ADP:
     - Migrate a delivery project: Migrate-to-ADP/migrate-a-delivery-project.md
@@ -143,7 +143,7 @@ nav:
         - Catalog Data Sources: Developer-Reference/adp-portal/ongoing-development/catalog-data-sources.md
         - GitHub App Permissions: Developer-Reference/adp-portal/ongoing-development/github-app-permissions.md
         - Gov.uk Branding: Developer-Reference/adp-portal/ongoing-development/govuk-branding.md
-        - ADP Data Plugin: Developer-Reference/adp-portal/ongoing-development/adp-data-plugin
+        - ADP Data Plugin: Developer-Reference/adp-portal/ongoing-development/adp-data-plugin.md
     - Helm Library Memory & CPU Tiers: Developer-Reference/Infrastructure/helm-library-memory-and-cpu-tiers.md
     - Reference Applications:
       - FCP Demo Services:
