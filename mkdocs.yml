@@ -80,7 +80,8 @@ nav:
   - How to guides:
     - How to create a platform service: How-to-guides/how-to-create-a-platform-service.md
     - How to deploy a platform service: How-to-guides/how-to-deploy-a-platform-service.md
-    - How to acceptance test: How-to-guides/how-to-acceptance-test.md
+    - How to acceptance test: How-to-guides/Testing/how-to-create-acceptance-test.md
+    - How to acceptance test: How-to-guides/Testing/how-to-create-peformance-test.md
   # ------------------- Migrate to ADP -------------------
   - Migrate to ADP:
     - Migrate a delivery project: Migrate-to-ADP/migrate-a-delivery-project.md
@@ -148,3 +149,5 @@ nav:
     - GitHub:
       - Verify GitHub Comment Signature: Developer-Reference/github/verify-gitHub-commit-signatures.md
     - Secret Management: Developer-Reference/Secret Management/secret-management.md
+  - Quality Assurance:
+    - Overview of Quality Assurnace in ADP: Developer-Reference/Quality-Assurance/Quality-Assurance-Overview.md
