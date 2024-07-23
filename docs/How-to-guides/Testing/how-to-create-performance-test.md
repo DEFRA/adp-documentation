@@ -4,6 +4,7 @@ summary: How to create and run acceptance test for a service
 uri: https://defra.github.io/adp-documentation/How-to-guides/how-to-create-acceptance-test/
 authors:
   - Ken Babigumira
+  - Rajesh Venkatraman
 date: 2024-07-23
 weight: 2
 ---
@@ -25,6 +26,7 @@ By completing this guide, you will have completed these actions:
 
 - [x] Learned how to add a performance test for your service.
 - [X] Learned how to run a performance test locally.
+- [X] How to customize your pipeline to run performance tests for different env.
 
 ## Guide
 
@@ -79,3 +81,25 @@ You can then reference these variables in your JMeter Script.
 ![Set default values for JMeter variables](../../images/qa/JMeter-Perf-Test-Set-DefaultValues.png)
 
 ![Example of referencing the variables in your JMeter Script](../../images/qa/JMeter-How-Use-Variables-In-Script.png)
+
+### How to customize your pipeline to run performance tests?
+
+You can customize the environments where you would like to run specific features or scenarios of performance test
+
+```yaml
+postDeployTest:      
+  testEnvs:
+    performanceTests: pre1
+  envToTest: snd4,dev1,tst1,pre1
+```
+
+if not defined, the pipeline will run with following default settings
+
+```yaml
+postDeployTest:      
+  testEnvs:
+    performanceTests: snd4, pre1
+  envToTest: snd4,dev1,tst1,pre1
+```
+
+[Please refer ffc-demo-web pipeline:](https://github.com/DEFRA/ffc-demo-web/blob/main/.azuredevops/build.yaml)

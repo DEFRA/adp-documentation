@@ -93,6 +93,6 @@ postDeployTest:
   envToTest: snd4,dev1,tst1,pre1
 ```
 
-Please refer ffc-demo-web pipeline: [Refer](https://github.com/DEFRA/ffc-demo-web/blob/main/.azuredevops/build.yaml)
+[Please refer ffc-demo-web pipeline:](https://github.com/DEFRA/ffc-demo-web/blob/main/.azuredevops/build.yaml)
 
 Test execution reports will be available via Azure DevOps Pipelines user interface for your project and service.
