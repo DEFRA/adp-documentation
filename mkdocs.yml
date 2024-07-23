@@ -78,10 +78,12 @@ nav:
     - Onboarding a delivery programme: Getting-Started/onboarding-a-delivery-programme.md
   # ------------------- How to guides -------------------
   - How to guides:
-    - How to create a platform service: How-to-guides/how-to-create-a-platform-service.md
-    - How to deploy a platform service: How-to-guides/how-to-deploy-a-platform-service.md
-    - How to acceptance test: How-to-guides/Testing/how-to-create-acceptance-test.md
-    - How to acceptance test: How-to-guides/Testing/how-to-create-peformance-test.md
+    - Platform Services:
+      - How to create a platform service: How-to-guides/how-to-create-a-platform-service.md
+      - How to deploy a platform service: How-to-guides/how-to-deploy-a-platform-service.md
+    - Testing:
+      - How to create an acceptance test: How-to-guides/Testing/how-to-create-acceptance-test.md
+      - How to create a performance test: How-to-guides/Testing/how-to-create-peformance-test.md
   # ------------------- Migrate to ADP -------------------
   - Migrate to ADP:
     - Migrate a delivery project: Migrate-to-ADP/migrate-a-delivery-project.md
