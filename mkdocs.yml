@@ -79,8 +79,8 @@ nav:
   # ------------------- How to guides -------------------
   - How to guides:
     - Platform Services:
-      - How to create a platform service: How-to-guides/how-to-create-a-platform-service.md
-      - How to deploy a platform service: How-to-guides/how-to-deploy-a-platform-service.md
+      - How to create a platform service: How-to-guides/Platform-Services/how-to-create-a-platform-service.md
+      - How to deploy a platform service: How-to-guides/Platform-Services/how-to-deploy-a-platform-service.md
     - Testing:
       - How to create an acceptance test: How-to-guides/Testing/how-to-create-acceptance-test.md
       - How to create a performance test: How-to-guides/Testing/how-to-create-performance-test.md

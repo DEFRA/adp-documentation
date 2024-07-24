@@ -18,7 +18,7 @@ In this how to guide you will learn how to create, deploy, and run an acceptance
 Before adding acceptance tests for your service, you will need to ensure that:
 
 - [Onboarded delivery project on to ADP](../../Getting-Started/onboarding-a-delivery-project.md)
-- [Created a Platform Service for your team/delivery project](../../How-to-guides/how-to-create-a-platform-service.md)
+- [Created a Platform Service for your team/delivery project](../../How-to-guides/Platform-Services/how-to-create-a-platform-service.md)
 
 ## Overview
 

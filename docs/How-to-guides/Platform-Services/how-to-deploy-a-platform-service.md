@@ -1,7 +1,7 @@
 ---
 title: How to create a platform service
 summary: How to create a platform service on to ADP.
-uri: https://defra.github.io/adp-documentation/How-to-guides/how-to-deploy-a-platform-service/
+uri: https://defra.github.io/adp-documentation/How-to-guides/Platform-Services/how-to-deploy-a-platform-service/
 authors:
   - Dan Rozkowski
   - Logan Talbot
@@ -14,10 +14,11 @@ weight: 2
 In this how to guide you will learn how to build, deploy, and monitor a Platform service (Web App, User Interface, API etc) for your team. It includes information about Pipelines specifically and how the ADP Backstage Portal supports this.
 
 ## Prerequisites
+
 Before building and deploying a service, you will first need to ensure that:
 
-- [Onboarded delivery project on to ADP](../Getting-Started/onboarding-a-delivery-project.md)
-- [Created a Platform Service for your team/delivery project](../How-to-guides/how-to-create-a-platform-service.md)
+- [Onboarded delivery project on to ADP](../../Getting-Started/onboarding-a-delivery-project.md)
+- [Created a Platform Service for your team/delivery project](../../How-to-guides/Platform-Services/how-to-create-a-platform-service.md)
 
 ## Overview
 
@@ -45,7 +46,7 @@ In your chosen Azure DevOps project:
 - Your pipeline is convention based including naming. Your pipeline will be called the same name as your repository: `<your-service-name>`. 
   - E.g: `<projectcode>-<servicename>-api`
   
-![Pipeline](../images/pipeline-screenshot.png)
+![Pipeline](../../images/pipeline-screenshot.png)
 
 Above image an example of a Pipeline scaffolded called ‘**adp-demo99**’ in the **DEMO** folder.
 
@@ -54,6 +55,7 @@ Above image an example of a Pipeline scaffolded called ‘**adp-demo99**’ in t
 Yes! Simply go to your components page that you scaffolded/created via the ADP Portal, and click on the CI/CD tab, which will give you information on your pipeline, and will link off to the exact location.
 
 ### How do I run my service pipelines?
+
 We promote continuous integration (CI) and continuous delivery (CD). Your pipeline will trigger (run the CI build) automatically on any change to the ‘main’ branch, or any feature branch you create and anytime you check-in. This includes PR branches. You simply run your pipeline from the ADO Pipelines interface by clicking ‘Run pipeline’.
 
 You can:
@@ -75,32 +77,34 @@ You can:
 
 Pipeline documentation and parameters and configuration options [can be found here](https://github.com/DEFRA/ado-pipeline-common/blob/main/docs/AppBuildAndDeploy.md#usage).
 
-![Run Pipeline](../images/run-pipeline.png)
- 
-Above image of pipeline run example. 
+![Run Pipeline](../../images/run-pipeline.png)
+
+Above image of pipeline run example.
 
 ### How do I customise my CI/CD pipelines?
+
 You can change some basic functionality of your pipeline. A lot of it is defined for you in a convention-based manner, including the running of unit tests, reporting, environments that are available etc, and some are selectable, such as build of .NET or NodeJS apps, location of test files, PR and CI triggers, and the parameters to deploy configuration only or automatic deploy on every feature build. 
 Full details can be found on the Pipelines documentation GitHub page.
-![Pipeline Parameters](../images/pipeline-parameters.png)
+![Pipeline Parameters](../../images/pipeline-parameters.png)
 
 Above image is an example of what can be changed in terms of Pipeline Parameters (triggers, deployment types, paths to include/exclude).
 The below image is an example of what can be changed. You can change things like your config locations, test paths, what ADO Secret variable groups you wish to import, what App Framework (Node or C#) etc.
-![yaml pipeline](../images/yaml-pipeline.png)
+![yaml pipeline](../../images/yaml-pipeline.png)
 
 ### What does my progression look like through environments?
+
 To promote your code through environments, you can use the Azure Pipelines user interface for your team/project to either:
 
 - Allow automated progression via automated checks or and continuous delivery or,
 - Manually push/promote the code to environments on demand.
 
 **Your environments and any default gates or checks will be automatically plotted for you. This is an example of a full pipeline run. You can select, based on the Platform route-to-live documentation, which environments you promote code to. You don’t need to go to all environments to go live.**
- 
-![Pipeline Run Completed](../images/pipeline-run-complete.png)
+
+![Pipeline Run Completed](../../images/pipeline-run-complete.png)
 
 This is an example of a waiting ‘stage’ which is an environment:
- 
-![Waiting Stage](../images/waiting-stage.png)
+
+![Waiting Stage](../../images/waiting-stage.png)
 
 To promote code, you can select ‘Review’ in the top-right hand corner and click **approve**.
 

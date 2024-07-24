@@ -37,7 +37,7 @@ Below are the tools that are currently supported on the ADP
 
 ## How to create Tests in the ADP
 
-Development teams use the ADP Portal to scaffold a new service using one of the exemplar software templates (refer to [How to create a platform service](../../How-to-guides/how-to-create-a-platform-service.md)). Based on the template type (frontend or backend), basic tests will be included that the teams can build on as they add more functionality to the service.
+Development teams use the ADP Portal to scaffold a new service using one of the exemplar software templates (refer to [How to create a platform service](../../How-to-guides/Platform-Services/how-to-create-a-platform-service.md)). Based on the template type (frontend or backend), basic tests will be included that the teams can build on as they add more functionality to the service.
 
 The ADP Platform provides the ability to execute the above tests. These tests are executed as post deployment tests. The pipeline will check for the existence of specific docker-compose test files to determine if it can run tests. Refer to the how-to-guides for the different types of tests.
 

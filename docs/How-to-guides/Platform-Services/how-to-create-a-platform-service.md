@@ -1,7 +1,7 @@
 ---
 title: How to create a platform service
 summary: How to create a platform service on to ADP.
-uri: https://defra.github.io/adp-documentation/How-to-guides/how-to-create-a-platform-service/
+uri: https://defra.github.io/adp-documentation/How-to-guides/Platform-Services/how-to-create-a-platform-service/
 authors:
   - Logan Talbot
   - Lorenzo Squillante
@@ -17,7 +17,7 @@ In this how to guide you will learn how to create a new Platform service on ADP 
 
 Before creating Platform business service (microservice), you will first need to ensure that you have:
 
-- [Onboarded delivery project on to ADP](../Getting-Started/onboarding-a-delivery-project.md).
+- [Onboarded delivery project on to ADP](../../Getting-Started/onboarding-a-delivery-project.md).
 - An active user account on the ADP Portal with admin or user access to/for the delivery project team.
 - You will need an Azure DevOps project for Pipeline management for your project/programme.
 - In your teams Azure DevOps (ADO) project, you will need to ensure that the __ADP Platform Service Account__ has the correct permissions for scaffolding your service Pipelines:
@@ -25,8 +25,7 @@ Before creating Platform business service (microservice), you will first need to
   - The ADP Platform Engineers or CCoE can manage this for you.
 
 !!! note
-    Please contact the ADP Platform Engineering team for support if you don’t have, and cannot setup/configure, these prerequisites. 
-
+    Please contact the ADP Platform Engineering team for support if you don’t have, and cannot setup/configure, these prerequisites.
 
 ### Overview
 
@@ -49,7 +48,7 @@ By completing this guide, you will have completed these actions:
 
 The following areas require the support of the ADP Platform Team for your service initial setup:
 
-- [ ]	Domain (URL) creation 
+- [ ] Domain (URL) creation
 
 !!! note
     The initial domain (Frontend service or external API URL) creation is currently done via the Platform team pipelines. Please contact the Platform team to create this per environment once the service is scaffolded.
@@ -58,8 +57,8 @@ The following areas require the support of the ADP Platform Team for your servic
 
 ### Selecting a template
 
-1.	On the ADP portal click ‘Create...’ on the left-hand side menu.
-2.	Select the ‘CHOOSE’ button of the template of the service you would like to create.
+1. On the ADP portal click ‘Create...’ on the left-hand side menu.
+2. Select the ‘CHOOSE’ button of the template of the service you would like to create.
 
 !!! tip
     You can choose a Node.js for Frontends, or for Backends and APIs in Node.Js or C#.
@@ -68,16 +67,15 @@ The following areas require the support of the ADP Platform Team for your servic
 
 Enter the properties describing your component/service:
 
-1.	Enter __Component Name__ (service name). It must be a unique name of the component which will be used for the repository, package, and image name. 
-  1.	This should be in the format `{programme}-{project}-{service}`. For example, fcp-grants-web.
-2.	Enter __Description__. Describes what this component does. This description will be used in the component's README and package.json.
-3.	Select the __System__ that this component/service will be a part of. __Systems__ are a collection of related components and resources (i.e., your entire service and associations).
-4.	Select the Project Phase which suits your service. Refer to the [GDS service manual](https://www.gov.uk/service-manual/agile-delivery) for more information.
-5.	Select the __Owner__ (team) who will own this component (i.e., your delivery team).
-6.	Optionally: Select the initial __infrastructure__ (Queues/Topics, Database etc) you want to deploy with your service.
-  1.	More infra can be added/updated later via the YAML file in your repo!
-7.	Click the __Next__ button to continue.
-
+1. Enter __Component Name__ (service name). It must be a unique name of the component which will be used for the repository, package, and image name. 
+1. This should be in the format `{programme}-{project}-{service}`. For example, fcp-grants-web.
+1. Enter __Description__. Describes what this component does. This description will be used in the component's README and package.json.
+1. Select the __System__ that this component/service will be a part of. __Systems__ are a collection of related components and resources (i.e., your entire service and associations).
+1. Select the Project Phase which suits your service. Refer to the [GDS service manual](https://www.gov.uk/service-manual/agile-delivery) for more information.
+1. Select the __Owner__ (team) who will own this component (i.e., your delivery team).
+1. Optionally: Select the initial __infrastructure__ (Queues/Topics, Database etc) you want to deploy with your service.
+1. More infra can be added/updated later via the YAML file in your repo!
+1. Click the __Next__ button to continue.
 
 ### Entering Git Repository information
 
@@ -85,26 +83,24 @@ To encourage coding in the open the repository will be public by default. Refer 
 
 The scaffolder will create a new repository and an associated team with ‘Write’ permissions:
 
-1.	The __host__ where the repository will be created – the default will be the GitHub organisation of DEFRA.
-2.	Enter __name of the repository__. Should be the same as component name (service name).
-3.	Enter __GitHub Team Name__. This team will be granted ‘Write’ access to the repository.
-4.	Enter __GitHub Team Description__. An optional description of the team.
-5.	Enter __GitHub Team Members__. Using comma-separated list of GitHub usernames to be added to the team. For example: GitHubName1,GitHubName2.
-6.	Select __GitHub Team Visibility__. This is privacy level this team should have. By selecting Visible teams can be seen by all members in the organization. Secret teams can only be seen by the organization owners and team members.
-7.	Click __Next__ to move to the next page.
-
+1. The __host__ where the repository will be created – the default will be the GitHub organisation of DEFRA.
+2. Enter __name of the repository__. Should be the same as component name (service name).
+3. Enter __GitHub Team Name__. This team will be granted ‘Write’ access to the repository.
+4. Enter __GitHub Team Description__. An optional description of the team.
+5. Enter __GitHub Team Members__. Using comma-separated list of GitHub usernames to be added to the team. For example: GitHubName1,GitHubName2.
+6. Select __GitHub Team Visibility__. This is privacy level this team should have. By selecting Visible teams can be seen by all members in the organization. Secret teams can only be seen by the organization owners and team members.
+7. Click __Next__ to move to the next page.
 
 ### Entering CI/CD information
 
 CI/CD pipelines will be created in Azure DevOps:
 
-1.	__Azure DevOps Organization__. *This will be defaulted to: `DefraGovUK` and not changeable.
-2.	Enter your projects ‘__Azure DevOps Project Name__’. This is the name of your project you are a member of and wish to scaffold your pipelines into.
-3.	__Service Connection Name__. *This will be defaulted and not changeable.
-4.	Enter the __Pipeline Folder__. The Folder Path is the directory structure for the Pipeline which will be created in your project. For example: ADP/fcp-grants-web.
-1.	  Hint: You can group many pipelines into one Folder structure.
-5.	Click __Review__ to move to the next page.
-
+1. __Azure DevOps Organization__. *This will be defaulted to: `DefraGovUK` and not changeable.
+2. Enter your projects ‘__Azure DevOps Project Name__’. This is the name of your project you are a member of and wish to scaffold your pipelines into.
+3. __Service Connection Name__. *This will be defaulted and not changeable.
+4. Enter the __Pipeline Folder__. The Folder Path is the directory structure for the Pipeline which will be created in your project. For example: ADP/fcp-grants-web.
+5. Hint: You can group many pipelines into one Folder structure.
+6. Click __Review__ to move to the next page.
 
 ### Reviewing entered information
 
@@ -115,7 +111,7 @@ CI/CD pipelines will be created in Azure DevOps:
 
 Now you have reviewed and confirmed your details, your new Platform service will be created! It will complete the actions detailed in the overview section. Once this process completes, you will be given links to your new GitHub repository, the Portal Catalog location, and your Pipelines. You now have an ADP business service!
 
-![creation of service in portal](../images/creation-of-service.png "Creation of Service in Portal")
+![creation of service in portal](../../images/creation-of-service.png "Creation of Service in Portal")
 
 ### Creation of additional infrastructure
 
@@ -123,14 +119,14 @@ We use HELM Charts to deploy, manage and update Platform service applications an
 
 #### How do I use the HELM Charts for infrastructure with my application?
 
-The creation of infrastructure dedicated for your business service/application is done via your [microservice HELM Chart](../Developer-Reference/Infrastructure/ASO%20Helm%20Library%20Chart.md) in your repository, and deployed by your Service CI/CD pipeline that you created earlier. A ‘helm’ folder will be created in every scaffolded service with 2 subfolders. The one ending with ‘-infra’ is where you define your service’s infrastructure requirements in a simple YAML format.
+The creation of infrastructure dedicated for your business service/application is done via your [microservice HELM Chart](../../Developer-Reference/Infrastructure/ASO%20Helm%20Library%20Chart.md) in your repository, and deployed by your Service CI/CD pipeline that you created earlier. A ‘helm’ folder will be created in every scaffolded service with 2 subfolders. The one ending with ‘-infra’ is where you define your service’s infrastructure requirements in a simple YAML format.
 
 !!! note
-    The full list of supported ‘self-service’ infrastructure can be found in the [ADP ASO Helm Library Documentation](../Developer-Reference/Infrastructure/ASO%20Helm%20Library%20Chart.md) on GitHub with instructions on how to use it.
+    The full list of supported ‘self-service’ infrastructure can be found in the [ADP ASO Helm Library Documentation](../../Developer-Reference/Infrastructure/ASO%20Helm%20Library%20Chart.md) on GitHub with instructions on how to use it.
 
 Image below is an example of how-to self-service create additional infrastructure by updating the HELM charts ‘values.yaml’ file with what you require to be deployed:
 
-![helm chart values file](../images/helm-chart-values.png "Helm Chart Values File")
+![helm chart values file](../../images/helm-chart-values.png "Helm Chart Values File")
 
 !!! warning
     Please contact the ADP Platform Engineers Team if you require any support after reading the provided documentation or if you’re stuck.
