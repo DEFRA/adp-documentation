@@ -32,7 +32,8 @@ By completing this guide, you will have completed these actions:
 
 These tests may include unit, integration, acceptance, performance, accessibilty etc as long as they are defined for the service.
 
-> The pipeline will check for the existence of the file `test\acceptance\docker-compose.yaml` to determine if acceptance tests have been defined.
+!!! note
+  The pipeline will check for the existence of the file `test\acceptance\docker-compose.yaml` to determine if acceptance tests have been defined.
 
 ### How to add acceptance test for your service?
 
@@ -58,8 +59,9 @@ docker-compose run --rm wdio-cucumber
 
 ### How to customize your pipeline to run acceptace tests?
 
-Every pipeline run includes steps to run various post deployment tests.
-These tests may include unit, integration, acceptance, performance, accessibilty etc as long as they are defined for the service.
+!!! note
+    Every pipeline run includes steps to run various post deployment tests.
+    These tests may include unit, integration, acceptance, performance, accessibilty etc as long as they are defined for the service.
 
 You can customize the tags and environments where you would like to run specific features or scenarios of acceptance test
 

@@ -30,11 +30,10 @@ By completing this guide, you will have completed these actions:
 
 ## Guide
 
-> Every pipeline run includes steps to run varoious tests pre deployment and post deployment.
+!!! note
+    Every pipeline run includes steps to run varoious tests pre deployment and post deployment. These tests may include unit, integration, acceptance, performance, accessibilty etc as long as they are defined for the service.
 
-These tests may include unit, integration, acceptance, performance, accessibilty etc as long as they are defined for the service.
-
-> The pipeline will check for the existence of the file `test\performance\docker-compose.jmeter.yaml` to determine if performance tests have been defined.
+    The pipeline will check for the existence of the file `test\performance\docker-compose.jmeter.yaml` to determine if performance tests have been defined.
 
 ### How to add a performance test for your service?
 
