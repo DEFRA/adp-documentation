@@ -128,6 +128,7 @@ nav:
         - GitOps for AKS:
           - Overview: Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/overview.md
           - Flux Configuration: Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/flux-configuration.md
+          - Generating Flux Manifests: Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/flux-manifests.md
           - Repository Setup: Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/repository-setup.md
           - Application Deployments: Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/application-deployments.md
         - Azure Service Operator for AKS: Platform-Architecture/architectural-components/ci-cd-and-automation/azure-service-operator-for-aks.md

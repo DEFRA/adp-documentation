@@ -38,19 +38,24 @@ The [adp-flux-core](https://github.com/DEFRA/adp-flux-core)  contains the follow
 
 ```
 .
-├── clusters                                         # Flux configuration for the Flux System (controllers etc)/
-│   ├── snd                                          # snd environment specific cluster configuration/
-│   │   ├── base
-│   │   └── 01/02                                    # base flux configuration gotk-components.yaml, gotk-sync.yaml
-│   ├── pre/
-│   │   ├── base
+├── clusters                                         # Flux configuration (cluster level) /
+│   ├── snd/
+│   │   └── 01/02/03/04
+│   ├── dev/
+│   │   └── 01/02                                           
+│   ├── tst/
 │   │   └── 01/02
 │   ├── pre/
-│   │   ├── base
 │   │   └── 01/02
 │   └── prod/
-│       ├── base
-│       └── 01/02  
+│       └── 01/02 
+├── core                                             # Core services installed in the Cluster/
+│   ├── azure-service-operator
+│   ├── calico
+│   ├── cert-manager
+│   ├── grafana
+│   ├── nginx-ingress
+│   └── /reloader
 ├── infra                                            # Flux configuration for the core services e.g. Nginx Plus/
 │   ├── snd                                          # Contains infra configuration for SND core services /
 │   │   ├── base                                     # References 1 or more core services to be deployed
@@ -86,10 +91,10 @@ The [adp-flux-core](https://github.com/DEFRA/adp-flux-core)  contains the follow
     └── prod/
         └── 01  /
             ├── Kustomization.yaml
-            └── services.yaml        
+            └── services.yaml              
 ```
 
-_You can use the [markdown generator tool](https://tree.nathanfriend.io/?s=(%27optiqs!(%27fancy!true~fullPath!false~trail_gSlash!true~rootDot!true)~source!(%27source!%27clustwsj%20LthAFlux%20System%20%7BcqtrollwEetc%7D4sndj*8snd%20U%22c%20clustw65338basAflux6%20gotk-compqentsBXgotk-syncB4pre5%245JV_frajJLthAZe.g.%20Ng_x%20Plus4sndj*8Cqta_E_fra6%20fWSND%20Z4*base33%208RM1%20WmorAZto%20bAdeployed4*01%2F02338Ovwlay%20cqta__g%20thApatchesXrMbase4dev5%245VcorejJ8Cqta_EthAmanifestEfWthAcorAswvicA%7BHelmReleaseXHelmRI%7D4%20ng_xplus3JJJJYchartBYreleaseB4%20cwtmanagwV9jLbus_esEapplicatiqs4gitrIB3JJ8GitRI%20resourcAfWadp-flux-94sndj%208U4*0133*8U%20_stancAnumbwJ4JQB38RMGitRIX9B4J9B3J%208ThiEiEa%20Q%20filAthat%20rMgitrIB%20and%22eEthApathV%20dev4*7mlV%20pre4*7mlV%20prod4*7mlJJ%27)~vwsiq!%271%27)*%20%203JJJJ*4V*54*base4*01%2F026%20cqfiguratiq701*4JQB4J9.ya8%23%209swvicesAe%20B.yamlEs%20IepositoryJ**L8Flux6%20fWMefwenceEQKustomizatiqUenvirqmentV%5CnWor%20X%2C%20Y4Jng_x-_gress-ZcorA9%20_inj33Jqonwer%22%20specifi%244pre54prod%01%24%22wqj_ZYXWVUQMLJIEBA9876543*) to update the above folder structure_
+_You can use the [markdown generator tool](https://tree.nathanfriend.io/?s=(%27optiws!(%27fancy!true~fullPath!false~trailZgSlash!true~rootDot!true)~source!(%27source!%27clustjs_kFluxB%7Bclustj%20level%7D%206snd8%2F03%2F046dev8_*%206tst86pre86prod8%20Wcore_LkCqIZstalled%20Z%20thEClustj6azure-A-opjator6calico6cjt-managj6grafana6U6%2FreloadjWZfra_L9FluxBfXthEcqIe.g.%20NgZx%20Plus6snd_*9CwtaZIZfraBfXSND%20cqIY55kRQ1%20XmorEcqIto%20bEdeployed8559Ovjlay%20cwtaZZg%20thEpatches%2C%20rQbase6devY86preY86prodY8Wcore_L9CwtaZIthEmanifestIfXthEcq%20%7BHelmRelease%2C%20HelmRJ%7D6%20ngZxplus5LLLL6LU-chartM6LU-releaseM6%20cjtmanagjWAs_9FluxBfXbusZesIapplicatiws6gitrJM5LL9GitRJ%20resourcEfXadp-flux-As6snd_k%226*0155*9%22%20ZstancEnumbjL6LVM59RQGitRJ%2C%20AsM6LAsM5LkThiIiIa%20V%20filEthat%20rQgitrJM%20and%20specifieIthEpathW%20dev6*7mlW%20pre6*7mlW%20prod6*7mlLL%27)~vjsiw!%271%27)*%20%205LLLL*6W*701*6LVM6LAs.ya86*01%2F029%23%20AsjviceB%20cwfiguratiw%20Ee%20Is%20JepositoryL**M.yamlQefjenceIUngZx-ZgressVKustomizatiwW%5CnXor%20Y6*baseZin_55Ljerk%209qorEAwon%22envirwment%01%22wqkj_ZYXWVUQMLJIEBA98765*) to update the above folder structure_
 
 ### adp-flux-services structure
 
