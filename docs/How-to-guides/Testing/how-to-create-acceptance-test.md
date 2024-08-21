@@ -98,3 +98,7 @@ postDeployTest:
 [Please refer ffc-demo-web pipeline:](https://github.com/DEFRA/ffc-demo-web/blob/main/.azuredevops/build.yaml)
 
 Test execution reports will be available via Azure DevOps Pipelines user interface for your project and service.
+
+### How to disable test?
+
+if you want to disable the test for any reason please refer [Disable Test](../../How-to-guides/Testing/how-to-disable-test.md)

@@ -1,7 +1,7 @@
 ---
 title: How to create a performance test
-summary: How to create and run acceptance test for a service
-uri: https://defra.github.io/adp-documentation/How-to-guides/how-to-create-acceptance-test/
+summary: How to create and run performance test for a service
+uri: https://defra.github.io/adp-documentation/How-to-guides/how-to-create-performance-test/
 authors:
   - Ken Babigumira
   - Rajesh Venkatraman
@@ -9,13 +9,13 @@ date: 2024-07-23
 weight: 2
 ---
 
-## How to acceptance test
+## How to performance test
 
 In this how to guide you will learn how to create, deploy, and run a performance test for a Platform service (Web App, User Interface etc) for your team.
 
 ## Prerequisites
 
-Before adding acceptance tests for your service, you will need to ensure that:
+Before adding performance tests for your service, you will need to ensure that:
 
 - [Onboarded delivery project on to ADP](../../Getting-Started/onboarding-a-delivery-project.md)
 - [Created a Platform Service for your team/delivery project](../../How-to-guides/Platform-Services/how-to-create-a-platform-service.md)
@@ -100,5 +100,8 @@ postDeployTest:
     performanceTests: snd4, pre1
   envToTest: snd4,dev1,tst1,pre1
 ```
-
 [Please refer ffc-demo-web pipeline:](https://github.com/DEFRA/ffc-demo-web/blob/main/.azuredevops/build.yaml)
+
+### How to disable test?
+
+if you want to disable the test for any reason please refer [Disable Test](../../How-to-guides/Testing/how-to-disable-test.md)

@@ -71,7 +71,11 @@ postDeployTest:
   envToTest: 'snd4, dev1, tst1, pre1'
   testEnvs:
     owaspTests: 'snd4, dev1, tst1, pre1'
-  testsToRun: 'owasp;accessibility;performance;service-acceptance;acceptance'
+  testsToRun: 'owasp;accessibility;performance;service-acceptance;acceptance;contract;integration'
 ```
 
 [Please refer ffc-demo-web pipeline:](https://github.com/DEFRA/ffc-demo-web/blob/main/.azuredevops/build.yaml)
+
+### How to disable test?
+
+if you want to disable the test for any reason please refer [Disable Test](../../How-to-guides/Testing/how-to-disable-test.md)

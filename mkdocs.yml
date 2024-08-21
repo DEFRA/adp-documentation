@@ -90,6 +90,7 @@ nav:
       - How to create an Integration test: How-to-guides/Testing/how-to-create-integration-test.md
       - How to create an OWASP test: How-to-guides/Testing/how-to-create-owasp-test.md
       - How to create a Performance test: How-to-guides/Testing/how-to-create-performance-test.md
+      - How to disable test: How-to-guides/Testing/how-to-disable-test.md
   # ------------------- Migrate to ADP -------------------
   - Migrate to ADP:
     - Migrate a delivery project: Migrate-to-ADP/migrate-a-delivery-project.md
