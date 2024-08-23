@@ -1,0 +1,3421 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../architecture-overview/">
+      
+      
+        <link rel="next" href="../data-services/">
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Azure AI Services - DEFRA - ADP Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#azure-ai-services" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DEFRA - ADP Documentation" class="md-header__button md-logo" aria-label="DEFRA - ADP Documentation" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DEFRA - ADP Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Azure AI Services
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DEFRA - ADP Documentation" class="md-nav__button md-logo" aria-label="DEFRA - ADP Documentation" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    DEFRA - ADP Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Why ADP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting-Started/onboarding-a-delivery-programme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Onboarding a delivery programme
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting-Started/onboarding-a-user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Onboarding a user
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting-Started/onboarding-a-delivery-project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Onboarding a delivery project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    How to guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            How to guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Platform Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Platform Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Platform-Services/how-to-create-a-platform-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create a platform service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Platform-Services/how-to-deploy-a-platform-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to deploy a platform service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Platform-Services/how-to-create-a-database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create a database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Platform-Services/how-to-create-a-system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create a system
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-acceptance-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create an Acceptance test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-accessibility-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create an Accessibility test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-contract-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create a Contract test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-integration-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create an Integration test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-owasp-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create an OWASP test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-performance-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create a Performance test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-disable-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to disable test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Migrate to ADP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Migrate to ADP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Migrate-to-ADP/migrate-a-delivery-project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migrate a delivery project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Migrate-to-ADP/migrate-a-platform-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migrate platform service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Migrate-to-ADP/migrate-production-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migrate production data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Platform Strategy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Platform Strategy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Strategy/adp-platform-strategy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADP Platform Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Strategy/service-versioning-strategy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Service Versioning Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Strategy/service-deployment-strategy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Service Deployment Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Strategy/documentation-approach/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentation Approach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Platform Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Platform Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../environments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tech-radar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Radar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../permissions-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Permissions Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture-overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Platform Azure Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Platform Azure Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    AI Services
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    AI Services
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#azure-open-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Open AI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure Open AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployed-supported-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployed &amp; Supported Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iterative-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterative Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developer-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developer Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quota-token-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quota &amp; Token Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#possible-future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Possible Future Enhancements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Possible Future Enhancements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#semantic-caching-for-azure-openai-apis-in-apim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic caching for Azure OpenAI APIs in APIM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-azure-openai-service-model-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      More Azure OpenAI Service Model Deployments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reserved-capacity-for-azure-openai-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reserved Capacity for Azure OpenAI Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outstanding-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outstanding Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-ai-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure AI Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure AI Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#developer-access_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developer Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-of-azure-ai-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment of Azure AI Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment of Azure AI Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token replacement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#possible-future-enhancements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Possible Future Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-resources_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outstanding-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outstanding Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integration Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADP Portal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            ADP Portal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adp-portal/adp-portal-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADP Portal Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adp-portal/adp-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADP Copilot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Integration Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Integration Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integration-patterns/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integration-patterns/dynamics-and-platform-platform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dynamics & Plower Platform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architectural Components
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8">
+            <span class="md-nav__icon md-icon"></span>
+            Architectural Components
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8_1" id="__nav_6_8_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    monitoring
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            monitoring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/monitoring/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/monitoring/automated-monitoring-implementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automated Monitoring Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/monitoring/network-watcher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Watcher
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/monitoring/alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8_2" id="__nav_6_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CI, CD, & Automation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            CI, CD, & Automation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8_2_1" id="__nav_6_8_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GitOps for AKS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_8_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            GitOps for AKS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/ci-cd-and-automation/gitops-for-aks/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/ci-cd-and-automation/gitops-for-aks/flux-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flux Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/ci-cd-and-automation/gitops-for-aks/flux-manifests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generating Flux Manifests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/ci-cd-and-automation/gitops-for-aks/repository-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repository Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/ci-cd-and-automation/gitops-for-aks/application-deployments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Deployments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/ci-cd-and-automation/azure-service-operator-for-aks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Service Operator for AKS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/ci-cd-and-automation/common-pipelines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Pipelines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/ci-cd-and-automation/infrastructure-pipelines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Infrastructure Pipelines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/ci-cd-and-automation/naming-conventions-and-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Naming Conventions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/istio-service-mesh-poc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Istio Service Mesh POC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/application-hosting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Hosting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/microservices-and-aks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microservices & AKS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architectural-components/secrets-and-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secrets & Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Developer Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/Infrastructure/ASO%20Helm%20Library%20Chart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASO Helm Library Chart
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADP Portal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            ADP Portal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2_1" id="__nav_7_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ongoing Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Ongoing Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/adp-portal/ongoing-development/backstage-plugin-index/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backstage Plugin Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/adp-portal/ongoing-development/backstage-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backstage Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/adp-portal/ongoing-development/catalog-data-sources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Catalog Data Sources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/adp-portal/ongoing-development/govuk-branding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gov.uk Branding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/Infrastructure/ADP%20Portal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Portal Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/adp-portal/ongoing-development/github-app-permissions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub App Permissions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/adp-portal/ongoing-development/adp-data-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADP Data Plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reference Applications
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3_1" id="__nav_7_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    FCP Demo Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            FCP Demo Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/reference-applications/fcp-demo-services/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GitHub
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            GitHub
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/github/verify-gitHub-commit-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Verify GitHub Comment Signature
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/Secret%20Management/secret-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secret Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/Infrastructure/helm-library-memory-and-cpu-tiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helm Library Memory & CPU Tiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Quality Assurance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Quality Assurance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Developer-Reference/Quality-Assurance/Quality-Assurance-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview of Quality Assurnace in ADP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#azure-open-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Open AI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure Open AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployed-supported-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployed &amp; Supported Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iterative-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterative Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developer-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developer Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quota-token-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quota &amp; Token Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#possible-future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Possible Future Enhancements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Possible Future Enhancements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#semantic-caching-for-azure-openai-apis-in-apim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic caching for Azure OpenAI APIs in APIM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-azure-openai-service-model-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      More Azure OpenAI Service Model Deployments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reserved-capacity-for-azure-openai-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reserved Capacity for Azure OpenAI Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outstanding-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outstanding Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-ai-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure AI Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure AI Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#developer-access_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developer Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-of-azure-ai-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment of Azure AI Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment of Azure AI Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token replacement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#possible-future-enhancements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Possible Future Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-resources_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outstanding-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outstanding Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div class="admonition note">
+<p class="admonition-title">TODO</p>
+<p>This page is a work in progress and will be updated in due course.</p>
+</div>
+<h1 id="azure-ai-services">Azure AI Services<a class="headerlink" href="#azure-ai-services" title="Permanent link">&para;</a></h1>
+<p>This article details the AI Services Architecture for the solution at a high level.</p>
+<p>AI Services supported by ADP:</p>
+<ul>
+<li><a href="#azure-open-ai">Azure Open AI Service</a></li>
+<li><a href="#azure-ai-search">Azure AI Search</a></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please ensure you fellow DEFRA's guidelines and policies when using AI services. This includes the use of data and the use of AI services in general in order to ensure your delivery project is using AI responsibly.</p>
+</div>
+<h2 id="azure-open-ai">Azure Open AI<a class="headerlink" href="#azure-open-ai" title="Permanent link">&para;</a></h2>
+<p><img align="left" alt="Azure Open AI" src="../../../images/logos/openai.png" width="150" />Azure OpenAI Service provides REST API access to OpenAI's powerful language models including the GPT-4, GPT-4 Turbo with Vision, GPT-3.5-Turbo, and Embeddings model series. In addition, the new GPT-4 and GPT-3.5-Turbo model series have now reached general availability. These models can be easily adapted to your specific task including but not limited to content generation, summarization, image understanding, semantic search, and natural language to code translation.</p>
+<h3 id="deployed-supported-models">Deployed &amp; Supported Models<a class="headerlink" href="#deployed-supported-models" title="Permanent link">&para;</a></h3>
+<p>The Azure Development Platform (ADP) supports a range of models within Azure OpenAI. However, the availability of these models is limited to those supported by Azure in the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models">UK South region</a>. The following table lists the supported models:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Deployment</th>
+<th>Quota</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-4</td>
+<td>gpt-4</td>
+<td>80k</td>
+<td>An improvement on GPT-3.5, capable of understanding and generating both natural language and code.</td>
+</tr>
+<tr>
+<td>gpt-35-turbo</td>
+<td>gpt-35-turbo</td>
+<td>350k</td>
+<td>An improvement on GPT-3, capable of understanding and generating both natural language and code.</td>
+</tr>
+<tr>
+<td>text-embedding-ada-002</td>
+<td>text-embedding-ada-002</td>
+<td>350k</td>
+<td>Converts text into numerical vector form to facilitate text similarity comparisons.</td>
+</tr>
+<tr>
+<td>text-embedding-3-large</td>
+<td>text-embedding-3-large</td>
+<td>350k</td>
+<td>The latest and most capable model for converting text into numerical vector form for text similarity comparisons. Please note that upgrading between different embedding models is not supported.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All Delivery Projects should be mindful of the quota restrictions for each model per subscription/region. These models are shared resources among all Delivery Projects. If more quota is needed, ADP can make a request. However, please note that any increase in quota is subject to Microsoft’s approval.</p>
+</div>
+<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<p><img alt="ai-services-architecture" src="../../../images/diagrams/ai-services.png" /></p>
+<p>Within the ADP Platform, Azure Open AI Services are deployed with an Azure API Management (APIM) to provide a secure and scalable API endpoint for the AI services. The APIM is used to manage the API lifecycle, provide security, and monitor the API usage. The APIM is deployed in a Subnet (/29) and uses a private link to connect to the Azure OpenAI service. Additionally, a developer portal is deployed with the APIM, offering self-service API documentation for the AI services. Between the delivery projects service and the APIM, private link will be implemented and the APIM will use the services' <a href="https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-azure-openai#authenticate-with-managed-identity">managed identity</a> with the role of <code>Cognitive Services OpenAI User</code> assigned. This will allow the APIM to access the AI services on behalf of the delivery project's service privately and securely.</p>
+<p>For any other Azure services that require access to the AI services, they will need to utilize the APIM endpoint and the managed identity.</p>
+<h4 id="iterative-deployment">Iterative Deployment<a class="headerlink" href="#iterative-deployment" title="Permanent link">&para;</a></h4>
+<p><img alt="ai-services-0.1-architecture" src="../../../images/diagrams/ai-services-0.1.png" /></p>
+<p>To meet the timelines and requirements of the delivery projects, our initial step will be to deploy the Azure OpenAI Service. We will provide the AKS cluster and Azure AI Search with direct access to this service over a private endpoint, assigning the role of <code>Cognitive Services OpenAI User</code>.</p>
+<p>This approach will enable the delivery projects to begin utilizing the AI services and provide valuable feedback. Once the APIM is deployed, we will transition the AI services to APIM. This will establish a secure and scalable API endpoint for the AI services.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For local development purposes, the delivery projects can directly use the Azure Open AI services in the SND environment only, provided they are connected to the DEFRA VPN or using a DEFRA laptop. This setup will facilitate testing of the AI services and the provision of feedback.</p>
+</div>
+<h4 id="developer-access">Developer Access<a class="headerlink" href="#developer-access" title="Permanent link">&para;</a></h4>
+<p>For local development, developers will be able to access SND only via the DEFRA VPN or DEFRA laptop with the assigned role of <code>Cognitive Services OpenAI User</code>. Giving the developers the ability to test Azure Open AI services locally via APIM and view model deployments of the deployment Azure Open AI service.</p>
+<p>For Dev plus environments, developers will be able to access SND only via the DEFRA VPN or DEFRA laptop with the assigned role of <code>Cognitive Services OpenAI User</code>. This will currently allow them to:</p>
+<ul>
+<li>View the resource in Azure Portal</li>
+<li>View the resource endpoint under “Keys and Endpoint” but not the keys.</li>
+<li>View the resource and associated model deployments in Azure OpenAI Studio</li>
+<li>View available models for deployment in Azure OpenAI Studio</li>
+<li>Use the Chat, Completions, and DALL-E (preview) playground experiences with any models that have already been deployed to this Azure OpenAI resource.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Dev plus environments, APIM endpoints will not be exposed for local developer access. They will remain accessible only to ADP Azure services or authenticated Delivery project's services.</p>
+</div>
+<h4 id="monitoring">Monitoring<a class="headerlink" href="#monitoring" title="Permanent link">&para;</a></h4>
+<p>APIM is used to enhance the monitoring of OpenAI usage per service. You can utilise an <a href="https://learn.microsoft.com/en-us/azure/api-management/azure-openai-emit-token-metric-policy">OpenAI Emit Token Metric policy</a> to send metrics to Application Insights about consumption of large language model tokens through Azure OpenAI Service APIs. Token count metrics include: Total Tokens, Prompt Tokens, and Completion Tokens with additional dimensions such as the User ID and API ID. By leveraging these metrics, ADP can monitor usage per service. This information can be utilized by both the project delivery teams and ADP to infer usage, potentially request additional quota if required, and for billing purposes.</p>
+<p>To monitor Azure Open AI directly we enable the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/monitoring">Azure OpenAI Service Diagnostic Logs</a>. This allows us to monitor the usage of the AI services directly. The log data is stored in Azure Monitor (Log Analytics Workspace), where both ADP and the delivery projects can gain insights such as:</p>
+<ul>
+<li>Azure OpenAI Requests: Total number of calls made to the Azure OpenAI API over a period of time.</li>
+<li>Generated Completion Tokens: Number of generated tokens (output) from an Azure OpenAI model.</li>
+<li>Processed Inference Tokens: Number of inference tokens processed by an Azure OpenAI model. Calculated as prompt tokens (input) + generated tokens.</li>
+</ul>
+<h3 id="quota-token-management">Quota &amp; Token Management<a class="headerlink" href="#quota-token-management" title="Permanent link">&para;</a></h3>
+<p>The Azure Open AI services are shared between delivery projects and have a quota limit per subscription/region. The quota limit is shared between the delivery projects and can be increased if required. The quota limit will be monitored by the ADP team and will be increased if required with the approval from Microsoft.</p>
+<p>Given the current needs and requirements of the ADP platform, we have opted for the pay-as-you-go pricing model for the Azure Open AI services. This allows the delivery projects to pay only for what they use, eliminating concerns about overcharging. However, this does mean that there is a Tokens-per-Minute limit per model for the Azure Open AI services. Delivery projects need to be aware of this limit when using the AI services.</p>
+<p>To manage this and ensure efficient use of Azure Open AI, APIM will provide policy enforcement to manage the quota limit and offer a better experience to the delivery projects when the quota limit is reached:</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/api-management/retry-policy">Retry policy</a>: When the quota limit is reached, the Azure OpenAI will return a 429 status code to the delivery project's service. APIM will implement a retry policy to wait for a certain amount of time before retrying the request to the Azure Open AI service. This will allow the delivery project's service to wait for the quota limit to be reset and then retry the request to the Azure Open AI service.</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/api-management/azure-openai-token-limit-policy">Token limit policy</a>: By relying on token usage metrics returned from the OpenAI endpoint, the policy can accurately monitor and enforce limits in real time. The policy also enables precalculation of prompt tokens by API Management, minimizing unnecessary requests to the OpenAI backend if the limit is already exceeded.</li>
+</ul>
+<h3 id="possible-future-enhancements">Possible Future Enhancements<a class="headerlink" href="#possible-future-enhancements" title="Permanent link">&para;</a></h3>
+<h4 id="semantic-caching-for-azure-openai-apis-in-apim">Semantic caching for Azure OpenAI APIs in APIM<a class="headerlink" href="#semantic-caching-for-azure-openai-apis-in-apim" title="Permanent link">&para;</a></h4>
+<p><a href="https://learn.microsoft.com/en-us/azure/api-management/azure-openai-enable-semantic-caching">Enable semantic caching of responses to Azure OpenAI API requests</a> to reduce bandwidth and processing requirements imposed on the backend APIs and lower latency perceived by API consumers. With semantic caching, you can return cached responses for identical prompts and also for prompts that are similar in meaning, even if the text isn't the same.</p>
+<h4 id="more-azure-openai-service-model-deployments">More Azure OpenAI Service Model Deployments<a class="headerlink" href="#more-azure-openai-service-model-deployments" title="Permanent link">&para;</a></h4>
+<p>Currently, the range of models that can be deployed is limited to those supported by Azure in the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models">UK South region</a>. In the future, we will look to provide a broader selection the models for delivery projects to utilise. This includes potential support for additional models such as Whisper, DALL-E, and GPT-4o models.</p>
+<h4 id="reserved-capacity-for-azure-openai-service">Reserved Capacity for Azure OpenAI Service<a class="headerlink" href="#reserved-capacity-for-azure-openai-service" title="Permanent link">&para;</a></h4>
+<p>Reserved capacity, also known as Provisioned Throughput Units (PTU), is a feature of Azure OpenAI. The newer offering, PTU-M (Managed), abstracts away the backend compute, pooling resources. Beyond the default TPMs described above, this Azure OpenAI service feature, PTUs, defines the model processing capacity. It uses reserved resources for processing prompts and generating completions.</p>
+<p>PTUs are purchased as a monthly commitment with an auto-renewal option, which will reserve Azure OpenAI capacity within an Azure subscription, using a specific model, in a specific Azure region. TPM and PTU can be used together to provide scaling within a single region.</p>
+<p>Please note, PTU minimums are <em>very expensive</em>. This requires ADP to be at a certain scale to justify the cost across its Delivery Projects.</p>
+<h3 id="key-resources">Key Resources<a class="headerlink" href="#key-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/">Azure Open AI Service</a></li>
+<li><a href="https://github.com/microsoft/AzureOpenAI-with-APIM">GitHub: Microsoft - AzureOpenAI-with-APIM</a></li>
+<li><a href="https://github.com/Azure/aoai-apim">GitHub: aoai-apim</a></li>
+<li><a href="https://medium.com/@manoranjan.rajguru/azure-openai-best-practices-for-production-b733eca4bde5">Medium: Azure OpenAI Best Practice</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-use-managed-service-identity">Managed Identity with APIM</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/role-based-access-control">Role-based access control for Azure OpenAI Service</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/api-management/azure-openai-api-from-specification">MS Learn: Import Azure Open Open AI Service into APIM</a></li>
+</ul>
+<h3 id="outstanding-questions">Outstanding Questions<a class="headerlink" href="#outstanding-questions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>???</li>
+</ul>
+<h2 id="azure-ai-search">Azure AI Search<a class="headerlink" href="#azure-ai-search" title="Permanent link">&para;</a></h2>
+<p><img align="left" alt="Azure AI Search" src="../../../images/logos/aisearch.png" /> Azure AI Search (formerly known as "Azure Cognitive Search") provides secure information retrieval at scale over user-owned content in traditional and generative AI search applications.</p>
+<p>Information retrieval is a foundational aspect of any application that surfaces text and vectors. Common use cases include catalog or document search, data exploration, and increasingly, chat-style applications over proprietary grounding data. When creating a search service, you’ll work with the following capabilities:</p>
+<ul>
+<li>A search engine for vector search and full text and hybrid search over a search index</li>
+<li>Rich indexing with integrated data chunking and vectorization (preview), lexical analysis for text, and optional applied AI for content extraction and transformation</li>
+<li>Rich query syntax for vector queries, text search, hybrid queries, fuzzy search, autocomplete, geo-search and others</li>
+<li>Azure scale, security, and reach</li>
+<li>Azure integration at the data layer, machine learning layer, Azure AI services and Azure OpenAI</li>
+</ul>
+<p>ADP provides a managed Azure AI Search service for delivery projects to use which is scalable and secure using best practice. The core components (indexes, datastores, etc) of the Azure AI Search will be dependently deployable and can be created by delivery projects as required on a self-service basis.</p>
+<h4 id="supported-features">Supported Features<a class="headerlink" href="#supported-features" title="Permanent link">&para;</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Features that require external services will be limited to what has already been previously request by Delivery Projects. This normally effects supported data sources and skillsets. If a Delivery Project requires a new data source or skillset, they will need to request this from ADP and it will be reviewed and approved if it is required and does not affect the current delivery projects</p>
+</div>
+<p>Supported features of Azure AI Search:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://learn.microsoft.com/en-us/azure/search/indexes-overview">Indexes</a>: An index is a persistent store of documents that are searchable using Azure AI Search. An index is similar to a database table, but it contains a schema that describes the structure of the documents within the index. An index can contain one or more fields, each of which has a name and a data type. An index can also contain a scoring profile, which is used to rank search results based on relevance. An index can be created, updated, and deleted using the Azure AI Search REST API or the Azure Portal.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://learn.microsoft.com/en-us/azure/search/indexers-overview">Indexers</a>: Indexers are used to extract content from an external data source and populate an index with it. Indexers can be scheduled to run at regular intervals to keep the index up-to-date.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://learn.microsoft.com/en-us/azure/search/data-sources-overview">Data Sources</a>: A data source is a connection to an external data store that contains the content you want to index. Data sources can be used to connect to a variety of data stores, including Azure Blob Storage, Azure Cosmos DB, Azure SQL Database, and more.<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Azure Blob Storage: Azure Blob Storage is a cloud-based storage service that allows you to store large amounts of unstructured data, such as text files, images, and videos. Azure Blob Storage can be used as a data source for Azure AI Search to index content from text files, images, and videos.</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://learn.microsoft.com/en-us/azure/search/skillsets-concept">Skillsets</a>: A skillset is a collection of cognitive skills that can be used to enrich content during indexing. A skillset can contain one or more skills, each of which performs a specific task, such as extracting text from images or translating text to another language. A skillset can be used to extract information from unstructured data, such as images, videos, and documents, and make it searchable using Azure AI Search. Supported Skillsets include:<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Azure Open AI Embedding Skillset: This skillset uses the Azure Open AI Embedding model to convert text into numerical vector form to facilitate text similarity. This skillset can be used to enhance the search experience by providing more relevant search results based on the semantic meaning of the text.</li>
+</ul>
+</li>
+</ul>
+<h3 id="architecture_1">Architecture<a class="headerlink" href="#architecture_1" title="Permanent link">&para;</a></h3>
+<p><img alt="ai-services-architecture" src="../../../images/diagrams/ai-services.png" /></p>
+<p>ADP has selected a <a href="https://learn.microsoft.com/en-us/azure/search/search-sku">Standard SKU</a> for the Azure AI Search service as it provides a cost effective balance of storage and query capacity for the delivery projects. Azure AI Search is a shared service between the ADP Delivery Projects. Allowing up to 50 indexes and 50 indexers in total and 35 GB of storage per partition and 160 GB of storage with two replicas, requiring two search unit per environment. This will allow 99.9% availability for read operations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ADP Team can increase the tier and the number of search units (replicas and partitions) as required. Under the current scope of the delivery projects, the standard SKU with two search units is sufficient, allowing for 99.9% availability for read operations. If a project requires 99.9% availability for read/write operations, additional search units can be added.</p>
+</div>
+<p>Azure AI Search will not be reachable from the public internet and will only be accessible via a private link to DEFRA VPN, DEFRA laptops, or consuming Azure/ Delivery Project services via a private endpoint.</p>
+<p>Delivery Project services will be given the role of <code>Search Index Data Contributor</code> scoped to the <a href="https://learn.microsoft.com/en-us/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal-admin%2Croles-portal%2Croles-portal-query%2Ctest-portal%2Ccustom-role-portal%2Cdisable-keys-portal#grant-access-to-a-single-index">indexes that the service requires</a>. This will allow the Read-write access to the content of these indexes.</p>
+<p>Azure AI Search will need access to Azure Open AI embedding models to allow for semantic search in the search indexes and for use in its skill sets. No direct access to the Azure open AI services will be allowed and will only be accessible via the Azure API Management endpoint. To ensure that Azure AI Search has efficient access, the role of <code>Cognitive Services OpenAI User</code> will be assigned to the Azure AI Search service system assigned managed identity. This will allow the Azure AI Search service to access the Azure Open AI services via the APIM endpoint over a private link securely and efficiently.</p>
+<h4 id="developer-access_1">Developer Access<a class="headerlink" href="#developer-access_1" title="Permanent link">&para;</a></h4>
+<p>For SND environments, developers will be able to access the Azure AI Search service via the Azure Portal with the assigned role of <code>Reader</code> across the whole of the AI Search service, as well as the role of <code>Search Index Data Contributor</code> scoped to the <a href="https://learn.microsoft.com/en-us/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal-admin%2Croles-portal%2Croles-portal-query%2Ctest-portal%2Ccustom-role-portal%2Cdisable-keys-portal#grant-access-to-a-single-index">indexes that are created for their Delivery Project</a>. This will allow the Read-write access to content of these indexes and also import, refresh, or query the documents collection of an index. It facilitates local development and testing of the Azure AI Search service.</p>
+<p>For Dev plus environments, developers will be able to access the Azure AI Search service via the Azure Portal with the assigned role of <code>Reader</code>. This role currently enables them to read across the entire service, including search metrics, content metrics (storage consumed, number of objects), and the object definitions of data plane resources (indexes, indexers, and so on). However, they won’t have access to read API keys or content within indexes, thereby ensuring the security of the data control plane.</p>
+<p>Developers in all environments will be able to access Azure AI Search only via DEFRA VPN or DEFRA laptop with restrictions that are detailed above.</p>
+<h4 id="monitoring_1">Monitoring<a class="headerlink" href="#monitoring_1" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Azure AI Search doesn't monitor individual user access to content on the search service. If you require this level of monitoring, you need to implement it in your client application.</p>
+</div>
+<p>The <a href="https://learn.microsoft.com/en-us/azure/search/monitor-azure-cognitive-search">diagnostic logs for Azure AI Search</a> are stored in Azure Monitor (Log Analytics Workspace). This allows ADP and the delivery projects to gain insights into aspects such as latency, errors, and usage of the search service.</p>
+<h3 id="deployment-of-azure-ai-search">Deployment of Azure AI Search<a class="headerlink" href="#deployment-of-azure-ai-search" title="Permanent link">&para;</a></h3>
+<p>The Azure AI Search service will be deployed as a common service for use by all Delivery Projects. For self-service creation and updating of the Azure AI Search Components, developers will be able to use ADP PowerShell scripts and a JSON definition file. These components will be created within the X repository, ensuring that the components are consistently created across all projects and environments using Azure Pipelines.</p>
+<h4 id="token-replacement">Token replacement<a class="headerlink" href="#token-replacement" title="Permanent link">&para;</a></h4>
+<p>????</p>
+<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MyDataSource&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example of a data source that uses a connection string with a token&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sharepoint&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">  </span><span class="nt">&quot;subtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="nt">&quot;connectionString&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#{MyDataSourceConnectionString}#&quot;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="nt">&quot;container&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;useQuery&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;includeLibrary=....&quot;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">  </span><span class="nt">&quot;dataChangeDetectionPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">  </span><span class="nt">&quot;dataDeletionDetectionPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">  </span><span class="nt">&quot;encryptionKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">  </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="possible-future-enhancements_1">Possible Future Enhancements<a class="headerlink" href="#possible-future-enhancements_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>TBC</li>
+</ul>
+<h3 id="key-resources_1">Key Resources<a class="headerlink" href="#key-resources_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/secure-your-azure-cognitive-search-indexes-and-queries-with/ba-p/2973033">Secure your Azure Cognitive Search indexes and queries with Azure AD</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/search/service-create-private-endpoint">Create a private endpoint for a secure connection to Azure AI Search</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/cognitive-search-with-skillsets">Azure AI Search with skill sets</a></li>
+</ul>
+<h3 id="outstanding-questions_1">Outstanding Questions<a class="headerlink" href="#outstanding-questions_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Where is the best place for the deployment scripts for Azure AI Search components? Very unsure of how is best to make this self-service for the delivery projects.</li>
+<li>What data source to support?</li>
+<li>What skillsets to support? Custom skillsets?</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../architecture-overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Architecture Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Architecture Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../data-services/" class="md-footer__link md-footer__link--next" aria-label="Next: Data Services">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Data Services
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Crown copyright | <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"  target="_blank" rel="noopener">All content is available under the Open Government Licence v3.0</a>
+
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/defra/adp-documentation" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "navigation.footer", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.0.1"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../javascripts/loader.js"></script>
+      
+        <script src="../../../search/main.js"></script>
+      
+    
+  </body>
+</html>

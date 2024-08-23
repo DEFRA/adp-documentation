@@ -1,0 +1,4826 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../Platform-Architecture/scaling/">
+      
+      
+        <link rel="next" href="../../adp-portal/ongoing-development/backstage-plugin-index/">
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>ASO Helm Library Chart - DEFRA - ADP Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#adp-platform-azure-service-operator-helm-library-chart" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DEFRA - ADP Documentation" class="md-header__button md-logo" aria-label="DEFRA - ADP Documentation" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DEFRA - ADP Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ASO Helm Library Chart
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DEFRA - ADP Documentation" class="md-nav__button md-logo" aria-label="DEFRA - ADP Documentation" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    DEFRA - ADP Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Why ADP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting-Started/onboarding-a-delivery-programme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Onboarding a delivery programme
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting-Started/onboarding-a-user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Onboarding a user
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting-Started/onboarding-a-delivery-project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Onboarding a delivery project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    How to guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            How to guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Platform Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Platform Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Platform-Services/how-to-create-a-platform-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create a platform service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Platform-Services/how-to-deploy-a-platform-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to deploy a platform service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Platform-Services/how-to-create-a-database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create a database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Platform-Services/how-to-create-a-system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create a system
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-acceptance-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create an Acceptance test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-accessibility-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create an Accessibility test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-contract-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create a Contract test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-integration-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create an Integration test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-owasp-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create an OWASP test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-create-performance-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create a Performance test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../How-to-guides/Testing/how-to-disable-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to disable test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Migrate to ADP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Migrate to ADP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Migrate-to-ADP/migrate-a-delivery-project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migrate a delivery project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Migrate-to-ADP/migrate-a-platform-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migrate platform service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Migrate-to-ADP/migrate-production-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migrate production data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Platform Strategy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Platform Strategy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Strategy/adp-platform-strategy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADP Platform Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Strategy/service-versioning-strategy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Service Versioning Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Strategy/service-deployment-strategy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Service Deployment Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Strategy/documentation-approach/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentation Approach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Platform Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Platform Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/environments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/tech-radar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Radar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/permissions-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Permissions Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architecture-overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Platform Azure Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Platform Azure Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/platform-azure-services/ai-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/platform-azure-services/data-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/platform-azure-services/integration-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integration Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADP Portal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            ADP Portal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/adp-portal/adp-portal-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADP Portal Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/adp-portal/adp-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADP Copilot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Integration Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Integration Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/integration-patterns/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/integration-patterns/dynamics-and-platform-platform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dynamics & Plower Platform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architectural Components
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8">
+            <span class="md-nav__icon md-icon"></span>
+            Architectural Components
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8_1" id="__nav_6_8_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    monitoring
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            monitoring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/monitoring/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/monitoring/automated-monitoring-implementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automated Monitoring Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/monitoring/network-watcher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Watcher
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/monitoring/alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8_2" id="__nav_6_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CI, CD, & Automation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            CI, CD, & Automation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8_2_1" id="__nav_6_8_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GitOps for AKS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_8_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            GitOps for AKS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/flux-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flux Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/flux-manifests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generating Flux Manifests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/repository-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repository Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/ci-cd-and-automation/gitops-for-aks/application-deployments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Deployments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/ci-cd-and-automation/azure-service-operator-for-aks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Service Operator for AKS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/ci-cd-and-automation/common-pipelines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Pipelines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/ci-cd-and-automation/infrastructure-pipelines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Infrastructure Pipelines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/ci-cd-and-automation/naming-conventions-and-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Naming Conventions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/istio-service-mesh-poc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Istio Service Mesh POC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/application-hosting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Hosting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/microservices-and-aks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microservices & AKS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/architectural-components/secrets-and-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secrets & Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Platform-Architecture/scaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Developer Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ASO Helm Library Chart
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ASO Helm Library Chart
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#including-the-library-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Including the library chart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-k8s-object-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the K8s object templates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the K8s object templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all-template-required-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      All template required values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-specific-default-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment specific Default values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameSpace Queue
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NameSpace Queue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-queue-roleassignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameSpace Queue: RoleAssignments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-servicea-in-teama-creates-queue-with-2-role-assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 : ServiceA in TeamA creates queue with 2 role assignments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-serviceb-in-teama-needs-to-receive-messages-from-existing-claim-queue-note-that-owner-is-set-to-no" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2 : ServiceB in TeamA needs to receive messages from existing claim queue. Note that owner is set to no.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameSpace Topic
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NameSpace Topic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-values_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-values_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-topic-roleassignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameSpace Topic: RoleAssignments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-topic-subscriptions-subscriptionrules" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameSpace Topic: Subscriptions, SubscriptionRules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-values-for-topicsubscriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values for topicSubscriptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-values-for-topicsubscriptionrules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values for topicSubscriptionRules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-servicea-in-teama-creates-topic-with-1-role-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 : ServiceA in TeamA creates Topic with 1 role assignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-serviceb-in-teama-needs-to-receive-messages-from-existing-claim-notify-topic-note-that-owner-is-set-to-no" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2 : ServiceB in TeamA needs to receive messages from existing claim-notify Topic. Note that owner is set to no.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-servicea-in-teama-creates-topic-with-1-role-assignment-topic-subscription-and-topic-subscription-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3 : ServiceA in TeamA creates Topic with 1 role assignment, Topic Subscription and Topic Subscription Rule.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4-serviceb-in-teama-creates-topic-subscription-in-existing-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 4: ServiceB in TeamA creates Topic Subscription in existing Topic.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-for-postgres-flexible-server-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database for Postgres Flexible server template
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database for Postgres Flexible server template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-values_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-servicea-in-teama-creates-payment-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 : ServiceA in TeamA creates payment database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userassignedidentity" class="md-nav__link">
+    <span class="md-ellipsis">
+      UserAssignedIdentity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UserAssignedIdentity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-values_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-the-below-example-will-create-userassignedidentity-with-one-federated-credential" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 : The below example will create userAssignedIdentity with one federated credential.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Account
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-values-for-storage-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default values for Storage account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-values-only-storage-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required values (Only Storage Account)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-values-storage-account-with-blobcontainers-tables-and-fileshare" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required values (Storage Account with BlobContainers, Tables and FileShare)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-values_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-create-2-storage-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 : Create 2 storage accounts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-create-1-storage-account-using-large-parameter-set-and-storage-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2 : Create 1 storage account using large parameter set and storage firewall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-create-1-storage-account-and-configure-properties-for-the-storage-account-blobservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3 : Create 1 storage account and configure properties for the Storage Account BlobService
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4-create-1-storage-account-with-2-blob-containers-and-1-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 4 : Create 1 storage account with 2 blob containers and 1 table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-create-1-blob-containers-and-2-tables-for-the-existing-storage-account-in-your-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 5 : Create 1 blob containers and 2 tables for the existing storage account in your team.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-6-create-1-storage-account-and-configure-properties-for-the-storage-account-fileservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 6 : Create 1 storage account and configure properties for the Storage Account FileService
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-7-create-2-file-share-one-with-default-properties-other-one-with-specific-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 7 : Create 2 file share, one with default properties other one with specific properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-9-create-roleassignments-with-reader-access-for-existing-storage-account-in-the-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 9 : Create roleassignments with reader access for existing storage account in the team
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-table-for-resource-names-in-azure-and-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Table for Resource Names in Azure and Kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helper-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Helper templates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Helper templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-check-required-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default check required message
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Labels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Licence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Licence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-the-licence" class="md-nav__link">
+    <span class="md-ellipsis">
+      About the licence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADP Portal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            ADP Portal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2_1" id="__nav_7_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ongoing Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Ongoing Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adp-portal/ongoing-development/backstage-plugin-index/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backstage Plugin Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adp-portal/ongoing-development/backstage-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backstage Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adp-portal/ongoing-development/catalog-data-sources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Catalog Data Sources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adp-portal/ongoing-development/govuk-branding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gov.uk Branding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADP%20Portal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Portal Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adp-portal/ongoing-development/github-app-permissions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub App Permissions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adp-portal/ongoing-development/adp-data-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADP Data Plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reference Applications
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3_1" id="__nav_7_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    FCP Demo Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            FCP Demo Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference-applications/fcp-demo-services/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GitHub
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            GitHub
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../github/verify-gitHub-commit-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Verify GitHub Comment Signature
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Secret%20Management/secret-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secret Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm-library-memory-and-cpu-tiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helm Library Memory & CPU Tiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Quality Assurance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Quality Assurance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Quality-Assurance/Quality-Assurance-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview of Quality Assurnace in ADP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#including-the-library-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Including the library chart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-k8s-object-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the K8s object templates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the K8s object templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all-template-required-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      All template required values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-specific-default-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment specific Default values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameSpace Queue
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NameSpace Queue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-queue-roleassignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameSpace Queue: RoleAssignments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-servicea-in-teama-creates-queue-with-2-role-assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 : ServiceA in TeamA creates queue with 2 role assignments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-serviceb-in-teama-needs-to-receive-messages-from-existing-claim-queue-note-that-owner-is-set-to-no" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2 : ServiceB in TeamA needs to receive messages from existing claim queue. Note that owner is set to no.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameSpace Topic
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NameSpace Topic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-values_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-values_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-topic-roleassignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameSpace Topic: RoleAssignments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-topic-subscriptions-subscriptionrules" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameSpace Topic: Subscriptions, SubscriptionRules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-values-for-topicsubscriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values for topicSubscriptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-values-for-topicsubscriptionrules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values for topicSubscriptionRules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-servicea-in-teama-creates-topic-with-1-role-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 : ServiceA in TeamA creates Topic with 1 role assignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-serviceb-in-teama-needs-to-receive-messages-from-existing-claim-notify-topic-note-that-owner-is-set-to-no" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2 : ServiceB in TeamA needs to receive messages from existing claim-notify Topic. Note that owner is set to no.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-servicea-in-teama-creates-topic-with-1-role-assignment-topic-subscription-and-topic-subscription-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3 : ServiceA in TeamA creates Topic with 1 role assignment, Topic Subscription and Topic Subscription Rule.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4-serviceb-in-teama-creates-topic-subscription-in-existing-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 4: ServiceB in TeamA creates Topic Subscription in existing Topic.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-for-postgres-flexible-server-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database for Postgres Flexible server template
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database for Postgres Flexible server template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-values_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-servicea-in-teama-creates-payment-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 : ServiceA in TeamA creates payment database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userassignedidentity" class="md-nav__link">
+    <span class="md-ellipsis">
+      UserAssignedIdentity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UserAssignedIdentity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-values_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-the-below-example-will-create-userassignedidentity-with-one-federated-credential" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 : The below example will create userAssignedIdentity with one federated credential.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Account
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-values-for-storage-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default values for Storage account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-values-only-storage-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required values (Only Storage Account)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-values-storage-account-with-blobcontainers-tables-and-fileshare" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required values (Storage Account with BlobContainers, Tables and FileShare)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-values_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-create-2-storage-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 : Create 2 storage accounts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-create-1-storage-account-using-large-parameter-set-and-storage-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2 : Create 1 storage account using large parameter set and storage firewall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-create-1-storage-account-and-configure-properties-for-the-storage-account-blobservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3 : Create 1 storage account and configure properties for the Storage Account BlobService
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4-create-1-storage-account-with-2-blob-containers-and-1-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 4 : Create 1 storage account with 2 blob containers and 1 table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-create-1-blob-containers-and-2-tables-for-the-existing-storage-account-in-your-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 5 : Create 1 blob containers and 2 tables for the existing storage account in your team.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-6-create-1-storage-account-and-configure-properties-for-the-storage-account-fileservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 6 : Create 1 storage account and configure properties for the Storage Account FileService
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-7-create-2-file-share-one-with-default-properties-other-one-with-specific-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 7 : Create 2 file share, one with default properties other one with specific properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-9-create-roleassignments-with-reader-access-for-existing-storage-account-in-the-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 9 : Create roleassignments with reader access for existing storage account in the team
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-table-for-resource-names-in-azure-and-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Table for Resource Names in Azure and Kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helper-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Helper templates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Helper templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-check-required-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default check required message
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Labels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Licence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Licence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-the-licence" class="md-nav__link">
+    <span class="md-ellipsis">
+      About the licence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="adp-platform-azure-service-operator-helm-library-chart">ADP Platform Azure Service Operator Helm Library Chart<a class="headerlink" href="#adp-platform-azure-service-operator-helm-library-chart" title="Permanent link">&para;</a></h1>
+<p>A Helm chart library that captures general configuration for Azure Service Operator (ASO) resources. It can be used by any microservice Helm chart to import AzureServiceOperator K8s object templates configured to run on the ADP platform.</p>
+<h2 id="including-the-library-chart">Including the library chart<a class="headerlink" href="#including-the-library-chart" title="Permanent link">&para;</a></h2>
+<p>In your microservice Helm chart:
+  * Update <code>Chart.yaml</code> to <code>apiVersion: v2</code>.
+  * Add the library chart under <code>dependencies</code> and choose the version you want (example below). Version number can include <code>~</code> or <code>^</code> to pick up latest PATCH and MINOR versions respectively.
+  * Issue the following commands to add the repo that contains the library chart, update the repo, then update dependencies in your Helm chart:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>helm repo add adp https://raw.githubusercontent.com/defra/adp-helm-repository/main/adp-aso-helm-library
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>helm repo update
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>helm dependency update &lt;helm_chart_location&gt;
+</code></pre></div></td></tr></table></div>
+<p>An example Demo microservice <code>Chart.yaml</code>:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span>
+<span class="normal"><a href="#__codelineno-1-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>apiVersion: v2
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>description: A Helm chart to deploy a microservice to the ADP Kubernetes platform
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>name: demo-microservice
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>version: 1.0.0
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>dependencies:
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>- name: adp-aso-helm-library
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>  version: ^1.0.0
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>  repository: https://raw.githubusercontent.com/defra/adp-helm-repository/main/adp-aso-helm-library
+</code></pre></div></td></tr></table></div>
+<p>NOTE: We will use ACR where ASO Helm Library Chart can be published. So above dependencies will be changed to import library from ACR (In Progress).</p>
+<h2 id="using-the-k8s-object-templates">Using the K8s object templates<a class="headerlink" href="#using-the-k8s-object-templates" title="Permanent link">&para;</a></h2>
+<p>First, follow <a href="#including-the-library-chart">the instructions</a> for including the ASO Helm library chart.</p>
+<p>The ASO Helm library chart has been configured using the conventions described in the <a href="https://helm.sh/docs/topics/library_charts/">Helm library chart documentation</a>. The K8s object templates provide settings shared by all objects of that type, which can be augmented with extra settings from the parent (Demo microservice) chart. The library object templates will merge the library and parent templates. In the case where settings are defined in both the library and parent chart, the parent chart settings will take precedence, so library chart settings can be overridden. The library object templates will expect values to be set in the parent <code>.values.yaml</code>. Any required values (defined for each template below) that are not provided will result in an error message when processing the template (<code>helm install</code>, <code>helm upgrade</code>, <code>helm template</code>).</p>
+<p>The general strategy for using one of the library templates in the parent microservice Helm chart is to create a template for the K8s object formateted as so:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>{{- include &quot;adp-aso-helm-library.namespace-queue&quot; . -}}
+</code></pre></div></td></tr></table></div>
+<h3 id="all-template-required-values">All template required values<a class="headerlink" href="#all-template-required-values" title="Permanent link">&para;</a></h3>
+<p>All the K8s object templates in the library require the following values to be set in the parent microservice Helm chart's <code>values.yaml</code>:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>namespace: &lt;string&gt;
+</code></pre></div></td></tr></table></div>
+<h3 id="environment-specific-default-values">Environment specific Default values<a class="headerlink" href="#environment-specific-default-values" title="Permanent link">&para;</a></h3>
+<p>The below values are used by the ASO templates internally, and their values are set using <code>platform variables</code> in <code>adp-flux-services</code> repository.</p>
+<p>for e.g. NameSpace Queues will get created inside <code>serviceBusNamespaceName</code> namespace and postgres database will get created inside <code>postgresServerName</code> server.</p>
+<p>Whilst the Platform orchestration will manage the 'platform' level variables, they can be optionally supplied in some circumstances. Examples include in sandpit/development when testing against team-specific infrastructure (that isn't Platform shared). So, if you have a dedicated Service Bus or Database Server instance, you can point to those to ensure you apps works as expected. Otherwise, don't supply the Platform level variables as these will be automatically managed and orchestrated throughout all the environments appropriately against core shared infrastructure. You (as a Platform Tenant) just supply your team-specific/instance specific infrastructure config' (i.e. Queues, Storage Accounts, Databases).</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span>
+<span class="normal"><a href="#__codelineno-4-28">28</a></span>
+<span class="normal"><a href="#__codelineno-4-29">29</a></span>
+<span class="normal"><a href="#__codelineno-4-30">30</a></span>
+<span class="normal"><a href="#__codelineno-4-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>namespace: &lt;string&gt;                                     --namespace name
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>environment: &lt;string&gt;                                   --environment name
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>fluxConfigNamespace: &lt;string&gt;                           --fluxConfig namespace name
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>subscriptionId: &lt;string&gt;                                --subscription Id
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>serviceBusResourceGroupName: &lt;string&gt;                   --Name of the service bus resource group
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>serviceBusNamespaceName: &lt;string&gt;                       --Name of the environment specific service bus 
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>postgresResourceGroupName: &lt;string&gt;                     --Name of the Postgres server resource group
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>postgresServerName: &lt;string&gt;                            --Name of the environment specific postgres server
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>keyVaultResourceGroupName: &lt;string&gt;                     --Name of the keyvault resource group
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>keyVaultName: &lt;string&gt;                                  --Name of the environment specific keyVaultName
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>teamMIPrefix: &lt;string&gt;                                  --The prefix used for the ManageIdentity/UserAssignedIdentity resource name
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>serviceName: &lt;string&gt;                                   --Service name. Suffix used for ManageIdentity/UserAssignedIdentity resource name
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>teamResourceGroupName: &lt;string&gt;                         --Team ResourceGroup Name where team resources are created
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>virtualNetworkResourceGroupName: &lt;string&gt;               --Virtual Network resource group
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a>virtualNetworkName: &lt;string&gt;                            --Virtual Network name
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>storageAccountPrefix: &lt;string&gt;                          --The prefix used for the storage account resource name
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a>privateEndpointSubnetName: &lt;string&gt;                     --The name of the subnet for the service&#39;s private endpoint
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a>privateEndpointPrefix: &lt;string&gt;                         --The prefix used for the private endpoint resource name
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>azrMSTPrivateLinkDNSUKSouthResourceGroupName: &lt;string&gt;  --NOT USED. We need to discuss this further
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a>azrMSTPrivateLinkDNSUKWestResourceGroupName: &lt;string&gt;   --NOT USED. We need to discuss this further
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a>azrMSTPrivateLinkDNSSubscriptionID: &lt;string&gt;            --NOT USED. We need to discuss this further
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a>commonTags:
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a>  environment: &lt;string&gt;
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a>  serviceCode: &lt;string&gt;
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a>  serviceName: &lt;string&gt;
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a>  serviceType: &lt;string&gt; (Shared or Dedicated)
+<a id="__codelineno-4-29" name="__codelineno-4-29"></a>  kubernetes_cluster: &lt;string&gt;
+<a id="__codelineno-4-30" name="__codelineno-4-30"></a>  kubernetes_namespace: &lt;string&gt;
+<a id="__codelineno-4-31" name="__codelineno-4-31"></a>  kubernetes_label_serviceCode: &lt;string&gt;
+</code></pre></div></td></tr></table></div>
+<h3 id="namespace-queue">NameSpace Queue<a class="headerlink" href="#namespace-queue" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Template file: <code>_namespace-queue.yaml</code></li>
+<li>Template name: <code>adp-aso-helm-library.namespace-queue</code></li>
+</ul>
+<p>An ASO <code>NamespacesQueue</code> object to create a Microsoft.ServiceBus/namespaces/queues resource.</p>
+<p>A basic usage of this object template would involve the creation of <code>templates/namespace-queue.yaml</code> in the parent Helm chart (e.g. <code>adp-microservice</code>) containing:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>{{- include &quot;adp-aso-helm-library.namespace-queue&quot; . -}}
+</code></pre></div></td></tr></table></div>
+<h4 id="required-values">Required values<a class="headerlink" href="#required-values" title="Permanent link">&para;</a></h4>
+<p>The following values need to be set in the parent chart's <code>values.yaml</code> in addition to the globally required values <a href="#all-template-required-values">listed above</a>.</p>
+<p>Note that <code>namespaceQueues</code> is an array of objects that can be used to create more than one queue.</p>
+<p>Please note that the queue name is prefixed with the <code>namespace</code> internally. 
+For example, if the namespace name is "adp-demo" and you have provided the queue name as "queue1", then in the service bus, it creates a queue with the <code>adp-demo-queue1</code> name.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>namespaceQueues:      
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>  - name: &lt;string&gt;     
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>  - name: &lt;string&gt;
+</code></pre></div></td></tr></table></div>
+<h4 id="optional-values">Optional values<a class="headerlink" href="#optional-values" title="Permanent link">&para;</a></h4>
+<p>The following values can optionally be set in the parent chart's <code>values.yaml</code> to set the other properties for servicebus queues:</p>
+<p><code>owner</code> property is used to control the ownership of the queue. The default value is <code>yes</code> and you don't need to provide it if you are creating and owning the queue.
+If you are creating only role assignments for the queue you do not own, then you should explicitly set the <code>owner</code> flag to <code>no</code> so that it will only create the role assignments on the existing queue.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>namespaceQueues:
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>  - name: &lt;string&gt;
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>    owner: &lt;string&gt;                                    --Default yes    (Accepted values = yes, no)
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>    deadLetteringOnMessageExpiration: &lt;bool&gt;           --Default false
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>    defaultMessageTimeToLive: &lt;string&gt;                 --Default P14D
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>    duplicateDetectionHistoryTimeWindow: &lt;string&gt;      --Default PT10M
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>    enableBatchedOperations: &lt;bool&gt;                    --Default true
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>    enableExpress: &lt;bool&gt;                              --Default false
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a>    enablePartitioning: &lt;bool&gt;                         --Default false
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>    lockDuration: &lt;string&gt;                             --Default PT1M
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a>    maxDeliveryCount: &lt;int&gt;                            --Default 10
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a>    maxMessageSizeInKilobytes: &lt;int&gt;                   --Default 1024
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a>    maxSizeInMegabytes: &lt;int&gt;                          --Default 1024
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a>    requiresDuplicateDetection: &lt;bool&gt;                 --Default false
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a>    requiresSession: &lt;bool&gt;                            --Default false
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a>    roleAssignments:
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a>      - roleName: &lt;string&gt;                             --&lt;RoleName. for e.g QueueSender&gt;
+</code></pre></div></td></tr></table></div>
+<h4 id="namespace-queue-roleassignments">NameSpace Queue: RoleAssignments<a class="headerlink" href="#namespace-queue-roleassignments" title="Permanent link">&para;</a></h4>
+<p>This template also optionally allows you to create <code>Role Assignments</code> by providing <code>roleAssignments</code> properties in the namespaceQueues object.</p>
+<p>Below are the minimum values that are required to be set in the parent chart's values.yaml to create a <code>roleAssignments</code>.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>namespaceQueues:      
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>  - name: &lt;string&gt;     
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>    roleAssignments:                                    &lt;Array of Object&gt; 
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>      - roleName: &lt;string&gt;                              &lt;RoleName. for e.g QueueSender&gt;  (Allowed values QueueSender&#39;, &#39;QueueReceiver&#39;)
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>      - roleName: &lt;string&gt; 
+</code></pre></div></td></tr></table></div>
+<p>If you are creating only role assignments for the queue you do not own, then you should explicitly set the <code>owner</code> flag to <code>no</code> so that it will only create the role assignments on the existing queue. </p>
+<h4 id="usage-examples">Usage examples<a class="headerlink" href="#usage-examples" title="Permanent link">&para;</a></h4>
+<p>The following section provides usage examples for the Namespace Queues template.</p>
+<h5 id="example-1-servicea-in-teama-creates-queue-with-2-role-assignments">Example 1 : ServiceA in TeamA creates queue with 2 role assignments<a class="headerlink" href="#example-1-servicea-in-teama-creates-queue-with-2-role-assignments" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>namespaceQueues:
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>  name: claim
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>  roleAssignments:  
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>    - roleName: QueueSender
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>    - roleName: QueueReceiver   
+</code></pre></div></td></tr></table></div>
+<h5 id="example-2-serviceb-in-teama-needs-to-receive-messages-from-existing-claim-queue-note-that-owner-is-set-to-no">Example 2 : ServiceB in TeamA needs to receive messages from existing <code>claim</code> queue. Note that <code>owner</code> is set to <code>no</code>.<a class="headerlink" href="#example-2-serviceb-in-teama-needs-to-receive-messages-from-existing-claim-queue-note-that-owner-is-set-to-no" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>namespaceQueues:
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>  name: claim
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>  owner: &#39;no&#39;
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>  roleAssignments:  
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>    - roleName: QueueReceiver     
+</code></pre></div></td></tr></table></div>
+<h3 id="namespace-topic">NameSpace Topic<a class="headerlink" href="#namespace-topic" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Template file: <code>_namespace-topic.yaml</code></li>
+<li>Template name: <code>adp-aso-helm-library.namespace-topic</code></li>
+</ul>
+<p>An ASO <code>NamespacesTopic</code> object to create a Microsoft.ServiceBus/namespaces/topics resource.</p>
+<p>A basic usage of this object template would involve the creation of <code>templates/namespace-topic.yaml</code> in the parent Helm chart (e.g. <code>adp-microservice</code>) containing:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>{{- include &quot;adp-aso-helm-library.namespace-topic&quot; . -}}
+</code></pre></div></td></tr></table></div>
+<h4 id="required-values_1">Required values<a class="headerlink" href="#required-values_1" title="Permanent link">&para;</a></h4>
+<p>The following values need to be set in the parent chart's <code>values.yaml</code> in addition to the globally required values <a href="#all-template-required-values">listed above</a>.</p>
+<p>Note that <code>namespaceTopics</code> is an array of objects that can be used to create more than one topic.</p>
+<p>Please note that the topic name is prefixed with the <code>namespace</code> internally. 
+For example, if the namespace name is "adp-demo" and you have provided the topic name as "topic1," then in the service bus, it creates a topic with the "adp-demo-topic1" name.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>namespaceTopics:          &lt;Array of Object&gt;
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>  - name: &lt;string&gt;     
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>  - name: &lt;string&gt;
+</code></pre></div></td></tr></table></div>
+<h4 id="optional-values_1">Optional values<a class="headerlink" href="#optional-values_1" title="Permanent link">&para;</a></h4>
+<p>The following values can optionally be set in the parent chart's <code>values.yaml</code> to set the other properties for <code>namespaceTopics</code>:</p>
+<p><code>owner</code> property is used to control the ownership of the topic. The default value is <code>yes</code> and you don't need to provide it if you are creating and owning the topic.
+If you are only creating role assignments for the topic you do not own, then you should explicitly set the <code>owner</code> flag to <code>no</code> so that it will only create the role assignments on the existing topic.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>namespaceTopics:
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>  - name: &lt;string&gt;
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>    owner: &lt;string&gt;                                    --Default yes     (Accepted values = yes, no)
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>    defaultMessageTimeToLive: &lt;string&gt;                 --Default P14D
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>    duplicateDetectionHistoryTimeWindow: &lt;string&gt;      --Default PT10M
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>    enableBatchedOperations: &lt;bool&gt;                    --Default true
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>    enableExpress: &lt;bool&gt;                              --Default false
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a>    enablePartitioning: &lt;bool&gt;                         --Default false
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a>    maxMessageSizeInKilobytes: &lt;int&gt;                   --Default 1024
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a>    maxSizeInMegabytes: &lt;int&gt;                          --Default 1024
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a>    requiresDuplicateDetection: &lt;bool&gt;                 --Default false
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a>    supportOrdering: &lt;bool&gt;                            --Default true
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a>    roleAssignments:
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a>      - roleName: &lt;string&gt;                             --&lt;RoleName. for e.g TopicSender&gt;
+</code></pre></div></td></tr></table></div>
+<h4 id="namespace-topic-roleassignments">NameSpace Topic: RoleAssignments<a class="headerlink" href="#namespace-topic-roleassignments" title="Permanent link">&para;</a></h4>
+<p>This template also optionally allows you to create <code>Role Assignments</code> by providing <code>roleAssignments</code> properties in the namespaceTopics object.</p>
+<p>Below are the minimum values that are required to be set in the parent chart's values.yaml to create a <code>roleAssignments</code>.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>namespaceTopics:      
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>  - name: &lt;string&gt;     
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>    roleAssignments:                                    &lt;Array of Object&gt; 
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>      - roleName: &lt;string&gt;                              &lt;RoleName. for e.g TopicSender&gt;  (Allowed values TopicSender&#39;, &#39;TopicReceiver&#39;)
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>      - roleName: &lt;string&gt; 
+</code></pre></div></td></tr></table></div>
+<p>If you are creating only role assignments for the Topic you do not own, then you should explicitly set the <code>owner</code> flag to <code>no</code> so that it will only create the role assignments on the existing Topic (See Example 2 in Usage examples section). </p>
+<h4 id="namespace-topic-subscriptions-subscriptionrules">NameSpace Topic: Subscriptions, SubscriptionRules<a class="headerlink" href="#namespace-topic-subscriptions-subscriptionrules" title="Permanent link">&para;</a></h4>
+<p>This template also optionally allows you to create <code>Topic Subscriptions</code> and <code>Topic Subscriptions Rules</code> for a given topic by providing Subscriptions and SubscriptionRules properties in the topic object.</p>
+<p>Below are the minimum values that are required to be set in the parent chart's <code>values.yaml</code> to create a <code>NamespacesTopic</code>, <code>NamespacesTopicsSubscription</code> and <code>NamespacesTopicsSubscriptionsRule</code></p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span>
+<span class="normal"><a href="#__codelineno-15-7">7</a></span>
+<span class="normal"><a href="#__codelineno-15-8">8</a></span>
+<span class="normal"><a href="#__codelineno-15-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>namespaceTopics:      
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>  - name: &lt;string&gt;     
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>    topicSubscriptions:                     &lt;Array of Object&gt;  refer &quot;Optional values for `topicSubscriptions`&quot; section for topicSubscriptions optional properties
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>      - name: &lt;string&gt;
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>        topicSubscriptionRules:             &lt;Array of Object&gt;  refer &quot;Optional values for `topicSubscriptionRules`&quot; section for topicSubscriptionRules properties
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>        - name: &lt;string&gt;                    
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>          filterType: &lt;string&gt;              Accepted values : &#39;CorrelationFilter&#39; or &#39;SqlFilter&#39;
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a>          correlationFilter: &lt;Object&gt;       refer &quot;Optional values for `topicSubscriptionRules`&quot; section for correlationFilter properties
+<a id="__codelineno-15-9" name="__codelineno-15-9"></a>          sqlFilter: &lt;Object&gt;               refer &quot;Optional values for `topicSubscriptionRules`&quot; section for sqlFilter properties
+</code></pre></div></td></tr></table></div>
+<p>To create <code>topicSubscriptions</code> inside already existing topics, set the property <code>owner</code> to <code>no</code>. By default <code>owner</code> is set to <code>yes</code> which creates the topic name defined in values (See Example 4 in Usage examples section).</p>
+<h4 id="optional-values-for-topicsubscriptions">Optional values for <code>topicSubscriptions</code><a class="headerlink" href="#optional-values-for-topicsubscriptions" title="Permanent link">&para;</a></h4>
+<p>The following values can optionally be set in the parent chart's <code>values.yaml</code> to set the other properties for <code>topicSubscriptions</code>:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span>
+<span class="normal"><a href="#__codelineno-16-11">11</a></span>
+<span class="normal"><a href="#__codelineno-16-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>topicSubscriptions:
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>  - name: &lt;string&gt;
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a>    deadLetteringOnFilterEvaluationExceptions: &lt;bool&gt;       --Default false
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>    deadLetteringOnMessageExpiration: &lt;bool&gt;                --Default false
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>    defaultMessageTimeToLive: &lt;string&gt;                      --Default P14D
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a>    duplicateDetectionHistoryTimeWindow: &lt;string&gt;           --Default P10M
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a>    enableBatchedOperations: &lt;bool&gt;                         --Default true
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a>    forwardTo: &lt;string&gt;                                                 
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a>    isClientAffine: &lt;bool&gt;                                  --Default false
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a>    lockDuration: &lt;string&gt;                                  --Default PT1M
+<a id="__codelineno-16-11" name="__codelineno-16-11"></a>    maxDeliveryCount: &lt;int&gt;                                 --Default 10
+<a id="__codelineno-16-12" name="__codelineno-16-12"></a>    requiresSession: &lt;bool&gt;                                 --Default false
+</code></pre></div></td></tr></table></div>
+<h4 id="optional-values-for-topicsubscriptionrules">Optional values for <code>topicSubscriptionRules</code><a class="headerlink" href="#optional-values-for-topicsubscriptionrules" title="Permanent link">&para;</a></h4>
+<p>The following values can optionally be set in the parent chart's <code>values.yaml</code> to set the other properties for <code>topicSubscriptionRules</code>:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span>
+<span class="normal"><a href="#__codelineno-17-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>topicSubscriptionRules:
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>  - name: &lt;string&gt;
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>    correlationFilter:
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>      contentType: &lt;string&gt;
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a>      correlationId: &lt;string&gt;
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>      label: &lt;string&gt;
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a>      messageId: &lt;string&gt;
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a>      replyTo: &lt;string&gt;                                     
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a>      replyToSessionId: &lt;string&gt;
+<a id="__codelineno-17-10" name="__codelineno-17-10"></a>      sessionId: &lt;string&gt; 
+<a id="__codelineno-17-11" name="__codelineno-17-11"></a>      to: &lt;string&gt; 
+<a id="__codelineno-17-12" name="__codelineno-17-12"></a>    sqlFilter:
+<a id="__codelineno-17-13" name="__codelineno-17-13"></a>      sqlExpression: &lt;string&gt;  
+</code></pre></div></td></tr></table></div>
+<h4 id="usage-examples_1">Usage examples<a class="headerlink" href="#usage-examples_1" title="Permanent link">&para;</a></h4>
+<p>The following section provides usage examples for the Namespace Topic template.</p>
+<h5 id="example-1-servicea-in-teama-creates-topic-with-1-role-assignment">Example 1 : ServiceA in TeamA creates Topic with 1 role assignment<a class="headerlink" href="#example-1-servicea-in-teama-creates-topic-with-1-role-assignment" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>namespaceTopics:
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>  name: claim-notify
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>  roleAssignments:  
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a>    - roleName: TopicSender 
+</code></pre></div></td></tr></table></div>
+<h5 id="example-2-serviceb-in-teama-needs-to-receive-messages-from-existing-claim-notify-topic-note-that-owner-is-set-to-no">Example 2 : ServiceB in TeamA needs to receive messages from existing <code>claim-notify</code> Topic. Note that <code>owner</code> is set to <code>no</code>.<a class="headerlink" href="#example-2-serviceb-in-teama-needs-to-receive-messages-from-existing-claim-notify-topic-note-that-owner-is-set-to-no" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span>
+<span class="normal"><a href="#__codelineno-19-4">4</a></span>
+<span class="normal"><a href="#__codelineno-19-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>namespaceTopics:
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>  name: claim-notify
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>  owner: &#39;no&#39;
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a>  roleAssignments:  
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a>    - roleName: TopicReceiver     
+</code></pre></div></td></tr></table></div>
+<h5 id="example-3-servicea-in-teama-creates-topic-with-1-role-assignment-topic-subscription-and-topic-subscription-rule">Example 3 : ServiceA in TeamA creates Topic with 1 role assignment, Topic Subscription and Topic Subscription Rule.<a class="headerlink" href="#example-3-servicea-in-teama-creates-topic-with-1-role-assignment-topic-subscription-and-topic-subscription-rule" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span>
+<span class="normal"><a href="#__codelineno-20-11">11</a></span>
+<span class="normal"><a href="#__codelineno-20-12">12</a></span>
+<span class="normal"><a href="#__codelineno-20-13">13</a></span>
+<span class="normal"><a href="#__codelineno-20-14">14</a></span>
+<span class="normal"><a href="#__codelineno-20-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>namespaceTopics:
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>  name: claim-notify
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>  roleAssignments:  
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a>    - roleName: TopicSender 
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a>  topicSubscriptions:
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a>    - name: claim-notify-subscription-01
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a>      topicSubscriptionRules:
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a>        - name: claim-notify-subscription-rule-01
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a>          filterType: SqlFilter
+<a id="__codelineno-20-10" name="__codelineno-20-10"></a>          sqlFilter:
+<a id="__codelineno-20-11" name="__codelineno-20-11"></a>            sqlExpression: &quot;3=3&quot;   
+<a id="__codelineno-20-12" name="__codelineno-20-12"></a>        - name: claim-notify-subscription-rule-02
+<a id="__codelineno-20-13" name="__codelineno-20-13"></a>          filterType: CorrelationFilter
+<a id="__codelineno-20-14" name="__codelineno-20-14"></a>          sqlFilter:
+<a id="__codelineno-20-15" name="__codelineno-20-15"></a>            contentType: &quot;testvalue&quot;      
+</code></pre></div></td></tr></table></div>
+<h5 id="example-4-serviceb-in-teama-creates-topic-subscription-in-existing-topic">Example 4: ServiceB in TeamA creates Topic Subscription in existing Topic.<a class="headerlink" href="#example-4-serviceb-in-teama-creates-topic-subscription-in-existing-topic" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span>
+<span class="normal"><a href="#__codelineno-21-3">3</a></span>
+<span class="normal"><a href="#__codelineno-21-4">4</a></span>
+<span class="normal"><a href="#__codelineno-21-5">5</a></span>
+<span class="normal"><a href="#__codelineno-21-6">6</a></span>
+<span class="normal"><a href="#__codelineno-21-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>namespaceTopics:
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>  name: claim-notify
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a>  owner: &quot;no&quot;
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a>  roleAssignments:  
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a>    - roleName: TopicReceiver
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a>  topicSubscriptions:
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a>    - name: claim-notify-subscription-03   
+</code></pre></div></td></tr></table></div>
+<h3 id="database-for-postgres-flexible-server-template">Database for Postgres Flexible server template<a class="headerlink" href="#database-for-postgres-flexible-server-template" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Template file: <code>_flexible-servers-db.yaml</code></li>
+<li>Template name: <code>adp-aso-helm-library.flexible-servers-db</code></li>
+</ul>
+<p>An ASO <code>FlexibleServersDatabase</code> object.</p>
+<p>A basic usage of this object template would involve the creation of <code>templates/flexible-servers-db.yaml</code> in the parent Helm chart (e.g. <code>adp-microservice</code>) containing:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span>
+<span class="normal"><a href="#__codelineno-22-3">3</a></span>
+<span class="normal"><a href="#__codelineno-22-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>{{- include &quot;adp-aso-helm-library.flexible-servers-db&quot; (list . &quot;adp-microservice.postgres-flexible-db&quot;) -}}
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>{{- define &quot;adp-microservice.postgres-flexible-db&quot; -}}
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a># Microservice specific configuration in here
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a>{{- end -}}
+</code></pre></div></td></tr></table></div>
+<h4 id="required-values_2">Required values<a class="headerlink" href="#required-values_2" title="Permanent link">&para;</a></h4>
+<p>The following values need to be set in the parent chart's <code>values.yaml</code> in addition to the globally required values <a href="#all-template-required-values">listed above</a>:
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">4</a></span>
+<span class="normal"><a href="#__codelineno-23-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a>postgres:
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a>  db:
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a>    name: &lt;string&gt; 
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a>    charset: &lt;string&gt;  
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a>    collation: &lt;string&gt; 
+</code></pre></div></td></tr></table></div>
+Please note that the postgres DB name is prefixed with <code>namespace</code> internally. For example, if the namespace name is "adp-microservice" and you have provided the DB name as "demo-db," then in the postgres server, it creates a database with the name "adp-microservice-demo-db".</p>
+<h4 id="usage-examples_2">Usage examples<a class="headerlink" href="#usage-examples_2" title="Permanent link">&para;</a></h4>
+<p>The following section provides usage examples for the Flexible-Servers-Db template.</p>
+<h5 id="example-1-servicea-in-teama-creates-payment-database">Example 1 : ServiceA in TeamA creates <code>payment</code> database<a class="headerlink" href="#example-1-servicea-in-teama-creates-payment-database" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span>
+<span class="normal"><a href="#__codelineno-24-3">3</a></span>
+<span class="normal"><a href="#__codelineno-24-4">4</a></span>
+<span class="normal"><a href="#__codelineno-24-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a>postgres:
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a>  db:
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a>    name: payment 
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a>    charset: UTF8
+<a id="__codelineno-24-5" name="__codelineno-24-5"></a>    collation: en_US.utf8
+</code></pre></div></td></tr></table></div>
+<h3 id="userassignedidentity">UserAssignedIdentity<a class="headerlink" href="#userassignedidentity" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Template file: <code>_userassignedidentity.yaml</code></li>
+<li>Template name: <code>adp-aso-helm-library.userassignedidentity</code></li>
+</ul>
+<p>An ASO <code>UserAssignedIdentity</code> object to create a Microsoft.ManagedIdentity/userAssignedIdentities resource.</p>
+<p>A basic usage of this object template would involve the creation of <code>templates/userassignedidentity.yaml</code> in the parent Helm chart (e.g. <code>adp-microservice</code>) containing:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>{{- include &quot;adp-aso-helm-library.userassignedidentity&quot; . -}}
+</code></pre></div></td></tr></table></div>
+<p>This template uses the below values, whose values are set using platform variables in the <code>adp-flux-services</code> repository as a part of the service's ASO helmrelease value configuration, and you don't need to set them explicitly in the values.yaml file.</p>
+<ul>
+<li>teamMIPrefix</li>
+<li>serviceName</li>
+<li>teamResourceGroupName</li>
+<li>clusterOIDCIssuerUrl</li>
+</ul>
+<p>UserAssignedIdentity Name is derived internally, and it is set to = <code>{TEAM_MI_PREFIX}-{SERVICE_NAME}</code></p>
+<p>For e.g. In SND1 if the <code>TEAM_MI_PREFIX</code> value is set to "sndadpinfmid1401" and <code>SERVICE_NAME</code> value is set to "adp-demo-service", then <code>UserAssignedIdentity</code> value will be : "sndadpinfmid1401-adp-demo-service".</p>
+<h4 id="optional-values_2">Optional values<a class="headerlink" href="#optional-values_2" title="Permanent link">&para;</a></h4>
+<p>The following values can optionally be set in the parent chart's <code>values.yaml</code> to set the other properties for servicebus queues:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<span class="normal"><a href="#__codelineno-26-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>userAssignedIdentity:      
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a>  location: &lt;string&gt;
+</code></pre></div></td></tr></table></div>
+<p>This template also optionally allows you to create <code>Federated credentials</code> for a given User Assigned Identity by providing <code>federatedCreds</code> properties in the userAssignedIdentity object.</p>
+<p>Below are the minimum values that are required to be set in the parent chart's values.yaml to create a <code>userAssignedIdentity</code> and <code>federatedCreds</code>.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span>
+<span class="normal"><a href="#__codelineno-27-3">3</a></span>
+<span class="normal"><a href="#__codelineno-27-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>userAssignedIdentity:     
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a>    federatedCreds:                      &lt;Array of Object&gt; 
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a>      - namespace: &lt;string&gt;                    
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a>        serviceAccountName: &lt;string&gt;     
+</code></pre></div></td></tr></table></div>
+<h4 id="usage-examples_3">Usage examples<a class="headerlink" href="#usage-examples_3" title="Permanent link">&para;</a></h4>
+<p>The following section provides usage examples for the UserAssignedIdentity template.</p>
+<h5 id="example-1-the-below-example-will-create-userassignedidentity-with-one-federated-credential">Example 1 : The below example will create userAssignedIdentity with one federated credential.<a class="headerlink" href="#example-1-the-below-example-will-create-userassignedidentity-with-one-federated-credential" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>userAssignedIdentity:
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a>  federatedCreds: 
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a>    - namespace: ffc-demo
+<a id="__codelineno-28-4" name="__codelineno-28-4"></a>      serviceAccountName: ffc-demo 
+</code></pre></div></td></tr></table></div>
+<h3 id="storage-account">Storage Account<a class="headerlink" href="#storage-account" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Template file: <code>_storage-account.yaml</code></li>
+<li>Template name: <code>adp-aso-helm-library.storage-account.yaml</code></li>
+</ul>
+<blockquote>
+<p><strong>Version 2.0.0 and above</strong></p>
+<p>Starting from version 2.0.1, the Storage Account has been enhanced with role assignments. These data role assignments are now scoped at the storage account level, introducing two new data roles: DataWriter and DataReader.</p>
+<p>The DataWriter role grants applications the ability to both read and write data in the blob container, tables, and files. Conversely, the DataReader role provides applications with read-only access to data in the blob container, tables, and files.</p>
+</blockquote>
+<p>An ASO <code>StorageAccount</code> object to create a Microsoft.Storage/storageAccounts resource and optionally sub resources Blob Containers and Tables.</p>
+<table>
+<thead>
+<tr>
+<th align="left"><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4dd.svg" title=":memo:" /> By default, private endpoints are always enabled on storage accounts and <code>publicNetworkAccess</code> is disabled. Optionally, you can also configure <code>ipRules</code> in scenarios where you want to limit access to your storage account to requests originating from specified IP addresses.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left"><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4dd.svg" title=":memo:" /> Please be aware that this template only includes A records in the central DNS zone for the Dev, Tst, Pre, and Prd environments. For Sandpit environments snd1, snd2, and snd3, it currently only generates a private endpoint without adding an A record to the DNS zone. You will need to separately add this entry via PowerShell script.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>With this template, you can create the below resources.
+  - Storage Accounts and RoleAssignments
+  - Blob 
+  - Tables
+  - FileShare</p>
+<p>A basic usage of this object template would involve the creation of <code>templates/storage-account.yaml</code> in the parent Helm chart (e.g. <code>adp-microservice</code>) containing:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a>{{- include &quot;adp-aso-helm-library.storage-account&quot; . -}}
+</code></pre></div></td></tr></table></div>
+<h4 id="default-values-for-storage-account">Default values for Storage account<a class="headerlink" href="#default-values-for-storage-account" title="Permanent link">&para;</a></h4>
+<p>Below are the default values used by the the storage account template internally, and they cannot be overridden by the user from the <code>values.yaml</code> file.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span>
+<span class="normal"><a href="#__codelineno-30-3">3</a></span>
+<span class="normal"><a href="#__codelineno-30-4">4</a></span>
+<span class="normal"><a href="#__codelineno-30-5">5</a></span>
+<span class="normal"><a href="#__codelineno-30-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a>kind: &quot;StorageV2&quot;             -- The type of storage account will always be &quot;StorageV2&quot;
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a>dnsEndpointType: &quot;Standard&quot;   -- The type of endpoint
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a>minimumTlsVersion: &quot;TLS1_2&quot;
+<a id="__codelineno-30-4" name="__codelineno-30-4"></a>allowBlobPublicAccess: &quot;false&quot;
+<a id="__codelineno-30-5" name="__codelineno-30-5"></a>sku: &quot;Standard_LRS&quot;           -- This is the sku for Sandpit environments (snd1, snd2, snd3)
+<a id="__codelineno-30-6" name="__codelineno-30-6"></a>sku: &quot;Standard_RAGRS&quot;         -- This is the sku for production environments (dev, test, pre, prd)
+</code></pre></div></td></tr></table></div>
+<h4 id="required-values-only-storage-account">Required values (Only Storage Account)<a class="headerlink" href="#required-values-only-storage-account" title="Permanent link">&para;</a></h4>
+<p>The following values need to be set in the parent chart's <code>values.yaml</code> in addition to the globally required values <a href="#all-template-required-values">listed above</a>.</p>
+<p>Note that <code>storageAccounts</code> is an array of objects that can be used to create more than one Storage Accounts.</p>
+<p>Please note that the storage account name must be unique across Azure.
+storage account name is internally prefixed with the <code>storageAccountPrefix</code>.<br />
+For instance, in the Dev environment, the storageAccountPrefix is configured as <code>devadpinfst2401</code>. If you input "claim" as the storage account name, the final storage account name will be <code>devadpinfst2401claim</code>.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span>
+<span class="normal"><a href="#__codelineno-31-4">4</a></span>
+<span class="normal"><a href="#__codelineno-31-5">5</a></span>
+<span class="normal"><a href="#__codelineno-31-6">6</a></span>
+<span class="normal"><a href="#__codelineno-31-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a>storageAccounts:          &lt;Array of Object&gt;
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a>  - name: &lt;string&gt;        --Storage account name. Name should be Lowercase letters and numbers and Maximum character limit is `9`
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a>    roleAssignments:
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a>       roleName: &lt;string&gt;    --RoleAssignment Name (Accepted values = &quot;DataWriter&quot;, &quot;DataReader&quot;)
+<a id="__codelineno-31-5" name="__codelineno-31-5"></a>  - name: &lt;string&gt;
+<a id="__codelineno-31-6" name="__codelineno-31-6"></a>    roleAssignments:
+<a id="__codelineno-31-7" name="__codelineno-31-7"></a>       roleName: &lt;string&gt;    --RoleAssignment Name (Accepted values = &quot;DataWriter&quot;, &quot;DataReader&quot;)
+</code></pre></div></td></tr></table></div>
+<h4 id="required-values-storage-account-with-blobcontainers-tables-and-fileshare">Required values (Storage Account with BlobContainers, Tables and FileShare)<a class="headerlink" href="#required-values-storage-account-with-blobcontainers-tables-and-fileshare" title="Permanent link">&para;</a></h4>
+<p>The following values need to be set in the parent chart's <code>values.yaml</code> in addition to the globally required values <a href="#all-template-required-values">listed above</a>.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-32-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-32-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-32-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-32-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-32-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-32-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-32-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-32-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-32-10">10</a></span>
+<span class="normal"><a href="#__codelineno-32-11">11</a></span>
+<span class="normal"><a href="#__codelineno-32-12">12</a></span>
+<span class="normal"><a href="#__codelineno-32-13">13</a></span>
+<span class="normal"><a href="#__codelineno-32-14">14</a></span>
+<span class="normal"><a href="#__codelineno-32-15">15</a></span>
+<span class="normal"><a href="#__codelineno-32-16">16</a></span>
+<span class="normal"><a href="#__codelineno-32-17">17</a></span>
+<span class="normal"><a href="#__codelineno-32-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a>Version 2.0.0 and above
+<a id="__codelineno-32-2" name="__codelineno-32-2"></a>
+<a id="__codelineno-32-3" name="__codelineno-32-3"></a>storageAccounts:           &lt;Array of Object&gt;
+<a id="__codelineno-32-4" name="__codelineno-32-4"></a>  - name: &lt;string&gt;         --Storage account name. Name should be lowercase letters and numbers and Maximum character limit is `9`
+<a id="__codelineno-32-5" name="__codelineno-32-5"></a>    roleAssignments:
+<a id="__codelineno-32-6" name="__codelineno-32-6"></a>       roleName: &lt;string&gt;    --RoleAssignment Name (Accepted values = &quot;DataWriter&quot;, &quot;DataReader&quot;)
+<a id="__codelineno-32-7" name="__codelineno-32-7"></a>  - name: &lt;string&gt;
+<a id="__codelineno-32-8" name="__codelineno-32-8"></a>    blobContainers:
+<a id="__codelineno-32-9" name="__codelineno-32-9"></a>      - name: &lt;string&gt;            --Blob container name. Name should be lowercase and can contain only letters, numbers, and the hyphen/minus (-) character. Character limit: 3-63
+<a id="__codelineno-32-10" name="__codelineno-32-10"></a>      - name: &lt;string&gt;
+<a id="__codelineno-32-11" name="__codelineno-32-11"></a>    tables: 
+<a id="__codelineno-32-12" name="__codelineno-32-12"></a>      - name: &lt;string&gt;            --Table name. Name should be lowercase and may contain only alphanumeric characters. and Character limit: 3-63
+<a id="__codelineno-32-13" name="__codelineno-32-13"></a>      - name: &lt;string&gt;
+<a id="__codelineno-32-14" name="__codelineno-32-14"></a>    fileShares:
+<a id="__codelineno-32-15" name="__codelineno-32-15"></a>      - name: &lt;string&gt;            --File Share name. Name should be lowercase and may contain only alphanumeric characters. and Character limit: 3-63
+<a id="__codelineno-32-16" name="__codelineno-32-16"></a>      - name: &lt;string&gt;            --File Share name. Name should be lowercase and may contain only alphanumeric characters. and Character limit: 3-63
+<a id="__codelineno-32-17" name="__codelineno-32-17"></a>        accessTier: &lt;string&gt;      --Access Tier. Allowed values are TransactionOptimized, Hot, Cold. Default is TransactionOptimized
+<a id="__codelineno-32-18" name="__codelineno-32-18"></a>        shareQuota: &lt;int&gt;         --Storage Quota. Share Quota is defined in GiB. Default is 10
+</code></pre></div></td></tr></table></div>
+<h4 id="optional-values_3">Optional values<a class="headerlink" href="#optional-values_3" title="Permanent link">&para;</a></h4>
+<p>The following values can optionally be set in the parent chart's <code>values.yaml</code> to set the other properties for <code>storageAccounts</code>:</p>
+<p>For detailed description of each property <a href="https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/storageaccounts?pivots=deployment-language-bicep">see here</a></p>
+<p><code>owner</code> property is used to control the ownership of the storage account. The default value is <code>yes</code> and you don't need to provide it if you are creating and owning the storage account.
+If you are creating Blob containers or Tables on the existing storage account that you do not own, then you should explicitly set the <code>owner</code> flag to <code>no</code> so that it will only create Blob containers or Tables on the existing storage account.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-33-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-33-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-33-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-33-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-33-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-33-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-33-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-33-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-33-10">10</a></span>
+<span class="normal"><a href="#__codelineno-33-11">11</a></span>
+<span class="normal"><a href="#__codelineno-33-12">12</a></span>
+<span class="normal"><a href="#__codelineno-33-13">13</a></span>
+<span class="normal"><a href="#__codelineno-33-14">14</a></span>
+<span class="normal"><a href="#__codelineno-33-15">15</a></span>
+<span class="normal"><a href="#__codelineno-33-16">16</a></span>
+<span class="normal"><a href="#__codelineno-33-17">17</a></span>
+<span class="normal"><a href="#__codelineno-33-18">18</a></span>
+<span class="normal"><a href="#__codelineno-33-19">19</a></span>
+<span class="normal"><a href="#__codelineno-33-20">20</a></span>
+<span class="normal"><a href="#__codelineno-33-21">21</a></span>
+<span class="normal"><a href="#__codelineno-33-22">22</a></span>
+<span class="normal"><a href="#__codelineno-33-23">23</a></span>
+<span class="normal"><a href="#__codelineno-33-24">24</a></span>
+<span class="normal"><a href="#__codelineno-33-25">25</a></span>
+<span class="normal"><a href="#__codelineno-33-26">26</a></span>
+<span class="normal"><a href="#__codelineno-33-27">27</a></span>
+<span class="normal"><a href="#__codelineno-33-28">28</a></span>
+<span class="normal"><a href="#__codelineno-33-29">29</a></span>
+<span class="normal"><a href="#__codelineno-33-30">30</a></span>
+<span class="normal"><a href="#__codelineno-33-31">31</a></span>
+<span class="normal"><a href="#__codelineno-33-32">32</a></span>
+<span class="normal"><a href="#__codelineno-33-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a>storageAccounts:
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a>  - name: &lt;string&gt;
+<a id="__codelineno-33-3" name="__codelineno-33-3"></a>    owner: &lt;string&gt;                                     --Default &quot;yes&quot;     (Accepted values = &quot;yes&quot;, &quot;no&quot;)
+<a id="__codelineno-33-4" name="__codelineno-33-4"></a>    location: &lt;string&gt;                                  --Default &quot;uksouth&quot;
+<a id="__codelineno-33-5" name="__codelineno-33-5"></a>    accessTier: &lt;string&gt;                                --Default &quot;Hot&quot;     (Accepted values = &quot;Hot&quot;, &quot;Cool&quot;)
+<a id="__codelineno-33-6" name="__codelineno-33-6"></a>    allowCrossTenantReplication: &lt;bool&gt;                 --Default false
+<a id="__codelineno-33-7" name="__codelineno-33-7"></a>    allowSharedKeyAccess: &lt;bool&gt;                        --Default false
+<a id="__codelineno-33-8" name="__codelineno-33-8"></a>    defaultToOAuthAuthentication: &lt;string&gt;              --Default true    (Accepted values = &quot;true&quot;, &quot;false&quot;)
+<a id="__codelineno-33-9" name="__codelineno-33-9"></a>    networkAcls:
+<a id="__codelineno-33-10" name="__codelineno-33-10"></a>      ipRules: &lt;array&gt;                                    --Storage Firewall: Sets the IP ACL rules
+<a id="__codelineno-33-11" name="__codelineno-33-11"></a>    storageAccountsBlobService:                         --Confugure properties for the blob service
+<a id="__codelineno-33-12" name="__codelineno-33-12"></a>      changeFeed:                                         --The blob service properties for change feed events
+<a id="__codelineno-33-13" name="__codelineno-33-13"></a>        enabled: &lt;bool&gt;                                       --Default false
+<a id="__codelineno-33-14" name="__codelineno-33-14"></a>        retentionInDays: &lt;int&gt;                                --Applies when changeFeed.enabled is set to true
+<a id="__codelineno-33-15" name="__codelineno-33-15"></a>      containerDeleteRetentionPolicy:                     --The blob service properties for container soft delete
+<a id="__codelineno-33-16" name="__codelineno-33-16"></a>        enabled: &lt;bool&gt;                                       --Default true  
+<a id="__codelineno-33-17" name="__codelineno-33-17"></a>        days: &lt;int&gt;                                           --Applies when containerDeleteRetentionPolicy.enabled is set to true. Default is 7 days       
+<a id="__codelineno-33-18" name="__codelineno-33-18"></a>      deleteRetentionPolicy:                              --The blob service properties for blob soft delete
+<a id="__codelineno-33-19" name="__codelineno-33-19"></a>        enabled: &lt;bool&gt;                                       --Default true                          
+<a id="__codelineno-33-20" name="__codelineno-33-20"></a>        days: &lt;int&gt;                                           --Applies when deleteRetentionPolicy.enabled is set to true. Default is 7 days
+<a id="__codelineno-33-21" name="__codelineno-33-21"></a>        allowPermanentDelete: &lt;bool&gt;                          --Default false 
+<a id="__codelineno-33-22" name="__codelineno-33-22"></a>      isVersioningEnabled: &lt;bool&gt;                         --Default false. Versioning is enabled if set to true
+<a id="__codelineno-33-23" name="__codelineno-33-23"></a>      restorePolicy:                                      --The blob service properties for blob restore policy 
+<a id="__codelineno-33-24" name="__codelineno-33-24"></a>        enabled: &lt;bool&gt;                                       --Default false
+<a id="__codelineno-33-25" name="__codelineno-33-25"></a>        days: &lt;int&gt;                                           --Applies when restorePolicy.enabled is set to true
+<a id="__codelineno-33-26" name="__codelineno-33-26"></a>    storageAccountsFileService:                         --Confugure properties for the blob service
+<a id="__codelineno-33-27" name="__codelineno-33-27"></a>      deleteRetentionPolicy:                              --The blob service properties for blob soft delete
+<a id="__codelineno-33-28" name="__codelineno-33-28"></a>        enabled: &lt;bool&gt;                                       --Default true                          
+<a id="__codelineno-33-29" name="__codelineno-33-29"></a>        days: &lt;int&gt;                                           --Applies when deleteRetentionPolicy.enabled is set to true. Default is 7 days
+<a id="__codelineno-33-30" name="__codelineno-33-30"></a>    blobContainers:                                       --List of Blob containers
+<a id="__codelineno-33-31" name="__codelineno-33-31"></a>      - name: &lt;string&gt;                                        --Blob container name   
+<a id="__codelineno-33-32" name="__codelineno-33-32"></a>    tables:                                               --List of Tables
+<a id="__codelineno-33-33" name="__codelineno-33-33"></a>      - name: &lt;string&gt;                                        --Table name
+</code></pre></div></td></tr></table></div>
+<h4 id="usage-examples_4">Usage examples<a class="headerlink" href="#usage-examples_4" title="Permanent link">&para;</a></h4>
+<p>The following section provides usage examples for the storage account template.</p>
+<h5 id="example-1-create-2-storage-accounts">Example 1 : Create 2 storage accounts<a class="headerlink" href="#example-1-create-2-storage-accounts" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span>
+<span class="normal"><a href="#__codelineno-34-2">2</a></span>
+<span class="normal"><a href="#__codelineno-34-3">3</a></span>
+<span class="normal"><a href="#__codelineno-34-4">4</a></span>
+<span class="normal"><a href="#__codelineno-34-5">5</a></span>
+<span class="normal"><a href="#__codelineno-34-6">6</a></span>
+<span class="normal"><a href="#__codelineno-34-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a>storageAccounts:
+<a id="__codelineno-34-2" name="__codelineno-34-2"></a>  - name: storage01
+<a id="__codelineno-34-3" name="__codelineno-34-3"></a>    roleAssignments:
+<a id="__codelineno-34-4" name="__codelineno-34-4"></a>      - roleName: &#39;DataWriter&#39;
+<a id="__codelineno-34-5" name="__codelineno-34-5"></a>  - name: storage02
+<a id="__codelineno-34-6" name="__codelineno-34-6"></a>    roleAssignments:
+<a id="__codelineno-34-7" name="__codelineno-34-7"></a>      - roleName: &#39;DataReader&#39;
+</code></pre></div></td></tr></table></div>
+<h5 id="example-2-create-1-storage-account-using-large-parameter-set-and-storage-firewall">Example 2 : Create 1 storage account using large parameter set and storage firewall<a class="headerlink" href="#example-2-create-1-storage-account-using-large-parameter-set-and-storage-firewall" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-35-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-35-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-35-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-35-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-35-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-35-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-35-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-35-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-35-10">10</a></span>
+<span class="normal"><a href="#__codelineno-35-11">11</a></span>
+<span class="normal"><a href="#__codelineno-35-12">12</a></span>
+<span class="normal"><a href="#__codelineno-35-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a>storageAccounts:
+<a id="__codelineno-35-2" name="__codelineno-35-2"></a>  - name: storage01
+<a id="__codelineno-35-3" name="__codelineno-35-3"></a>    roleAssignments:
+<a id="__codelineno-35-4" name="__codelineno-35-4"></a>      - roleName: &#39;DataWriter&#39;
+<a id="__codelineno-35-5" name="__codelineno-35-5"></a>    accessTier: Hot
+<a id="__codelineno-35-6" name="__codelineno-35-6"></a>    location: uksouth
+<a id="__codelineno-35-7" name="__codelineno-35-7"></a>    allowCrossTenantReplication: false
+<a id="__codelineno-35-8" name="__codelineno-35-8"></a>    allowSharedKeyAccess: true
+<a id="__codelineno-35-9" name="__codelineno-35-9"></a>    defaultToOAuthAuthentication: &quot;false&quot;
+<a id="__codelineno-35-10" name="__codelineno-35-10"></a>    networkAcls:
+<a id="__codelineno-35-11" name="__codelineno-35-11"></a>      ipRules:
+<a id="__codelineno-35-12" name="__codelineno-35-12"></a>      - 82.13.86.001
+<a id="__codelineno-35-13" name="__codelineno-35-13"></a>      - 82.13.86.002
+</code></pre></div></td></tr></table></div>
+<h5 id="example-3-create-1-storage-account-and-configure-properties-for-the-storage-account-blobservice">Example 3 : Create 1 storage account and configure properties for the Storage Account BlobService<a class="headerlink" href="#example-3-create-1-storage-account-and-configure-properties-for-the-storage-account-blobservice" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-36-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-36-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-36-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-36-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-36-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-36-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-36-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-36-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-36-10">10</a></span>
+<span class="normal"><a href="#__codelineno-36-11">11</a></span>
+<span class="normal"><a href="#__codelineno-36-12">12</a></span>
+<span class="normal"><a href="#__codelineno-36-13">13</a></span>
+<span class="normal"><a href="#__codelineno-36-14">14</a></span>
+<span class="normal"><a href="#__codelineno-36-15">15</a></span>
+<span class="normal"><a href="#__codelineno-36-16">16</a></span>
+<span class="normal"><a href="#__codelineno-36-17">17</a></span>
+<span class="normal"><a href="#__codelineno-36-18">18</a></span>
+<span class="normal"><a href="#__codelineno-36-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a>storageAccounts:
+<a id="__codelineno-36-2" name="__codelineno-36-2"></a>  - name: storage01
+<a id="__codelineno-36-3" name="__codelineno-36-3"></a>    roleAssignments:
+<a id="__codelineno-36-4" name="__codelineno-36-4"></a>      - roleName: &#39;DataWriter&#39;
+<a id="__codelineno-36-5" name="__codelineno-36-5"></a>    storageAccountsBlobService:
+<a id="__codelineno-36-6" name="__codelineno-36-6"></a>      changeFeed:
+<a id="__codelineno-36-7" name="__codelineno-36-7"></a>        enabled: true
+<a id="__codelineno-36-8" name="__codelineno-36-8"></a>        retentionInDays: 14
+<a id="__codelineno-36-9" name="__codelineno-36-9"></a>      containerDeleteRetentionPolicy:
+<a id="__codelineno-36-10" name="__codelineno-36-10"></a>        days: 14
+<a id="__codelineno-36-11" name="__codelineno-36-11"></a>        enabled: true
+<a id="__codelineno-36-12" name="__codelineno-36-12"></a>      deleteRetentionPolicy:
+<a id="__codelineno-36-13" name="__codelineno-36-13"></a>        allowPermanentDelete: true
+<a id="__codelineno-36-14" name="__codelineno-36-14"></a>        days: 20
+<a id="__codelineno-36-15" name="__codelineno-36-15"></a>        enabled: false
+<a id="__codelineno-36-16" name="__codelineno-36-16"></a>      isVersioningEnabled: true
+<a id="__codelineno-36-17" name="__codelineno-36-17"></a>      restorePolicy:
+<a id="__codelineno-36-18" name="__codelineno-36-18"></a>        enabled: true
+<a id="__codelineno-36-19" name="__codelineno-36-19"></a>        days: 40
+</code></pre></div></td></tr></table></div>
+<h5 id="example-4-create-1-storage-account-with-2-blob-containers-and-1-table">Example 4 : Create 1 storage account with 2 blob containers and 1 table<a class="headerlink" href="#example-4-create-1-storage-account-with-2-blob-containers-and-1-table" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span>
+<span class="normal"><a href="#__codelineno-37-2">2</a></span>
+<span class="normal"><a href="#__codelineno-37-3">3</a></span>
+<span class="normal"><a href="#__codelineno-37-4">4</a></span>
+<span class="normal"><a href="#__codelineno-37-5">5</a></span>
+<span class="normal"><a href="#__codelineno-37-6">6</a></span>
+<span class="normal"><a href="#__codelineno-37-7">7</a></span>
+<span class="normal"><a href="#__codelineno-37-8">8</a></span>
+<span class="normal"><a href="#__codelineno-37-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a>storageAccounts:
+<a id="__codelineno-37-2" name="__codelineno-37-2"></a>  - name: storage01
+<a id="__codelineno-37-3" name="__codelineno-37-3"></a>    roleAssignments:
+<a id="__codelineno-37-4" name="__codelineno-37-4"></a>      - roleName: &#39;DataWriter&#39;
+<a id="__codelineno-37-5" name="__codelineno-37-5"></a>    blobContainers:  
+<a id="__codelineno-37-6" name="__codelineno-37-6"></a>      - name: container-01
+<a id="__codelineno-37-7" name="__codelineno-37-7"></a>      - name: container-02
+<a id="__codelineno-37-8" name="__codelineno-37-8"></a>    tables:  
+<a id="__codelineno-37-9" name="__codelineno-37-9"></a>      - name: table01
+</code></pre></div></td></tr></table></div>
+<h5 id="example-5-create-1-blob-containers-and-2-tables-for-the-existing-storage-account-in-your-team">Example 5 : Create 1 blob containers and 2 tables for the existing storage account in your team.<a class="headerlink" href="#example-5-create-1-blob-containers-and-2-tables-for-the-existing-storage-account-in-your-team" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-38-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-38-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-38-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-38-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-38-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-38-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-38-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-38-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-38-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a>storageAccounts:
+<a id="__codelineno-38-2" name="__codelineno-38-2"></a>  - name: storage01
+<a id="__codelineno-38-3" name="__codelineno-38-3"></a>    owner: &quot;No&quot;               --Note owner is set to &#39;No&#39; to indicate storage account already exists and is owned by a different service in the team
+<a id="__codelineno-38-4" name="__codelineno-38-4"></a>    roleAssignments:
+<a id="__codelineno-38-5" name="__codelineno-38-5"></a>      - roleName: &#39;DataWriter&#39;
+<a id="__codelineno-38-6" name="__codelineno-38-6"></a>    blobContainers:  
+<a id="__codelineno-38-7" name="__codelineno-38-7"></a>      - name: container-01
+<a id="__codelineno-38-8" name="__codelineno-38-8"></a>    tables:  
+<a id="__codelineno-38-9" name="__codelineno-38-9"></a>      - name: table01  
+<a id="__codelineno-38-10" name="__codelineno-38-10"></a>      - name: table02
+</code></pre></div></td></tr></table></div>
+<h5 id="example-6-create-1-storage-account-and-configure-properties-for-the-storage-account-fileservice">Example 6 : Create 1 storage account and configure properties for the Storage Account FileService<a class="headerlink" href="#example-6-create-1-storage-account-and-configure-properties-for-the-storage-account-fileservice" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1">1</a></span>
+<span class="normal"><a href="#__codelineno-39-2">2</a></span>
+<span class="normal"><a href="#__codelineno-39-3">3</a></span>
+<span class="normal"><a href="#__codelineno-39-4">4</a></span>
+<span class="normal"><a href="#__codelineno-39-5">5</a></span>
+<span class="normal"><a href="#__codelineno-39-6">6</a></span>
+<span class="normal"><a href="#__codelineno-39-7">7</a></span>
+<span class="normal"><a href="#__codelineno-39-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a>storageAccounts:
+<a id="__codelineno-39-2" name="__codelineno-39-2"></a>  - name: storage01
+<a id="__codelineno-39-3" name="__codelineno-39-3"></a>    roleAssignments:
+<a id="__codelineno-39-4" name="__codelineno-39-4"></a>      - roleName: &#39;DataWriter&#39;
+<a id="__codelineno-39-5" name="__codelineno-39-5"></a>    storageAccountsFileService:
+<a id="__codelineno-39-6" name="__codelineno-39-6"></a>      deleteRetentionPolicy:
+<a id="__codelineno-39-7" name="__codelineno-39-7"></a>        enabled: true
+<a id="__codelineno-39-8" name="__codelineno-39-8"></a>        days: 20
+</code></pre></div></td></tr></table></div>
+<h5 id="example-7-create-2-file-share-one-with-default-properties-other-one-with-specific-properties">Example 7 : Create 2 file share, one with default properties other one with specific properties<a class="headerlink" href="#example-7-create-2-file-share-one-with-default-properties-other-one-with-specific-properties" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-40-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-40-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-40-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-40-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-40-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-40-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-40-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-40-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-40-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a>storageAccounts:
+<a id="__codelineno-40-2" name="__codelineno-40-2"></a>  - name: storage01
+<a id="__codelineno-40-3" name="__codelineno-40-3"></a>    owner: &quot;No&quot;               --Note owner is set to &#39;No&#39; to indicate storage account already exists and is owned by a different service in the team
+<a id="__codelineno-40-4" name="__codelineno-40-4"></a>    roleAssignments:
+<a id="__codelineno-40-5" name="__codelineno-40-5"></a>      - roleName: &#39;DataWriter&#39;
+<a id="__codelineno-40-6" name="__codelineno-40-6"></a>    fileShares:
+<a id="__codelineno-40-7" name="__codelineno-40-7"></a>      - name: share-01
+<a id="__codelineno-40-8" name="__codelineno-40-8"></a>      - name: share-02
+<a id="__codelineno-40-9" name="__codelineno-40-9"></a>        accessTier: Hot
+<a id="__codelineno-40-10" name="__codelineno-40-10"></a>        shareQuota: 50
+</code></pre></div></td></tr></table></div>
+<h5 id="example-9-create-roleassignments-with-reader-access-for-existing-storage-account-in-the-team">Example 9 : Create roleassignments with reader access for existing storage account in the team<a class="headerlink" href="#example-9-create-roleassignments-with-reader-access-for-existing-storage-account-in-the-team" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1">1</a></span>
+<span class="normal"><a href="#__codelineno-41-2">2</a></span>
+<span class="normal"><a href="#__codelineno-41-3">3</a></span>
+<span class="normal"><a href="#__codelineno-41-4">4</a></span>
+<span class="normal"><a href="#__codelineno-41-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a>storageAccounts:
+<a id="__codelineno-41-2" name="__codelineno-41-2"></a>  - name: storage01
+<a id="__codelineno-41-3" name="__codelineno-41-3"></a>    owner: &#39;no&#39;
+<a id="__codelineno-41-4" name="__codelineno-41-4"></a>    roleAssignments:
+<a id="__codelineno-41-5" name="__codelineno-41-5"></a>      - roleName: &#39;DataReader&#39;
+</code></pre></div></td></tr></table></div>
+<h3 id="reference-table-for-resource-names-in-azure-and-kubernetes"><strong>Reference Table for Resource Names in Azure and Kubernetes</strong><a class="headerlink" href="#reference-table-for-resource-names-in-azure-and-kubernetes" title="Permanent link">&para;</a></h3>
+<p>The table below shows the Azure Service Operator (ASO) resource naming convention in Azure and Kubernetes: </p>
+<p>In the example below, the following platform values are used for demonstration purposes: 
+- namespace = 'ffc-demo'
+- serviceName = 'ffc-demo-web'
+- teamMIPrefix = 'sndadpinfmi1401'
+- storageAccountPrefix = 'sndadpinfst1401'
+- privateEndpointPrefix = 'sndadpinfpe1401'
+- postgresServerName = 'sndadpdbsps1401'
+- userassignedidentityName = 'sndadpinfmi1401-ffc-demo-web'</p>
+<p>And the following user input values are used for demonstration purposes: </p>
+<ul>
+<li>QueueName = 'queue01'</li>
+<li>TopicName = 'topic01'</li>
+<li>TopicSubName = 'topicSub01'</li>
+<li>DatabaseName = 'claim'</li>
+<li>StorageAccountName = 'demo'</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>Resource Name Format in <code>Azure</code></th>
+<th>Resource Name Example in <code>Azure</code></th>
+<th>Resource Name Format in <code>Kubernetes</code></th>
+<th>Resource Name Example in <code>Kubernetes</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NamespacesQueue</td>
+<td>{namespace}-{QueueName}</td>
+<td>ffc-demo-queue01</td>
+<td>{namespace}-{QueueName}</td>
+<td>ffc-demo-queue01</td>
+</tr>
+<tr>
+<td>Queue RoleAssignment</td>
+<td>NA</td>
+<td>NA</td>
+<td>{userassignedidentityName}-{QueueName}-{RoleName}-rbac-{index}</td>
+<td>sndadpinfmi1401-ffc-demo-web-ffc-demo-queue01-queuereceiver-rbac-0</td>
+</tr>
+<tr>
+<td>NamespacesTopic</td>
+<td>{namespace}-{TopicName}</td>
+<td>ffc-demo-topic01</td>
+<td>{namespace}-{TopicName}</td>
+<td>ffc-demo-topic01</td>
+</tr>
+<tr>
+<td>NamespacesTopicsSubscription</td>
+<td>{namespace}-{TopicSubName}</td>
+<td>ffc-demo-topicSub01</td>
+<td>{namespace}-{TopicName}-{TopicSubName}-subscription</td>
+<td>ffc-demo-topic01-topicsub01-subscription</td>
+</tr>
+<tr>
+<td>Topic RoleAssignment</td>
+<td>NA</td>
+<td>NA</td>
+<td>{userassignedidentityName}-{TopicName}-{RoleName}-rbac-{index}</td>
+<td>sndadpinfmi1401-ffc-demo-web-ffc-demo-topic01-topicreceiver-rbac-0</td>
+</tr>
+<tr>
+<td>Postgres Database</td>
+<td>{namespace}-{DatabaseName}</td>
+<td>ffc-demo-claim</td>
+<td>{postgresServerName}-{namespace}-{DatabaseName}</td>
+<td>sndadpdbsps1401-ffc-demo-claim</td>
+</tr>
+<tr>
+<td>Manage Idenitty</td>
+<td>{teamMIPrefix}-{serviceName}</td>
+<td>sndadpinfmi1401-ffc-demo-web</td>
+<td>{teamMIPrefix}-{serviceName}</td>
+<td>sndadpinfmi1401-ffc-demo-web</td>
+</tr>
+<tr>
+<td>StorageAccount</td>
+<td>{storageAccountPrefix}{StorageAccountName}</td>
+<td>sndadpinfst1401demo</td>
+<td>{serviceName}-{StorageAccountName}</td>
+<td>ffc-demo-web-sndadpinfst1401demo</td>
+</tr>
+<tr>
+<td>StorageAccountsBlobService</td>
+<td>default</td>
+<td>default</td>
+<td>{serviceName}-{StorageAccountName}-default</td>
+<td>ffc-demo-web-sndadpinfst1401demo-default</td>
+</tr>
+<tr>
+<td>StorageAccountsBlobServicesContainer</td>
+<td>{ContainerName}</td>
+<td>container-01</td>
+<td>{serviceName}-{StorageAccountName}-default-{ContainerName}</td>
+<td>ffc-demo-web-sndadpinfst1401demo-default-container-01</td>
+</tr>
+<tr>
+<td>StorageAccountsTableServicesTable</td>
+<td>{TableName}</td>
+<td>table01</td>
+<td>{serviceName}-{StorageAccountName}-default-{TableName}</td>
+<td>ffc-demo-web-sndadpinfst1401demo-default-table01</td>
+</tr>
+<tr>
+<td>PrivateEndpoint</td>
+<td>{privateEndpointPrefix}-{ResourceName}-{SubResource}</td>
+<td>sndadpinfpe1401-sndadpinfst1401demo-blob</td>
+<td>{privateEndpointPrefix}-{ResourceName}-{SubResource}</td>
+<td>sndadpinfpe1401-sndadpinfst1401demo-blob</td>
+</tr>
+<tr>
+<td>PrivateEndpointsPrivateDnsZoneGroup</td>
+<td>default</td>
+<td>default</td>
+<td>{PrivateEndpointName}-default</td>
+<td>sndadpinfpe1401-sndadpinfst1401demo-blob-default</td>
+</tr>
+</tbody>
+</table>
+<h2 id="helper-templates">Helper templates<a class="headerlink" href="#helper-templates" title="Permanent link">&para;</a></h2>
+<p>In addition to the K8s object templates described above, a number of helper templates are defined in <code>_helpers.tpl</code> that are both used within the library chart and available to use within a consuming parent chart.</p>
+<h3 id="default-check-required-message">Default check required message<a class="headerlink" href="#default-check-required-message" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Template name: <code>adp-aso-helm-library.default-check-required-msg</code></li>
+<li>Usage: <code>{{- include "adp-aso-helm-library.default-check-required-msg" . }}</code></li>
+</ul>
+<p>A template defining the default message to print when checking for a required value within the library. This is not designed to be used outside of the library.</p>
+<h3 id="tags">Tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Template name: <code>adp-aso-helm-library.commonTags</code></li>
+<li>Usage: <code>{{- include "adp-aso-helm-library.commonTags" $ | nindent 4 }}</code> (<code>$</code> is mapped to the root scope)</li>
+</ul>
+<p>Common tags to apply to <code>tags</code> of all ASO resource objects on the ADP K8s platform. This template relies on the globally required values <a href="#environment-specific-default-values">listed above</a>.</p>
+<h3 id="labels">Labels<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>In Progress.
+</code></pre></div></td></tr></table></div>
+<h3 id="annotations">Annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h3>
+<p>For the Azure Service Operator to not delete the resources created in Azure on the deletion of the kubernetes resource manifest files, the below section can be added to <code>Values.yaml</code> in the parent helm chart. </p>
+<p>This specifies the reconcile policy to be used and can be set to <code>manage</code>, <code>skip</code> or <code>detach-on-delete</code>. More info over <a href="https://azure.github.io/azure-service-operator/guide/annotations/">here</a>.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1">1</a></span>
+<span class="normal"><a href="#__codelineno-42-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a>asoAnnotations:
+<a id="__codelineno-42-2" name="__codelineno-42-2"></a>  serviceoperator.azure.com/reconcile-policy: detach-on-delete
+</code></pre></div></td></tr></table></div>
+<h2 id="licence">Licence<a class="headerlink" href="#licence" title="Permanent link">&para;</a></h2>
+<p>THIS INFORMATION IS LICENSED UNDER THE CONDITIONS OF THE OPEN GOVERNMENT LICENCE found at:</p>
+<p><a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3</a></p>
+<p>The following attribution statement MUST be cited in your products and applications when using this information.</p>
+<blockquote>
+<p>Contains public sector information licensed under the Open Government license v3</p>
+</blockquote>
+<h3 id="about-the-licence">About the licence<a class="headerlink" href="#about-the-licence" title="Permanent link">&para;</a></h3>
+<p>The Open Government Licence (OGL) was developed by the Controller of Her Majesty's Stationery Office (HMSO) to enable information providers in the public sector to license the use and re-use of their information under a common open licence.</p>
+<p>It is designed to encourage use and re-use of information freely and flexibly, with only a few conditions.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../Platform-Architecture/scaling/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Scaling">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Scaling
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../adp-portal/ongoing-development/backstage-plugin-index/" class="md-footer__link md-footer__link--next" aria-label="Next: Backstage Plugin Index">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Backstage Plugin Index
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Crown copyright | <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"  target="_blank" rel="noopener">All content is available under the Open Government Licence v3.0</a>
+
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/defra/adp-documentation" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "navigation.footer", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.0.1"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../javascripts/loader.js"></script>
+      
+        <script src="../../../search/main.js"></script>
+      
+    
+  </body>
+</html>
